@@ -19,13 +19,6 @@ btn.on('click', function(e) {
 });
 
 
-// Play pronunciation audio when the emoji is clicked
-document.getElementById('volumeEmoji').addEventListener('click', function() {
-    const pronunicationAudio = new Audio('assets/sounds/khang.mp3');
-    pronunicationAudio.play();
-});
-
-
 // Toggle navigation menu bar
 function toggleNav() {
     document.querySelector('nav').classList.toggle('animated-menu');
@@ -74,16 +67,18 @@ function toggleTheme() {
         bodyEl.classList.add('dark-theme');
         buttonEl.classList.remove('light-theme');
         buttonEl.classList.add('dark-theme');
-        buttonEl.innerText = '☀️';
-        speechBalloon.innerText = 'lights turned off!';
+        buttonEl.innerText = '◐';
+        localStorage.setItem('theme', 'dark');
+        speechBalloon.innerText = 'dark mode';
         clickSound.play();
     } else {
         bodyEl.classList.remove('dark-theme');
         bodyEl.classList.add('light-theme');
         buttonEl.classList.remove('dark-theme');
         buttonEl.classList.add('light-theme');
-        buttonEl.innerText = '🌙';
-        speechBalloon.innerText = 'lights turned on!';
+        buttonEl.innerText = '◑';
+        localStorage.setItem('theme', 'light');
+        speechBalloon.innerText = 'light mode';
         clickSound.play();
     }
 }
@@ -597,23 +592,43 @@ $(document).ready(function() {
 });
 
 
-// Dark/Light theme based on predefined time
+// Dark/Light theme based on browser preference
 document.addEventListener('DOMContentLoaded', function() {
     const buttonEl = document.querySelector('.toggle-theme-button');
     const speechBalloon = document.querySelector('.speech-balloon');
-    var currentHour = new Date().getHours();
 
-    // Dark theme is used between 7 PM of last day
-    // to 7 AM next day. Otherwise, use light theme
-    if (currentHour > 19 || currentHour <= 7) {
+    // Check if user has a saved preference
+    const savedTheme = localStorage.getItem('theme');
+
+    // If no saved preference, use browser preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         document.body.classList.add('dark-theme');
-        buttonEl.innerText = '☀️';
-        speechBalloon.innerText = 'it\'s night, lights off!';
+        buttonEl.innerText = '◐';
+        speechBalloon.innerText = 'dark mode';
     } else {
         document.body.classList.add('light-theme');
-        buttonEl.innerText = '🌙';
-        speechBalloon.innerText = 'it\'s day, lights on!';
+        buttonEl.innerText = '◑';
+        speechBalloon.innerText = 'light mode';
     }
+
+    // Listen for browser preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+            if (e.matches) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                buttonEl.innerText = '◐';
+                speechBalloon.innerText = 'dark mode';
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                buttonEl.innerText = '◑';
+                speechBalloon.innerText = 'light mode';
+            }
+        }
+    });
 });
 
 
@@ -648,14 +663,19 @@ class Particle {
         this.y = Math.random() * canvas.height;
         this.vx = (Math.random() - 0.5) * 2;
         this.vy = (Math.random() - 0.5) * 2;
-        this.color = 'rgba(255, 255, 255, ' + 0.7 + ')';
+        const isDark = document.body.classList.contains('dark-theme');
+        const rgb = isDark ? '255, 255, 255' : '100, 100, 100';
+        this.color = 'rgba(' + rgb + ', ' + 0.7 + ')';
+        this.baseColor = rgb;
         this.lifespan = 100;
     }
 
     update() {
         this.x += this.vx;
         this.y += this.vy;
-        this.color = 'rgba(255, 255, 255, ' + this.lifespan--/100 + ')';
+        const isDark = document.body.classList.contains('dark-theme');
+        const rgb = isDark ? '255, 255, 255' : '100, 100, 100';
+        this.color = 'rgba(' + rgb + ', ' + this.lifespan--/100 + ')';
 
         if (this.lifespan <= 0) {
             this.reset();

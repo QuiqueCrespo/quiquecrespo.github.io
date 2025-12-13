@@ -1,33 +1,25 @@
 <!-- About section -->
 
-<div class="row mb-4">
-    <div class="col-lg-2 col-md-4">
+<div class="row">
+    <div class="col-lg-2 col-md-12 profile-container">
         <div class="ring-container">
             <div class="ring">
                 <div class="hollow-ring">
                     <img class="profile-image" src="{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
-                    {% if site.data.about.emoji %} 
-                        <div class="emoji-indicator">
-                            {{ site.data.about.emoji }} <span class="hover-text"> {{ site.data.about.desc-emoji }} </span> 
-                        </div> 
-                    {% endif %}
                 </div>
             </div>
         </div>
         <hr>
-        <div class="social-icons">
-            {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap" style="font-size: 35px; color: #4285f4"></i></a> {% endif %}
-            {% if site.data.about.researchgate %} <a class="social-icon" href="{{ site.data.about.researchgate }}" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate" style="font-size: 35px; color: #00D0BB"></i></a> {% endif %}
-            {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" style="font-size: 35px; color: #171515"></i></a> {% endif %}
-            {% if site.data.about.youtube %} <a class="social-icon" href="{{ site.data.about.youtube }}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube" style="font-size: 35px; color: #FF0000"></i></a> {% endif %}
-            {% if site.data.about.resume %} <a class="social-icon" href="{{ site.data.about.resume }}" target="_blank" rel="noopener" title="Resume"><i class="fas fa-file-alt" style="font-size: 35px; color: #bd5d38"></i></a> {% endif %}
+        <div class="profile-email">
+            <a href="mailto:{{ site.data.about.email }}">{{ site.data.about.email }}</a>
         </div>
         <div class="social-icons">
-            {% if site.data.about.codepen %} <a class="social-icon" href="{{ site.data.about.codepen }}" target="_blank" rel="noopener" title="CodePen"><i class="fab fa-codepen" style="font-size: 35px; color: #000000"></i></a> {% endif %}
-            {% if site.data.about.orcid %} <a class="social-icon" href="{{ site.data.about.orcid }}" target="_blank" rel="noopener" title="ORCID"><i class="fab fa-orcid" style="font-size: 35px; color: #a6ce39"></i></a> {% endif %}
-            {% if site.data.about.projects %} <a class="social-icon" onclick="scrollToTopDiv('#research');" title="Projects"><i class="fa fa-shapes" style="font-size: 35px; color: #e8828c"></i></a> {% endif %}
-            {% if site.data.about.location %} <a class="social-icon" href="{{ site.data.about.location }}" target="_blank" rel="noopener" title="Location"><i class="fa fa-map-marker-alt" style="font-size: 35px; color: #635050"></i></a> {% endif %}
-            {% if site.data.about.contact %} <a class="social-icon" id="contact-card-trigger" title="Contact Info"><i class="fa fa-id-card" style="font-size: 35px; color: #cbbb5f"></i></a> {% endif %}
+            {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> {% endif %}
+            {% if site.data.about.researchgate %} <a class="social-icon" href="{{ site.data.about.researchgate }}" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a> {% endif %}
+            {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> {% endif %}
+            {% if site.data.about.linkedin %} <a class="social-icon" href="{{ site.data.about.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> {% endif %}
+            {% if site.data.about.youtube %} <a class="social-icon" href="{{ site.data.about.youtube }}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a> {% endif %}
+            {% if site.data.about.resume %} <a class="social-icon" href="{{ site.data.about.resume }}" target="_blank" rel="noopener" title="Resume"><i class="fas fa-file-alt"></i></a> {% endif %}
         </div>
         <p></p>
     </div>
@@ -64,23 +56,28 @@
         </div>
     </div>
 
-    <div class="col-lg-10 col-md-8">
-        <h2>
-            {{ site.data.about.name }} 
-            {% if site.data.about.pronunciation %} <span class="text-primary"> {{ site.data.about.pronunciation }} </span> {% endif %}
-            {% if site.data.about.pronunciation-emoji %} <span id="volumeEmoji" role="button"> {{ site.data.about.pronunciation-emoji }} </span> {% endif %}
-        </h2>
-        <p></p>
-        {{ site.data.about.first-paragraph }}
-        <p></p>
-        {{ site.data.about.second-paragraph }}      
-        <p></p>
-        <div class="codebox">
-            {{ site.data.about.research-introduction }}
-            <p></p> 
-            {% for interest in site.data.about.research-interests %}
-                {% include_relative _libs/about_widget.html %}
-            {% endfor %}
+    <div class="col-lg-10 col-md-12">
+        <div class="mb-5">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Marcellus', serif; text-transform: uppercase; letter-spacing: 0.1em;">{{ site.data.about.name }}</h1>
+            {% if site.data.about.subtitle %}
+            <p class="lead" style="font-family: 'Marcellus', serif; font-size: 1.2rem; color: #555; margin-bottom: 1.5rem;">
+                {{ site.data.about.subtitle }}
+            </p>
+            {% endif %}
+            {% if site.data.about.pronunciation %}
+            <p class="lead" style="font-family: 'Marcellus', serif; font-size: 1.2rem; color: #555;">
+                {{ site.data.about.pronunciation }}
+            </p>
+            {% endif %}
+            {{ site.data.about.first-paragraph }}
+            <p></p>
+            {{ site.data.about.second-paragraph }}
+            <p></p>
+            <div class="codebox">
+                {{ site.data.about.research-introduction }}
+                <p></p>
+                {% for interest in site.data.about.research-interests %}
+                    {% include_relative _libs/about_widget.html %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</div>

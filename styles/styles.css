@@ -1,34 +1,105 @@
+/* =================================
+   STRIPPED CLASSICISM AESTHETIC
+   Art Deco meets Modernism
+   ================================= */
+
+:root {
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --accent-color: #000000;
+    --border-style: 1px solid #1a1a1a;
+    --deco-border: 3px double #1a1a1a;
+}
+
 /* Document body styles */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    transition: background-color 0.5s, color 0.5s;
+}
+
 body.light-theme {
     background-color: #ffffff;
-    color: #333333;
-    transition: 0.5s;
+    color: #1a1a1a;
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --accent-color: #000000;
+    --border-style: 1px solid #1a1a1a;
+    --deco-border: 3px double #1a1a1a;
 }
 body.dark-theme {
-    background-color: #333333;
-    color: #ffffff;
-    transition: 0.5s;
+    background-color: #1a1a1a;
+    color: #e8e8e8;
+    --bg-color: #1a1a1a;
+    --text-main: #e8e8e8;
+    --text-muted: #aaaaaa;
+    --accent-color: #ffffff;
+    --border-style: 1px solid #e8e8e8;
+    --deco-border: 3px double #e8e8e8;
+}
+ 
+
+/* =================================
+   TYPOGRAPHY - Classic vs Modern
+   ================================= */
+
+h1 {
+    font-family: 'Marcellus', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    font-weight: normal;
 }
 
+h2, h3, h4, h5, h6 {
+    font-family: 'Marcellus', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    font-weight: normal;
+}
 
-/* Hyperlink, hightlight, and text styles */
+h2 {
+    font-size: 1.75rem;
+    border-bottom: var(--deco-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+}
+
+/* Hyperlink styles */
 a {
-    color: #bd5d38;
-    text-decoration: none;
-    background-color: transparent;
+    color: var(--text-main);
+    text-decoration: underline;
+    font-style: italic;
 }
 a:hover {
-    color: #824027;
+    color: var(--text-main);
     text-decoration: underline;
 }
+
 hightlight {
-    color: #bd5d38;
-    text-decoration: none;
-    background-color: transparent;
+    background-color: #f0f0f0;
+    padding: 0 4px;
+    border-radius: 2px;
+    font-weight: 500;
 }
+
+.dark-theme hightlight {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
 .text-primary {
-    color: #4c5157 !important;
-    font-size: 29px;
+    color: var(--text-muted) !important;
+    font-size: 1.2rem;
 }
 
 
@@ -215,6 +286,15 @@ code {
 }
 
 
+/* =================================
+   PROFILE CONTAINER - Sidebar
+   ================================= */
+
+.profile-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 /* Border styles for profile picture */
 .ring-container {
     display: flex;
@@ -227,19 +307,6 @@ code {
     border-radius: 50%;
     box-sizing: border-box;
     position: relative;
-}
-.ring::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    padding: 4px;
-    box-sizing: border-box;
-    background: linear-gradient(to right, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    mask-composite: exclude;
 }
 .hollow-ring {
     width: 152px;
@@ -267,15 +334,18 @@ code {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 5px solid #ffffff;
+    border: 1px solid #000;
+    outline: 1px solid #000;
+    outline-offset: 4px;
     z-index: 2;
-    transition: 0.5s;
 }
 .light-theme .profile-image {
-    border: 5px solid #ffffff
+    border: 1px solid #000;
+    outline: 1px solid #000;
 }
 .dark-theme .profile-image {
-    border: 5px solid #333333
+    border: 1px solid #fff;
+    outline: 1px solid #fff;
 }
 
 
@@ -324,34 +394,64 @@ code {
 }
 
 
-/* Handle for social icons */
+/* =================================
+   PROFILE EMAIL
+   ================================= */
+
+.profile-email {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.profile-email a {
+    color: var(--text-main);
+    text-decoration: underline;
+    font-style: normal;
+    font-family: 'Fira Code', monospace;
+}
+
+.profile-email a:hover {
+    text-decoration: underline;
+}
+
+/* =================================
+   SOCIAL ICONS - Minimalist
+   ================================= */
+
+.social-icons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 .social-icons .social-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 3.70rem;
-    width: 3.70rem;
-    color: #495057; 
-    border-radius: 100%;
-    font-size: 1.5rem;
-    margin-right: 0.25rem;
-    padding-top: 4px;
-    transition: transform 0.3s;
+    color: var(--text-main);
+    transition: transform 0.2s ease;
 }
+
+.social-icons .social-icon i {
+    color: var(--accent-color) !important;
+    font-size: 1.2rem !important;
+}
+
 .social-icons .social-icon:hover {
-    transform: scale(1.30);
+    transform: translateY(-2px);
 }
-.social-icons .social-icon:last-child {
-    margin-right: 0;
-}
-.social-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.social-icons .social-icon:hover i {
+    transform: translateY(-2px);
 }
 
 
-/* Styles for overlay background when activating contact info card */
+/* =================================
+   CONTACT CARD - Art Deco Flip
+   ================================= */
+
 .contact-card-overlay {
     display: none;
     position: fixed;
@@ -359,8 +459,8 @@ code {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    z-index: 9999;
     justify-content: center;
     align-items: center;
 }
@@ -377,39 +477,39 @@ code {
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
     cursor: pointer;
-    border-radius: 15px;
-    box-shadow: 0 0 5px #000;
 }
+
 .front, .back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    border: 2px solid #000;
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+}
+
+.front {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #333;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 15px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-.front {
-    background: #2d2d2d;
-    color: white;
-}
-.back {
-    background-color: #2d2d2d;
-    background-image:
-        linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1)),
-        linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1));
-    background-size: 10px 10px;
-    background-position: 0 0, 5px 5px;
-    transform: rotateY(180deg);
-    text-align: left;
     align-items: flex-start;
+}
+
+.back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .flip {
     transform: rotateY(180deg);
@@ -448,9 +548,11 @@ code {
     color: #dcdcaa;
 }
 .card-name {
-    font-size: 23px;
-    margin-bottom: 5px;
-    font-weight: bold;
+    font-family: 'Marcellus', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 .card-website-link {
     color: #888; 
@@ -470,44 +572,83 @@ code {
 }
 
 
-/* Styles for project list */
+/* =================================
+   PUBLICATIONS/PROJECTS - Pillar Design
+   ================================= */
+
 #projects {
     margin: 0px;
 }
+
 .project {
-    margin: 0px;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--accent-color);
+    padding-left: 1.5rem;
+}
+
+.project img {
+    border: 1px solid #eee;
+}
+
+.project a[href*="PDF"],
+.project a[href*="CODE"],
+.project a[href*="DEMO"],
+.project a[href*="SLIDES"],
+.project a[href*="TALK"],
+.project a[href*="POSTER"] {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
 }
 
 
-/* Styles for filter buttons */
+/* =================================
+   FILTER BUTTONS - Art Deco Style
+   ================================= */
+
 #filters-project .filter-button {
-    padding: 4px 7px;
-    border: 1px solid #333333;
-    border-radius: 10px;
-    background-color: transparent;
-    color: #333333;
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+    padding: 5px 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-family: 'Marcellus', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     cursor: pointer;
-    transition: background-color 0.5s, box-shadow 0.5s;
-}
-#filters-project .filter-button:hover {
-    background-color: rgba(194, 194, 194, 0.45);
-}
-#filters-project .filter-button.active {
-    background-color: rgba(194, 194, 194, 0.45);
+    border-radius: 0;
+    transition: all 0.3s;
 }
 
+#filters-project .filter-button:hover,
+#filters-project .filter-button.active {
+    background: #000;
+    color: #fff;
+}
 
 /* Light theme styles for filter button */
 .light-theme #filters-project .filter-button {
-    border: 1px solid #333333;
-    color: #333333;
+    border: 1px solid #000;
+    color: #000;
 }
 
+.light-theme #filters-project .filter-button:hover,
+.light-theme #filters-project .filter-button.active {
+    background: #000;
+    color: #fff;
+}
 
 /* Dark theme styles for filter button */
 .dark-theme #filters-project .filter-button {
     border: 1px solid #ffffff;
     color: #ffffff;
+}
+
+.dark-theme #filters-project .filter-button:hover,
+.dark-theme #filters-project .filter-button.active {
+    background: #ffffff;
+    color: #000;
 }
 
 
@@ -617,33 +758,49 @@ code {
 
 /* Styles for filter buttons */
 #filters-resources .filter-button {
-    padding: 4px 7px;
-    border: 1px solid #333333;
-    border-radius: 10px;
-    background-color: transparent;
-    color: #333333;
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+    padding: 5px 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-family: 'Marcellus', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     cursor: pointer;
-    transition: background-color 0.5s, box-shadow 0.5s;
-}
-#filters-resources .filter-button:hover {
-    background-color: rgba(194, 194, 194, 0.45);
-}
-#filters-resources .filter-button.active {
-    background-color: rgba(194, 194, 194, 0.45);
+    border-radius: 0;
+    transition: all 0.3s;
 }
 
+#filters-resources .filter-button:hover,
+#filters-resources .filter-button.active {
+    background: #000;
+    color: #fff;
+}
 
 /* Light theme styles for filter button */
 .light-theme #filters-resources .filter-button {
-    border: 1px solid #333333;
-    color: #333333;
+    border: 1px solid #000;
+    color: #000;
 }
 
+.light-theme #filters-resources .filter-button:hover,
+.light-theme #filters-resources .filter-button.active {
+    background: #000;
+    color: #fff;
+}
 
 /* Dark theme styles for filter button */
 .dark-theme #filters-resources .filter-button {
     border: 1px solid #ffffff;
     color: #ffffff;
+}
+
+.dark-theme #filters-resources .filter-button:hover,
+.dark-theme #filters-resources .filter-button.active {
+    background: #ffffff;
+    color: #000;
 }
 
 
@@ -836,18 +993,21 @@ div.desc {
 }
 
 
-/* Back-to-top button styles */
+/* =================================
+   BACK-TO-TOP BUTTON - Art Deco
+   ================================= */
+
 #back-to-top-button {
     display: inline-block;
-    background-color: #9faba6;
-    width: 55px;
-    height: 55px;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    border-radius: 7px;
+    border: 2px solid var(--accent-color);
     position: fixed;
     bottom: 30px;
     right: 30px;
-    transition: background-color .3s, opacity .5s, visibility .5s;
+    transition: all 0.3s;
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
@@ -857,19 +1017,22 @@ div.desc {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
-    font-size: 2em;
-    line-height: 50px;
-    color: #fff;
+    font-size: 1.5em;
+    line-height: 46px;
+    color: var(--accent-color);
 }
 #back-to-top-button:hover {
     cursor: pointer;
-    background-color: #767f7b;
+    background-color: var(--accent-color);
+}
+#back-to-top-button:hover::after {
+    color: var(--bg-color);
 }
 #back-to-top-button:active {
-    background-color: #9faba6;
+    background-color: var(--accent-color);
 }
 #back-to-top-button.show {
-    opacity: 0.70;
+    opacity: 1;
     visibility: visible;
 }
 
@@ -987,30 +1150,33 @@ div.desc {
     transition: 0.5s;
 }
 .progress-bar {
-    height: 1px;
-    background: #bd5d38;
+    height: 2px;
+    background: var(--accent-color);
     width: 0%;
 }
 .light-theme .progress-bar-container {
     background: #f1f1f1;
 }
 .dark-theme .progress-bar-container {
-    background: #888;
+    background: #3a3a3a;
 }
 
 
-/* New style for webpage scrollbar */
+/* =================================
+   SCROLLBAR - Minimalist
+   ================================= */
+
 ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+    background-color: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #888;
+    background-color: #1a1a1a;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: #000;
 }
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 
@@ -1022,4 +1188,114 @@ canvas {
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+
+/* =================================
+   FOOTER - Art Deco Double Border
+   ================================= */
+
+footer {
+    margin-top: 4rem;
+    border-top: var(--deco-border);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+footer .row {
+    align-items: center;
+}
+
+footer img {
+    height: 70px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    margin: 0 8px;
+    vertical-align: middle;
+    transition: filter 0.5s;
+}
+
+.dark-theme footer img {
+    filter: invert(1) brightness(0.9);
+}
+
+footer .text-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+footer .text-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+
+/* =================================
+   IMAGES - Full Color
+   ================================= */
+
+
+/* =================================
+   UPDATES SECTION - Art Deco Cards
+   ================================= */
+
+.updates-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.update-card {
+    border: var(--border-style);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.dark-theme .update-card {
+    border-color: #e8e8e8;
+}
+
+.update-date {
+    font-family: 'Marcellus', serif;
+    font-size: 2rem;
+    line-height: 1;
+    padding-right: 1rem;
+    border-right: 1px solid #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 120px;
+    text-align: center;
+}
+
+.update-content {
+    flex: 1;
+}
+
+
+/* =================================
+   THEME TOGGLE BUTTON
+   ================================= */
+
+.toggle-theme-button {
+    font-family: 'Marcellus', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1.5rem;
+    border: var(--border-style);
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+.toggle-theme-button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
 }

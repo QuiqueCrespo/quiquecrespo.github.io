@@ -1,0 +1,97 @@
+# CV Data Structure
+# This file contains all the information for your CV
+
+# Personal Information
+personal:
+  name: Enrique Crespo-Fernández
+  phone: +34 626660775
+  email: enrique.crespofernandez@bristol.ac.uk
+  linkedin: https://www.linkedin.com/in/enrique-crespo-fernandez/
+  linkedin_handle: LinkedIn
+  github: https://github.com/QuiqueCrespo
+  github_handle: QuiqueCrespo
+  location: Bristol, United Kingdom
+
+# Professional Summary
+summary: |
+  I am a second-year PhD candidate in Artificial Intelligence seeking an industry research internship. My work focuses on applying AI to high-stakes, human-in-the-loop domains such as energy, security, and defence. In these critical settings, I strive to build AI systems that are robust, reliable, and transparently audited by humans, ensuring accountability, ethical alignment, and strategic value.
+
+# Experience
+experience:
+  - institution: University of Bristol
+    position: Teaching Assistant
+    location: Bristol, UK
+    dates: 2024-2025
+    responsibilities:
+      - Supervised and mentored postgraduate Data Science students on industry-sponsored group projects, guiding research design, experimentation, and reporting.
+      - Acted as the primary liaison between student teams and corporate partners, ensuring timely delivery of project milestones and clear communication of technical findings.
+
+  - institution: GniiamGniiam
+    position: Co-founder
+    location: Madrid, Spain
+    dates: 2023-2024
+    responsibilities:
+      - Co-founded a restaurant-tech start-up that automated order taking and note-keeping via a QR-based web application.
+      - Led development of the customer-facing ordering app and analytics dashboard, reducing average table turn-over time by 18% across pilot restaurants.
+
+  - institution: Lukkap
+    position: Data Scientist Intern
+    location: Madrid, Spain
+    dates: 2021-2022
+    responsibilities:
+      - Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.
+      - Presented insights to cross-functional stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.
+
+# Education
+education:
+  - institution: University of Bristol
+    degree: PhD in Artificial Intelligence
+    location: Bristol, UK
+    dates: 2024-2027 (expected)
+    details:
+      - "Supervisor: Prof. Peter Flach"
+      - "Research: neurosymbolic methods for explainable and generalisable agents"
+
+  - institution: University of Bristol
+    degree: MSc in Interactive Artificial Intelligence
+    location: Bristol, UK
+    dates: 2023-2024
+    details:
+      - "Thesis: Neurosymbolic methods for music transcription"
+
+  - institution: University of Bath
+    degree: BSc Mathematics and Physics (First-Class Honours)
+    location: Bath, UK
+    dates: 2019-2023
+    details:
+      - "Dissertation: Forecasting dangerous sea-wave events from radar scans with artificial neural networks"
+      - "Overall grade: 71\\%"
+
+# Skills
+skills:
+  - category: Programming Languages
+    items: Python, C, JavaScript, Prolog, Haskell
+
+  - category: Web Technologies
+    items: React, Node.js, HTML, CSS, RESTful APIs, Databases
+
+  - category: Data Science \& Machine Learning
+    items: Deep-learning architectures, traditional ML algorithms, logic-based systems, program synthesis, NLP
+
+  - category: DevOps \& Version Control
+    items: Git
+
+# Leadership & Volunteer Experience
+volunteer:
+  - organization: Aldovea
+    role: Volunteer
+    location: Tangier, Morocco
+    dates: "2019"
+    responsibilities:
+      - Supported construction of a primary school for under-served children in Tangier.
+      - Assisted the Discalced Carmelites in their outreach to street-connected children.
+
+# Additional Information
+additional:
+  languages: English (C2), Spanish (native).
+  interests: AI, physics, mathematics, financial markets, history, sailing, tennis, football.

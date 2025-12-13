@@ -1,18 +1,16 @@
 <!-- Footer section -->
 
-<div>‎</div>
-<hr>
-<footer class="pt-2 my-md-2 pt-md-">
-    <div class="row justify-content-center">
-        <div class="col-7 col-md text-left align-self-center">
-            <p class="h6">© {{ site.title }}, <span id="currentYear"></span></p>
-            <a href="https://github.com/mkhangg/academic-website" target="_blank" rel="noopener"><b>> web source @github</b></a>
-        </div>
-        <div class="col col-md text-right">
-            {% for logo in site.data.footer.logos %}
-                {% include_relative _libs/footer_widget.html %}
-            {% endfor %}
-        </div>
-    </div>
-    <p></p>
-</footer>
+        <footer>
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div>© {{ site.title }}, <span id="currentYear"></span></div>
+                    <a href="https://github.com/QuiqueCrespo/quiquecrespo.github.io" target="_blank" rel="noopener">> web source @github</a>
+                </div>
+                <div class="col-md-6 text-right">
+                    {% for logo in site.data.footer.logos %}{% include_relative _libs/footer_widget.html %}{% endfor %}
+                </div>
+            </div>
+        </footer>
+
+    </div> <!-- Close col-lg-10 -->
+</div> <!-- Close row -->

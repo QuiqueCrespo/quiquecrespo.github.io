@@ -1,6 +1,6 @@
 # headers and icon 
-title: khang nguyen
-info: phd cs @ uta
+title: Enrique Crespo Fernandez
+info: phd cs @ UoB
 icon-pic: assets/img/mandu_icon.png
 
 # exclude these items when generated website in _site/index.html
@@ -8,3 +8,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - CV_README.md
+  - DEPLOY_README.md
+
+# Include .tex files for LaTeX CV generation
+include:
+  - cv.tex

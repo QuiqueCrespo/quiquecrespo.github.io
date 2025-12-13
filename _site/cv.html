@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content="CV - Enrique Crespo-Fernández"/>
+        <meta name="author" content="Enrique Crespo-Fernández"/>
+        <title>CV | Enrique Crespo-Fernández</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+
+        <style>
+            :root {
+                --cv-bg: #ffffff;
+                --cv-text: #1a1a1a;
+                --cv-border: #000000;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                font-size: 10pt;
+                line-height: 1.3;
+                color: var(--cv-text);
+                background-color: var(--cv-bg);
+                padding: 20px 10px;
+            }
+
+            .cv-container {
+                max-width: 800px;
+                margin: 0 auto;
+                background: white;
+                padding: 20px 30px;
+            }
+
+            /* Header */
+            .cv-header {
+                text-align: center;
+                margin-bottom: 12px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--cv-border);
+            }
+
+            .cv-name {
+                font-family: 'Marcellus', serif;
+                font-size: 22pt;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                margin-bottom: 4px;
+                font-weight: normal;
+            }
+
+            .cv-contact,
+            .cv-links,
+            .cv-location {
+                font-size: 9pt;
+                margin: 2px 0;
+            }
+
+            .cv-links a {
+                color: var(--cv-text);
+                text-decoration: none;
+            }
+
+            /* Summary */
+            .cv-summary {
+                text-align: justify;
+                margin: 10px 0;
+                font-size: 9.5pt;
+                line-height: 1.35;
+            }
+
+            /* Sections */
+            .cv-section {
+                margin: 14px 0;
+            }
+
+            .cv-section-title {
+                font-family: 'Marcellus', serif;
+                font-size: 11pt;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                border-bottom: 1px solid var(--cv-border);
+                padding-bottom: 2px;
+                margin-bottom: 8px;
+                font-weight: normal;
+            }
+
+            /* CV Items */
+            .cv-item {
+                margin-bottom: 10px;
+            }
+
+            .cv-item-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 3px;
+            }
+
+            .cv-item-left {
+                flex: 1;
+            }
+
+            .cv-item-right {
+                text-align: right;
+                font-style: italic;
+                font-size: 9pt;
+            }
+
+            .cv-item-subtitle {
+                margin-top: 1px;
+            }
+
+            /* Lists */
+            .cv-list {
+                margin-left: 18px;
+                margin-top: 4px;
+            }
+
+            .cv-list li {
+                margin-bottom: 2px;
+                font-size: 9.5pt;
+                line-height: 1.3;
+            }
+
+            /* Actions */
+            .cv-actions {
+                margin-top: 30px;
+                padding-top: 15px;
+                border-top: 1px solid var(--cv-border);
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+            }
+
+            .cv-print-button,
+            .cv-back-button {
+                font-family: 'Marcellus', serif;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-size: 9pt;
+                border: 2px solid var(--cv-border);
+                background: transparent;
+                padding: 10px 20px;
+                cursor: pointer;
+                transition: all 0.3s;
+                text-decoration: none;
+                color: var(--cv-text);
+                display: inline-block;
+            }
+
+            .cv-print-button:hover,
+            .cv-back-button:hover {
+                background: var(--cv-border);
+                color: white;
+            }
+
+            /* Print Styles */
+            @media print {
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                }
+
+                html {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+
+                body {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    background: white;
+                    font-size: 10pt !important;
+                    line-height: 1.3 !important;
+                }
+
+                .cv-container {
+                    max-width: 100% !important;
+                    width: 100% !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+
+                .cv-header {
+                    margin-top: 0 !important;
+                    margin-bottom: 10px !important;
+                    padding-top: 0 !important;
+                    padding-bottom: 8px !important;
+                }
+
+                .cv-name {
+                    font-size: 22pt !important;
+                    margin-bottom: 3px !important;
+                }
+
+                .cv-contact,
+                .cv-links,
+                .cv-location {
+                    font-size: 9pt !important;
+                    margin: 1px 0 !important;
+                }
+
+                .cv-summary {
+                    margin: 8px 0 !important;
+                    font-size: 9.5pt !important;
+                    line-height: 1.35 !important;
+                }
+
+                .cv-section {
+                    margin: 12px 0 !important;
+                    page-break-inside: avoid;
+                }
+
+                .cv-section-title {
+                    font-size: 11pt !important;
+                    padding-bottom: 2px !important;
+                    margin-bottom: 6px !important;
+                }
+
+                .cv-item {
+                    margin-bottom: 8px !important;
+                    page-break-inside: avoid;
+                }
+
+                .cv-item-header {
+                    margin-bottom: 2px !important;
+                }
+
+                .cv-item-right {
+                    font-size: 9pt !important;
+                }
+
+                .cv-list {
+                    margin-left: 18px !important;
+                    margin-top: 3px !important;
+                }
+
+                .cv-list li {
+                    margin-bottom: 1px !important;
+                    font-size: 9.5pt !important;
+                    line-height: 1.3 !important;
+                }
+
+                .cv-section p {
+                    margin: 3px 0 !important;
+                    font-size: 9.5pt !important;
+                }
+
+                .no-print {
+                    display: none !important;
+                }
+
+                a {
+                    color: var(--cv-text);
+                    text-decoration: none;
+                }
+
+                /* Force exact spacing */
+                h1, h2, h3, h4, h5, h6, p, ul, li, div {
+                    orphans: 3;
+                    widows: 3;
+                }
+            }
+
+            @page {
+                margin: 0.4in 0.5in;
+                size: letter;
+            }
+
+            /* Remove any default margins */
+            @media print {
+                @page :first {
+                    margin-top: 0.3in;
+                }
+            }
+
+            /* Additional compact adjustments for specific elements */
+            .cv-section p {
+                margin: 4px 0;
+            }
+
+            .cv-section p strong {
+                display: inline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="cv-container">
+
+    <!-- Header -->
+    <header class="cv-header">
+        <h1 class="cv-name">Enrique Crespo-Fernández</h1>
+        <div class="cv-contact">
+            <span>+34 626660775</span> |
+            <span>enrique.crespofernandez@bristol.ac.uk</span>
+        </div>
+        <div class="cv-links">
+            <a href="https://www.linkedin.com/in/enrique-crespo-fernandez/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/QuiqueCrespo" target="_blank">QuiqueCrespo</a>
+        </div>
+        <div class="cv-location">Bristol, United Kingdom</div>
+    </header>
+
+    <!-- Summary -->
+    <section class="cv-section">
+        <p class="cv-summary">I am a second-year PhD candidate in Artificial Intelligence seeking an industry research internship. My work focuses on applying AI to high-stakes, human-in-the-loop domains such as energy, security, and defence. In these critical settings, I strive to build AI systems that are robust, reliable, and transparently audited by humans, ensuring accountability, ethical alignment, and strategic value.
+</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="cv-section">
+        <h2 class="cv-section-title">EXPERIENCE</h2>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bristol</strong>
+                    <div class="cv-item-subtitle"><em>Teaching Assistant</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2024-2025</div>
+                    <div>Bristol, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Supervised and mentored postgraduate Data Science students on industry-sponsored group projects, guiding research design, experimentation, and reporting.</li>
+                
+                <li>Acted as the primary liaison between student teams and corporate partners, ensuring timely delivery of project milestones and clear communication of technical findings.</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>GniiamGniiam</strong>
+                    <div class="cv-item-subtitle"><em>Co-founder</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2023-2024</div>
+                    <div>Madrid, Spain</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Co-founded a restaurant-tech start-up that automated order taking and note-keeping via a QR-based web application.</li>
+                
+                <li>Led development of the customer-facing ordering app and analytics dashboard, reducing average table turn-over time by 18% across pilot restaurants.</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>Lukkap</strong>
+                    <div class="cv-item-subtitle"><em>Data Scientist Intern</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2021-2022</div>
+                    <div>Madrid, Spain</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.</li>
+                
+                <li>Presented insights to cross-functional stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.</li>
+                
+            </ul>
+        </div>
+        
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+        <h2 class="cv-section-title">EDUCATION</h2>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bristol</strong>
+                    <div class="cv-item-subtitle"><em>PhD in Artificial Intelligence</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2024-2027 (expected)</div>
+                    <div>Bristol, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Supervisor: Prof. Peter Flach</li>
+                
+                <li>Research: neurosymbolic methods for explainable and generalisable agents</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bristol</strong>
+                    <div class="cv-item-subtitle"><em>MSc in Interactive Artificial Intelligence</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2023-2024</div>
+                    <div>Bristol, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Thesis: Neurosymbolic methods for music transcription</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bath</strong>
+                    <div class="cv-item-subtitle"><em>BSc Mathematics and Physics (First-Class Honours)</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2019-2023</div>
+                    <div>Bath, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Dissertation: Forecasting dangerous sea-wave events from radar scans with artificial neural networks</li>
+                
+                <li>Overall grade: 71\%</li>
+                
+            </ul>
+        </div>
+        
+    </section>
+
+    <!-- Skills -->
+    <section class="cv-section">
+        <h2 class="cv-section-title">SKILLS</h2>
+        <ul class="cv-list">
+            
+            <li><strong>Programming Languages:</strong> Python, C, JavaScript, Prolog, Haskell</li>
+            
+            <li><strong>Web Technologies:</strong> React, Node.js, HTML, CSS, RESTful APIs, Databases</li>
+            
+            <li><strong>Data Science \& Machine Learning:</strong> Deep-learning architectures, traditional ML algorithms, logic-based systems, program synthesis, NLP</li>
+            
+            <li><strong>DevOps \& Version Control:</strong> Git</li>
+            
+        </ul>
+    </section>
+
+    <!-- Leadership & Volunteer Experience -->
+    <section class="cv-section">
+        <h2 class="cv-section-title">LEADERSHIP & VOLUNTEER EXPERIENCE</h2>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>Volunteer</strong>
+                    <div class="cv-item-subtitle"><em>Aldovea</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>Tangier, Morocco</div>
+                    <div>2019</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Supported construction of a primary school for under-served children in Tangier.</li>
+                
+                <li>Assisted the Discalced Carmelites in their outreach to street-connected children.</li>
+                
+            </ul>
+        </div>
+        
+    </section>
+
+    <!-- Additional Information -->
+    <section class="cv-section">
+        <h2 class="cv-section-title">ADDITIONAL INFORMATION</h2>
+        <p><strong>Languages:</strong> English (C2), Spanish (native).</p>
+        <p><strong>Interests:</strong> AI, physics, mathematics, financial markets, history, sailing, tennis, football.</p>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="cv-actions no-print">
+        <button onclick="window.print()" class="cv-print-button">Print from Browser</button>
+        <a href="/assets/cv.pdf" class="cv-print-button" download>Download PDF</a>
+        <a href="/" class="cv-back-button">← Back to Website</a>
+    </div>
+
+    <div class="no-print" style="margin-top: 15px; padding: 10px; border: 1px solid #ddd; background: #f9f9f9; font-size: 9pt; text-align: center;">
+        <strong>Tip:</strong> The <strong>Download PDF</strong> button provides a LaTeX-compiled version. <strong>Print from Browser</strong> converts this HTML page to PDF (ensure scale is 100%).
+    </div>
+
+</div>
+
+    </body>
+</html>
