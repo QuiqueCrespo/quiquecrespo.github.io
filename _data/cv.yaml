@@ -15,12 +15,6 @@ labels:
   languages: "Languages:"
   interests: "Interests:"
 
-# Action Buttons
-buttons:
-  print: Print from Browser
-  download_pdf: Download PDF
-  pdf_not_available_message: "PDF not available yet. The LaTeX-compiled PDF is generated during GitHub Actions deployment. Use \"Print from Browser\" for now."
-
 # Personal Information
 personal:
   name: Enrique Crespo Fernández

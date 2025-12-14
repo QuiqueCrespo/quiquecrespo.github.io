@@ -119,29 +119,4 @@ title: CV | Enrique Crespo-Fernández
         <p><strong>{{ site.data.cv.labels.languages }}</strong> {{ site.data.cv.additional.languages }}</p>
         <p><strong>{{ site.data.cv.labels.interests }}</strong> {{ site.data.cv.additional.interests }}</p>
     </section>
-
-    <!-- Action Buttons -->
-    <div class="cv-actions">
-        <button onclick="window.print()" class="cv-button">{{ site.data.cv.buttons.print }}</button>
-        <a href="/assets/cv.pdf" class="cv-button" id="pdf-download-btn">{{ site.data.cv.buttons.download_pdf }}</a>
-    </div>
-
-    <script>
-        // Check if PDF exists and disable button if not
-        fetch('/assets/cv.pdf', { method: 'HEAD' })
-            .then(response => {
-                if (!response.ok) {
-                    const btn = document.getElementById('pdf-download-btn');
-                    btn.style.opacity = '0.5';
-                    btn.style.cursor = 'not-allowed';
-                    btn.onclick = (e) => {
-                        e.preventDefault();
-                        alert('{{ site.data.cv.buttons.pdf_not_available_message }}');
-                    };
-                }
-            })
-            .catch(() => {
-                // Silently handle error - PDF might not exist locally
-            });
-    </script>
 </div>
