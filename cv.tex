@@ -5,14 +5,12 @@ permalink: /assets/pdf/cv.tex
 \documentclass[10pt,letterpaper]{article}
 
 % Packages
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage{geometry}
-\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage[explicit]{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage{fontspec}
 
 % Page geometry
 \geometry{
@@ -36,10 +34,10 @@ permalink: /assets/pdf/cv.tex
 
 % Section formatting
 \titleformat{\section}
-    {\normalfont\fontsize{11}{13}\bfseries\MakeUppercase}
+    {\normalfont\fontsize{11}{13}\bfseries}
     {}
     {0em}
-    {}
+    {\MakeUppercase{#1}}
     [\titlerule]
 
 \titlespacing*{\section}{0pt}{12pt}{6pt}
