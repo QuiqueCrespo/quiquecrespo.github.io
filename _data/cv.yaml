@@ -85,10 +85,10 @@ publications:
 
 # Skills
 skills:
-  - category: Programming Languages & Frameworks
+  - category: Programming Languages and Frameworks
     items: Python, C, JavaScript, Prolog, Haskell, React, Node.js
 
-  - category: Data Science & Machine Learning
+  - category: Data Science and Machine Learning
     items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
 
 # Side Projects

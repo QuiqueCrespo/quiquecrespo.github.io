@@ -1,14 +1,12 @@
 \documentclass[10pt,letterpaper]{article}
 
 % Packages
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage{geometry}
-\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage[explicit]{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage{fontspec}
 
 % Page geometry
 \geometry{
@@ -32,10 +30,10 @@
 
 % Section formatting
 \titleformat{\section}
-    {\normalfont\fontsize{11}{13}\bfseries\MakeUppercase}
+    {\normalfont\fontsize{11}{13}\bfseries}
     {}
     {0em}
-    {}
+    {\MakeUppercase{#1}}
     [\titlerule]
 
 \titlespacing*{\section}{0pt}{12pt}{6pt}
@@ -110,8 +108,8 @@ I am a second-year PhD candidate at the Interactive Artificial Intelligence CDT 
 % Skills
 \section{Skills}
 \begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=2pt]
-    \item \textbf{ Programming Languages & Frameworks: } Python, C, JavaScript, Prolog, Haskell, React, Node.js
-    \item \textbf{ Data Science & Machine Learning: } Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
+    \item \textbf{ Programming Languages and Frameworks: } Python, C, JavaScript, Prolog, Haskell, React, Node.js
+    \item \textbf{ Data Science and Machine Learning: } Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
 \end{itemize}
 
 % Leadership & Volunteer
