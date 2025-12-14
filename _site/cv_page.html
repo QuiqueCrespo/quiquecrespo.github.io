@@ -67,31 +67,6 @@
                 margin-bottom: 0.1rem;
                 line-height: 1.3;
             }
-            .cv-actions {
-                margin-top: 1rem;
-                display: flex;
-                gap: 0.5rem;
-                flex-wrap: wrap;
-            }
-            .cv-button {
-                font-family: 'Poiret One', cursive;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                font-size: 0.7rem;
-                border: 1px solid var(--accent-color);
-                background: transparent;
-                padding: 6px 12px;
-                cursor: pointer;
-                transition: all 0.3s;
-                text-decoration: none;
-                color: var(--text-main);
-                display: inline-block;
-            }
-            .cv-button:hover {
-                background: var(--accent-color);
-                color: var(--bg-color);
-                text-decoration: none;
-            }
 
             /* Print styles */
             @media print {
@@ -101,9 +76,6 @@
                 .col-lg-10 {
                     width: 100% !important;
                     max-width: 100% !important;
-                }
-                .cv-actions {
-                    display: none !important;
                 }
                 .cv-content {
                     padding: 0 !important;
@@ -137,6 +109,9 @@
                         </a>
                         <a href="#" class="profile-menu-item" id="contact-info-trigger-cv">
                             <span class="menu-label">Contact Info</span>
+                        </a>
+                        <a href="/assets/cv.pdf" class="profile-menu-item" id="pdf-download-link-cv">
+                            <span class="menu-label">Download PDF</span>
                         </a>
                     </div>
                 </div>
@@ -330,31 +305,6 @@
         <p><strong>Languages:</strong> English (fluent), Spanish (native).</p>
         <p><strong>Interests:</strong> Programming, Physics, Mathematics, History and Philosophy.</p>
     </section>
-
-    <!-- Action Buttons -->
-    <div class="cv-actions">
-        <button onclick="window.print()" class="cv-button">Print from Browser</button>
-        <a href="/assets/cv.pdf" class="cv-button" id="pdf-download-btn">Download PDF</a>
-    </div>
-
-    <script>
-        // Check if PDF exists and disable button if not
-        fetch('/assets/cv.pdf', { method: 'HEAD' })
-            .then(response => {
-                if (!response.ok) {
-                    const btn = document.getElementById('pdf-download-btn');
-                    btn.style.opacity = '0.5';
-                    btn.style.cursor = 'not-allowed';
-                    btn.onclick = (e) => {
-                        e.preventDefault();
-                        alert('PDF not available yet. The LaTeX-compiled PDF is generated during GitHub Actions deployment. Use "Print from Browser" for now.');
-                    };
-                }
-            })
-            .catch(() => {
-                // Silently handle error - PDF might not exist locally
-            });
-    </script>
 </div>
 
                 </div>
@@ -399,6 +349,25 @@
                         overlayBgCv.style.display = 'none';
                     }
                 });
+            }
+
+            // Check if PDF exists and disable link if not
+            var pdfDownloadLink = document.getElementById('pdf-download-link-cv');
+            if (pdfDownloadLink) {
+                fetch('/assets/cv.pdf', { method: 'HEAD' })
+                    .then(response => {
+                        if (!response.ok) {
+                            pdfDownloadLink.style.opacity = '0.5';
+                            pdfDownloadLink.style.cursor = 'not-allowed';
+                            pdfDownloadLink.onclick = (e) => {
+                                e.preventDefault();
+                                alert('PDF not available yet. The LaTeX-compiled PDF is generated during GitHub Actions deployment.');
+                            };
+                        }
+                    })
+                    .catch(() => {
+                        // Silently handle error - PDF might not exist locally
+                    });
             }
         </script>
     </body>
