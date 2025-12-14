@@ -1,8 +1,13 @@
+# Footer content
+github-repo-url: https://github.com/QuiqueCrespo/quiquecrespo.github.io
+github-link-text: "> web source @github"
+
+# Footer logos
 logos:
 
   - logo_affiliation: assets/img/IAI_logo.png
     logo_alt_text: "IAI CDT"
-    
+
   - logo_affiliation: assets/img/UoB_logo.jpg
     logo_alt_text: "UoB"
 

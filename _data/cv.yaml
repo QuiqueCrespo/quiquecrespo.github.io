@@ -1,9 +1,29 @@
 # CV Data Structure
 # This file contains all the information for your CV
 
+# Section Headers
+section_headers:
+  experience: Experience
+  education: Education
+  publications: Publications
+  skills: Skills
+  side_projects: Side Projects
+  additional: Additional Information
+
+# Labels
+labels:
+  languages: "Languages:"
+  interests: "Interests:"
+
+# Action Buttons
+buttons:
+  print: Print from Browser
+  download_pdf: Download PDF
+  pdf_not_available_message: "PDF not available yet. The LaTeX-compiled PDF is generated during GitHub Actions deployment. Use \"Print from Browser\" for now."
+
 # Personal Information
 personal:
-  name: Enrique Crespo-Fernández
+  name: Enrique Crespo Fernández
   phone: +34 626660775
   email: enrique.crespofernandez@bristol.ac.uk
   linkedin: https://www.linkedin.com/in/enrique-crespo-fernandez/
@@ -14,7 +34,7 @@ personal:
 
 # Professional Summary
 summary: |
-  I am a second-year PhD candidate in Artificial Intelligence seeking an industry research internship. My work focuses on applying AI to high-stakes, human-in-the-loop domains such as energy, security, and defence. In these critical settings, I strive to build AI systems that are robust, reliable, and transparently audited by humans, ensuring accountability, ethical alignment, and strategic value.
+  I am a second-year PhD candidate at the Interactive Artificial Intelligence CDT seeking an industry research internship. My work focuses on developing neurosymbolic methods to build robust, explainable, and generalisable autonomous agents. I am interested in applying AI to high-stakes, human-in-the-loop domains such as energy, security, and defence. In these critical settings, I strive to build AI systems that are robust, reliable, and transparently audited by humans, ensuring accountability and ethical alignment. My research mainly focuses on leveraging symbolic AI techniques, such as logic programming and program synthesis, to enable agents to learn and reason about their environments online. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks.
 
 # Experience
 experience:
@@ -23,16 +43,9 @@ experience:
     location: Bristol, UK
     dates: 2024-2025
     responsibilities:
-      - Supervised and mentored postgraduate Data Science students on industry-sponsored group projects, guiding research design, experimentation, and reporting.
-      - Acted as the primary liaison between student teams and corporate partners, ensuring timely delivery of project milestones and clear communication of technical findings.
-
-  - institution: GniiamGniiam
-    position: Co-founder
-    location: Madrid, Spain
-    dates: 2023-2024
-    responsibilities:
-      - Co-founded a restaurant-tech start-up that automated order taking and note-keeping via a QR-based web application.
-      - Led development of the customer-facing ordering app and analytics dashboard, reducing average table turn-over time by 18% across pilot restaurants.
+      - Data Science Project Unit - Supervised and mentored postgraduate Data Science students on industry-sponsored group projects, guiding research design, experimentation, and reporting. Acted as the primary liaison between student teams and corporate partners, ensuring timely delivery of project milestones and clear communication of technical findings.
+      - Machine Learning Unit - Assisted in delivering lectures and practical sessions on machine learning topics to undergraduate Computer Science students. Provided one-on-one support during lab sessions, helping students understand complex concepts and debug code.
+      - Artificial Intelligence Unit - Supported the teaching of symbolic AI fundamentals as well as multi-agent systems to third-year Computer Science undergraduates. 
 
   - institution: Lukkap
     position: Data Scientist Intern
@@ -50,48 +63,51 @@ education:
     dates: 2024-2027 (expected)
     details:
       - "Supervisor: Prof. Peter Flach"
-      - "Research: neurosymbolic methods for explainable and generalisable agents"
-
-  - institution: University of Bristol
-    degree: MSc in Interactive Artificial Intelligence
-    location: Bristol, UK
-    dates: 2023-2024
-    details:
-      - "Thesis: Neurosymbolic methods for music transcription"
+      - "Research: Neuro-symbolic methods for explainable and generalisable agents"
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
     location: Bath, UK
     dates: 2019-2023
     details:
-      - "Dissertation: Forecasting dangerous sea-wave events from radar scans with artificial neural networks"
+      - "Dissertation: Forecasting dangerous sea-wave events from radar scans with artificial neural networks - in collaboration with the UK Met Office"
       - "Overall grade: 71\\%"
+
+# Publications
+publications:
+  - title: "Weight-Space Linear Recurrent Neural Networks"
+    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin"
+    venue: "Submitted to ICLR 2026"
+    year: "2025"
+    links:
+      - name: arXiv
+        url: https://arxiv.org/abs/2506.01153
 
 # Skills
 skills:
-  - category: Programming Languages
-    items: Python, C, JavaScript, Prolog, Haskell
+  - category: Programming Languages & Frameworks
+    items: Python, C, JavaScript, Prolog, Haskell, React, Node.js
 
-  - category: Web Technologies
-    items: React, Node.js, HTML, CSS, RESTful APIs, Databases
+  - category: Data Science & Machine Learning
+    items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
 
-  - category: Data Science \& Machine Learning
-    items: Deep-learning architectures, traditional ML algorithms, logic-based systems, program synthesis, NLP
+# Side Projects
+side_projects:
+  - name: Peptide deep sequencing analysis tool
+    technologies: Python
+    dates: "2024"
+    description:
+      - Developed a tool to analyse peptide sequence data for peptide sequencing.
+      - Streamlined data processing and visualization, improving analysis efficiency.
 
-  - category: DevOps \& Version Control
-    items: Git
-
-# Leadership & Volunteer Experience
-volunteer:
-  - organization: Aldovea
-    role: Volunteer
-    location: Tangier, Morocco
-    dates: "2019"
-    responsibilities:
-      - Supported construction of a primary school for under-served children in Tangier.
-      - Assisted the Discalced Carmelites in their outreach to street-connected children.
+  - name: GniiamGniiam Restaurant Tech Platform
+    technologies: React, Node.js, MongoDB
+    dates: "2023-2024"
+    description:
+      - Co-founded and developed a QR-based web application for restaurant order management.
+      - Built customer-facing ordering interface and analytics dashboard.
 
 # Additional Information
 additional:
-  languages: English (C2), Spanish (native).
-  interests: AI, physics, mathematics, financial markets, history, sailing, tennis, football.
+  languages: English (fluent), Spanish (native).
+  interests: Programming, Physics, Mathematics, History and Philosophy.

@@ -1,6 +1,8 @@
 <div class="update-card">
     <div class="update-date">
-        {{ update.time }}
+        {% assign date_parts = update.time | split: ' ' %}
+        <div class="update-month">{{ date_parts[0] | upcase }}</div>
+        <div class="update-year">{{ date_parts[1] }}</div>
     </div>
     <div class="update-content">
         {{ update.desc }}

@@ -1,7 +1,7 @@
 <!-- Updates section -->
 
         <div id="updates" class="mb-5">
-            <h2>updates</h2>
+            <h2>{{ site.data.updates.section_header }}</h2>
             <div class="updates-container">
                 {% for update in site.data.updates.updates %}
                     {% include_relative _libs/updates_widget.html %}

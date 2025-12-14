@@ -10,62 +10,35 @@
             </div>
         </div>
         <hr>
-        <div class="profile-email">
-            <a href="mailto:{{ site.data.about.email }}">{{ site.data.about.email }}</a>
-        </div>
         <div class="social-icons">
             {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> {% endif %}
             {% if site.data.about.researchgate %} <a class="social-icon" href="{{ site.data.about.researchgate }}" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a> {% endif %}
             {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> {% endif %}
             {% if site.data.about.linkedin %} <a class="social-icon" href="{{ site.data.about.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> {% endif %}
             {% if site.data.about.youtube %} <a class="social-icon" href="{{ site.data.about.youtube }}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a> {% endif %}
-            {% if site.data.about.resume %} <a class="social-icon" href="{{ site.data.about.resume }}" target="_blank" rel="noopener" title="Resume"><i class="fas fa-file-alt"></i></a> {% endif %}
+        </div>
+        <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-color: var(--accent-color);">
+        <div class="profile-menu">
+            <a href="/cv_page.html" class="profile-menu-item">
+                <span class="menu-label">CV</span>
+            </a>
+            <a href="#" class="profile-menu-item" id="contact-info-trigger">
+                <span class="menu-label">Contact Info</span>
+            </a>
         </div>
         <p></p>
     </div>
 
-    <!-- Inspired by Thanh Tran -- https://codepen.io/thanhrossi/pen/pvOEzq -->
-    <!-- Re-written, redesigned, and integrated (from HTML (Pug) and CSS (Less) to pure HTML and CSS) -->
-    <div class="contact-card-overlay" id="overlay-bg">
-        <div class="information_card">
-            <div id="front_end_card">
-                <div class="front">
-                    <div class="contact-info-card">
-                        <div class="code-line"><span class="line-number">1</span><span class="code-content"><span class="keyword">class</span> <span class="namespace">ContactInformationCard</span>: </span></div>
-                        <div class="code-line"><span class="line-number">2</span><span class="code-content">  <span class="keyword">def</span> <span class="function">__init__</span>(<span class="self">self</span>):</span></div>
-                        <div class="code-line"><span class="line-number">3</span><span class="code-content">    <span class="self">self</span>.<span class="self">dept</span>  = <span class="string">"{{ site.data.about.dept }}"</span> </span></div>
-                        <div class="code-line"><span class="line-number">4</span><span class="code-content">    <span class="self">self</span>.<span class="self">lab</span>   = <span class="string">"{{ site.data.about.lab }}"</span> </span></div>
-                        <div class="code-line"><span class="line-number">5</span><span class="code-content">    <span class="self">self</span>.<span class="self">email</span> = <span class="string">"{{ site.data.about.email }}"</span> </span></div>
-                        <div class="code-line"><span class="line-number">6</span><span class="code-content">    <span class="self">self</span>.<span class="self">phone</span> = <span class="string">"{{ site.data.about.phone }}"</span> </span></div>
-                        <div class="code-line"><span class="line-number">7</span><span class="code-content"></span></div>
-                        <div class="code-line"><span class="line-number">8</span><span class="code-content">  <span class="keyword">def</span> <span class="function">flipCard</span>(<span class="self">self</span>):</span></div>
-                        <div class="code-line"><span class="line-number">9</span><span class="code-content">    <span class="function">print</span>(<span class="string">"tap on the card to flip."</span>)</span></div>
-                        <div class="code-line"><span class="line-number">10</span><span class="code-content"></span></div>
-                        <div class="code-line"><span class="line-number">11</span><span class="code-content">  <span class="keyword">def</span> <span class="function">closeCard</span>(<span class="self">self</span>):</span></div>
-                        <div class="code-line"><span class="line-number">12</span><span class="code-content">    <span class="function">print</span>(<span class="string">"tap outside to close it."</span>)</span></div>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="contact-info-card">
-                        <p class="card-name">{{ site.data.about.name }}</p>
-                        <a href="{{ site.data.about.website }}" target="_blank" rel="noopener" class="card-website-link" title="Website">{{ site.data.about.web-dns }}</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="col-lg-10 col-md-12">
         <div class="mb-5">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Marcellus', serif; text-transform: uppercase; letter-spacing: 0.1em;">{{ site.data.about.name }}</h1>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Poiret One', cursive; text-transform: uppercase; letter-spacing: 0.15em;">{{ site.data.about.name }}</h1>
             {% if site.data.about.subtitle %}
-            <p class="lead" style="font-family: 'Marcellus', serif; font-size: 1.2rem; color: #555; margin-bottom: 1.5rem;">
+            <p class="lead" style="font-family: 'Poiret One', cursive; font-size: 1.2rem; color: #555; margin-bottom: 1.5rem;">
                 {{ site.data.about.subtitle }}
             </p>
             {% endif %}
             {% if site.data.about.pronunciation %}
-            <p class="lead" style="font-family: 'Marcellus', serif; font-size: 1.2rem; color: #555;">
+            <p class="lead" style="font-family: 'Poiret One', cursive; font-size: 1.2rem; color: #555;">
                 {{ site.data.about.pronunciation }}
             </p>
             {% endif %}

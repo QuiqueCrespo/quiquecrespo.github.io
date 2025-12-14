@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Marcellus&family=Fira+Code&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&family=Fira+Code&family=Poiret+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -31,9 +31,6 @@
 
     <body>
 
-        <!-- Moving particles -->
-        <canvas id="canvas"></canvas>
-
         <!-- Progress bar on top -->
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
@@ -43,35 +40,8 @@
         <a id="back-to-top-button"></a>
 
         <!-- Toggle dark/light theme button -->
-        <button class="toggle-theme-button" onclick="toggleTheme()">Theme</button>
+        <button class="toggle-theme-button" onclick="toggleTheme()">◐</button>
         
-        <!-- Assitant icon saying about theme changes -->
-        <!-- <div class="popup-icon-container" id="popupIconContainer" draggable="true">
-            <div class="icon"><img src="{{ site.icon-pic }}" width="65" height="65"></div>
-            <div class="speech-balloon"></div>
-        </div>
-         -->
-        <!-- Dismissal area for assistant icon -->
-        <div class="dismissal-area" id="dismissalArea">&#10006;</div>
-
-        <!-- Navigation bar -->
-        <!-- Fusion of jQuery slidebar (https://codepen.io/BeshoyRomany/pen/qmNPwN) and animated hamburger menu (https://codepen.io/amberweinberg/pen/yeqJgG) -->
-        <!-- <nav>
-            <a class="nav-toggle-btn" onclick="toggleNav()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-            <ul>
-                <li><p onclick="scrollToTopDiv('html')"><span class="emoji">🏡</span> <span class="text">home</span></p></li>
-                <li><p onclick="scrollToTopDiv('#updates')"><span class="emoji">📜</span> <span class="text">updates</span></p></li>
-                <li><p onclick="scrollToTopDiv('#research')"><span class="emoji">📚</span> <span class="text">publications</span></p></li>
-                <li><p onclick="scrollToTopDiv('#outreach')"><span class="emoji">🧩</span> <span class="text">outreach</span></p></li>
-                <li><p onclick="scrollToTopDiv('#resources')"><span class="emoji">⛏️</span> <span class="text">resources</span></p></li>
-                <li><p onclick="scrollToTopDiv('#gallery')"><span class="emoji">🖼️</span> <span class="text">gallery</span></p></li>
-            </ul>
-        </nav> -->
-
         <!-- Content -->
         <div class="container" style="padding-top: 5rem; max-width: 1000px;">
             {{ content }}

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6 text-left">
                     <div>© {{ site.title }}, <span id="currentYear"></span></div>
-                    <a href="https://github.com/QuiqueCrespo/quiquecrespo.github.io" target="_blank" rel="noopener">> web source @github</a>
+                    <a href="{{ site.data.footer.github-repo-url }}" target="_blank" rel="noopener">{{ site.data.footer.github-link-text }}</a>
                 </div>
                 <div class="col-md-6 text-right">
                     {% for logo in site.data.footer.logos %}{% include_relative _libs/footer_widget.html %}{% endfor %}
@@ -14,3 +14,21 @@
 
     </div> <!-- Close col-lg-10 -->
 </div> <!-- Close row -->
+
+<!-- Contact Card Overlay -->
+<div class="contact-card-overlay" id="overlay-bg">
+    <div class="information_card">
+        <div class="contact-info-card">
+            <p class="card-name">{{ site.data.about.name }}</p>
+            <div class="contact-info-detail">
+                <p><strong>Email</strong></p>
+                <p><a href="mailto:{{ site.data.about.email }}">{{ site.data.about.email }}</a></p>
+            </div>
+            <div class="contact-info-detail">
+                <p><strong>Address</strong></p>
+                <p>{{ site.data.about.address-line1 }}</p>
+                <p>{{ site.data.about.address-line2 }}</p>
+            </div>
+        </div>
+    </div>
+</div>

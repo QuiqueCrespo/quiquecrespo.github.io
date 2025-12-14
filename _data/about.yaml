@@ -11,7 +11,7 @@ researchgate:
 github: https://github.com/QuiqueCrespo
 linkedin: https://www.linkedin.com/in/enrique-crespo-fernandez/
 youtube:
-resume: cv.html  # link to auto-generated CV
+resume: cv_page.html  # link to CV page with sidebar
 projects:           # delete "show" or leave it blank to hide this icon
 location:
 codepen:
@@ -22,13 +22,15 @@ dept: Department of Computer Science, University of Bristol
 lab: Interactive Artificial Intelligence CDT
 email: enrique.crespofernandez@bristol.ac.uk
 phone: +34 626660775
-website: https://mkhangg.com/ 
+website: https://mkhangg.com/
 web-dns: mkhangg.com
+address-line1: One Cathedral Square
+address-line2: Bristol, UK
 
 # about me
 first-paragraph: I am a PhD student at the UKRI funded <hightlight>Interactive Artificial Intelligence CDT</hightlight> at the <a href="https://www.bristol.ac.uk/" target="_blank" rel="noopener">University of Bristol</a> under the supervision of <a href="" target="_blank" rel="noopener">Prof. Peter Flach</a>, <a href="" target="_blank" rel="noopener">Dr. Telmo de Menezes e Silva Filho</a> and <a href="" target="_blank" rel="noopener">Dr. Oliver Ray</a>. My work mainly focuses on developing techniques to build robust and trustworthy autonomous agents. My primary research interest involves using Symbolic AI tools to build agents capable of synthesising causal world models in the language of First-Order Logic. I am also investigating in-context weight-space learning for physics-informed models.
 
-second-paragraph: I completed my undergraduate degree in Maths & Physics at the <a href="https://www.bath.ac.uk/" target="_blank" rel="noopener">University of Bath</a> in 2023. During my studies, I worked as a Data Scientist at <a href="https://www.lukkap.com/" target="_blank" rel="noopener">Lukkap</a>, where I developed data applications to automate analysis and extract insights, greatly optimising previous workflows. For my final year dissertation, I developed a CNN-based system to detect dangerous sea wave events on the Cornish coast using radar data, in collaboration with the Met Office. I joined the IAI CDT after graduation to further pursue a career in AI research.
+second-paragraph: I completed my undergraduate degree in Maths & Physics at the <a href="https://www.bath.ac.uk/" target="_blank" rel="noopener">University of Bath</a> in 2023. During my studies, I worked as a Data Scientist at <a href="https://www.lukkap.com/" target="_blank" rel="noopener">Lukkap</a>, where I developed data applications to automate analysis and extract insights, greatly optimising previous workflows. For my final year dissertation, I developed a CNN-based system to detect dangerous sea wave events on the Cornish coast using radar data, in collaboration with the <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener">Met Office</a>. I joined the IAI CDT after graduation to further pursue a career in AI research.
 
 research-introduction: 
 

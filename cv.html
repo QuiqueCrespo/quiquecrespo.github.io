@@ -116,12 +116,31 @@ title: CV | Enrique Crespo-Fernández
     <!-- Action Buttons -->
     <div class="cv-actions no-print">
         <button onclick="window.print()" class="cv-print-button">Print from Browser</button>
-        <a href="/assets/cv.pdf" class="cv-print-button" download>Download PDF</a>
+        <a href="/assets/cv.pdf" class="cv-print-button" id="pdf-download-btn">Download PDF</a>
         <a href="/" class="cv-back-button">← Back to Website</a>
     </div>
 
     <div class="no-print" style="margin-top: 15px; padding: 10px; border: 1px solid #ddd; background: #f9f9f9; font-size: 9pt; text-align: center;">
-        <strong>Tip:</strong> The <strong>Download PDF</strong> button provides a LaTeX-compiled version. <strong>Print from Browser</strong> converts this HTML page to PDF (ensure scale is 100%).
+        <strong>Tip:</strong> The <strong>Download PDF</strong> button provides a LaTeX-compiled version (available after deployment). <strong>Print from Browser</strong> converts this HTML page to PDF (ensure scale is 100%).
     </div>
+
+    <script>
+        // Check if PDF exists and disable button if not
+        fetch('/assets/cv.pdf', { method: 'HEAD' })
+            .then(response => {
+                if (!response.ok) {
+                    const btn = document.getElementById('pdf-download-btn');
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = (e) => {
+                        e.preventDefault();
+                        alert('PDF not available yet. The LaTeX-compiled PDF is generated during GitHub Actions deployment. Use "Print from Browser" for now.');
+                    };
+                }
+            })
+            .catch(() => {
+                // Silently handle error - PDF might not exist locally
+            });
+    </script>
 
 </div>

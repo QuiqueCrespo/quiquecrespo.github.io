@@ -103,7 +103,24 @@ To see the status of deployments:
 
 ## Local Testing
 
-To test the LaTeX compilation locally (requires LaTeX installation):
+### Option 1: Use the Helper Script (Recommended)
+
+```bash
+./generate_pdf_local.sh
+```
+
+This script:
+- Builds the Jekyll site
+- Compiles the LaTeX CV
+- Places the PDF in `/assets/cv.pdf`
+- Works exactly like the GitHub Actions workflow
+
+**Requirements**: You need LaTeX installed:
+- **macOS**: `brew install --cask mactex` or `brew install --cask basictex`
+- **Ubuntu/Debian**: `sudo apt-get install texlive-full`
+- **Windows**: Install [MiKTeX](https://miktex.org/)
+
+### Option 2: Manual Compilation
 
 ```bash
 # Build the Jekyll site
@@ -112,7 +129,18 @@ bundle exec jekyll build
 # Compile the LaTeX CV
 cd _site/assets/pdf
 latexmk -pdf -file-line-error -interaction=nonstopmode cv.tex
+
+# Move PDF to assets
+cd ../../..
+cp _site/assets/pdf/cv.pdf assets/cv.pdf
 ```
+
+### Testing Without LaTeX
+
+If you don't have LaTeX installed, you can still:
+1. Use the "Print from Browser" button on the HTML CV page
+2. Push to GitHub and let GitHub Actions compile it for you
+3. The CV HTML page will detect the missing PDF and show a helpful message
 
 ## File Structure
 

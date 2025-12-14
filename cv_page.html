@@ -1,0 +1,147 @@
+---
+layout: cv_with_sidebar
+title: CV | Enrique Crespo-Fernández
+---
+
+<div class="cv-content">
+    <h1 style="font-family: 'Poiret One', cursive; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.6rem; font-size: 1.6rem;">{{ site.data.cv.personal.name }}</h1>
+
+    <!-- Summary -->
+    <section class="cv-section" style="margin-bottom: 0.6rem;">
+        <p style="margin-bottom: 0; line-height: 1.4;">{{ site.data.cv.summary }}</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.experience }}</h2>
+        {% for job in site.data.cv.experience %}
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>{{ job.institution }}</strong>
+                    <div><em>{{ job.position }}</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>{{ job.dates }}</div>
+                    <div>{{ job.location }}</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                {% for responsibility in job.responsibilities %}
+                <li>{{ responsibility }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.education }}</h2>
+        {% for edu in site.data.cv.education %}
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>{{ edu.institution }}</strong>
+                    <div><em>{{ edu.degree }}</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>{{ edu.dates }}</div>
+                    <div>{{ edu.location }}</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                {% for detail in edu.details %}
+                <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Publications -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.publications }}</h2>
+        {% for pub in site.data.cv.publications %}
+        <div class="cv-item">
+            <div style="margin-bottom: 0.3rem;">
+                <strong>{{ pub.title }}</strong>
+            </div>
+            <div style="margin-bottom: 0.2rem;">{{ pub.authors }}</div>
+            <div style="margin-bottom: 0.2rem;"><em>{{ pub.venue }}</em>, {{ pub.year }}</div>
+            {% if pub.links %}
+            <div>
+                {% for link in pub.links %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener" style="margin-right: 1rem; text-decoration: underline;">[{{ link.name }}]</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Side Projects -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.side_projects }}</h2>
+        {% for project in site.data.cv.side_projects %}
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>{{ project.name }}</strong>
+                    <div><em>{{ project.technologies }}</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>{{ project.dates }}</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                {% for detail in project.description %}
+                <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Skills -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.skills }}</h2>
+        <ul class="cv-list">
+            {% for skill in site.data.cv.skills %}
+            <li><strong>{{ skill.category }}:</strong> {{ skill.items }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Additional Information -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.additional }}</h2>
+        <p><strong>{{ site.data.cv.labels.languages }}</strong> {{ site.data.cv.additional.languages }}</p>
+        <p><strong>{{ site.data.cv.labels.interests }}</strong> {{ site.data.cv.additional.interests }}</p>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="cv-actions">
+        <button onclick="window.print()" class="cv-button">{{ site.data.cv.buttons.print }}</button>
+        <a href="/assets/cv.pdf" class="cv-button" id="pdf-download-btn">{{ site.data.cv.buttons.download_pdf }}</a>
+    </div>
+
+    <script>
+        // Check if PDF exists and disable button if not
+        fetch('/assets/cv.pdf', { method: 'HEAD' })
+            .then(response => {
+                if (!response.ok) {
+                    const btn = document.getElementById('pdf-download-btn');
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = (e) => {
+                        e.preventDefault();
+                        alert('{{ site.data.cv.buttons.pdf_not_available_message }}');
+                    };
+                }
+            })
+            .catch(() => {
+                // Silently handle error - PDF might not exist locally
+            });
+    </script>
+</div>

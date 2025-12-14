@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content="CV - Enrique Crespo Fernández"/>
+        <meta name="author" content="Enrique Crespo Fernández"/>
+        <title>CV | Enrique Crespo-Fernández</title>
+
+        <!-- Font Awesome icons -->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
+
+        <!-- Bootstrap and Fonts -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&family=Fira+Code&family=Poiret+One&display=swap" rel="stylesheet">
+
+        <!-- Core theme CSS -->
+        <link href="/styles/styles.css" rel="stylesheet"/>
+
+        <style>
+            .cv-content {
+                padding: 0.5rem 0;
+                line-height: 1.5;
+                font-size: 0.9rem;
+            }
+            .cv-section {
+                margin-bottom: 0.8rem;
+            }
+            .cv-section h2 {
+                font-family: 'Poiret One', cursive;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                border-bottom: var(--deco-border);
+                padding-bottom: 0.15rem;
+                margin-bottom: 0.4rem;
+            }
+            .cv-section p {
+                margin-bottom: 0.3rem;
+            }
+            .cv-item {
+                margin-bottom: 0.5rem;
+            }
+            .cv-item-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.15rem;
+            }
+            .cv-item-left strong {
+                font-size: 0.95rem;
+            }
+            .cv-item-right {
+                text-align: right;
+                font-style: italic;
+                color: var(--text-muted);
+                font-size: 0.85rem;
+            }
+            .cv-list {
+                margin-left: 1.2rem;
+                margin-top: 0.15rem;
+                margin-bottom: 0;
+            }
+            .cv-list li {
+                margin-bottom: 0.1rem;
+                line-height: 1.3;
+            }
+            .cv-actions {
+                margin-top: 1rem;
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            .cv-button {
+                font-family: 'Poiret One', cursive;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-size: 0.7rem;
+                border: 1px solid var(--accent-color);
+                background: transparent;
+                padding: 6px 12px;
+                cursor: pointer;
+                transition: all 0.3s;
+                text-decoration: none;
+                color: var(--text-main);
+                display: inline-block;
+            }
+            .cv-button:hover {
+                background: var(--accent-color);
+                color: var(--bg-color);
+                text-decoration: none;
+            }
+
+            /* Print styles */
+            @media print {
+                .profile-container {
+                    display: none !important;
+                }
+                .col-lg-10 {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+                .cv-actions {
+                    display: none !important;
+                }
+                .cv-content {
+                    padding: 0 !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container" style="padding-top: 2rem; max-width: 1200px;">
+            <div class="row">
+                <!-- Left Column - Profile -->
+                <div class="col-lg-2 col-md-12 profile-container">
+                    <div class="ring-container">
+                        <div class="ring">
+                            <div class="hollow-ring">
+                                <img class="profile-image" src="assets/img/profile_pic.png" alt="Enrique Crespo Fernández">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="social-icons">
+                         <a class="social-icon" href="https://scholar.google.com/citations?user=IcwCwJ8AAAAJ&hl=es" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> 
+                         <a class="social-icon" href="https://github.com/QuiqueCrespo" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> 
+                         <a class="social-icon" href="https://www.linkedin.com/in/enrique-crespo-fernandez/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> 
+                    </div>
+                    <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-color: var(--accent-color);">
+                    <div class="profile-menu">
+                        <a href="/" class="profile-menu-item">
+                            <span class="menu-label">Home</span>
+                        </a>
+                        <a href="#" class="profile-menu-item" id="contact-info-trigger-cv">
+                            <span class="menu-label">Contact Info</span>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Right Column - CV Content -->
+                <div class="col-lg-10 col-md-12">
+                    <div class="cv-content">
+    <h1 style="font-family: 'Poiret One', cursive; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.6rem; font-size: 1.6rem;">Enrique Crespo Fernández</h1>
+
+    <!-- Summary -->
+    <section class="cv-section" style="margin-bottom: 0.6rem;">
+        <p style="margin-bottom: 0; line-height: 1.4;">I am a second-year PhD candidate at the Interactive Artificial Intelligence CDT seeking an industry research internship. My work focuses on developing neurosymbolic methods to build robust, explainable, and generalisable autonomous agents. I am interested in applying AI to high-stakes, human-in-the-loop domains such as energy, security, and defence. In these critical settings, I strive to build AI systems that are robust, reliable, and transparently audited by humans, ensuring accountability and ethical alignment. My research mainly focuses on leveraging symbolic AI techniques, such as logic programming and program synthesis, to enable agents to learn and reason about their environments online. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks.
+</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="cv-section">
+        <h2>Experience</h2>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bristol</strong>
+                    <div><em>Teaching Assistant</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2024-2025</div>
+                    <div>Bristol, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Data Science Project Unit - Supervised and mentored postgraduate Data Science students on industry-sponsored group projects, guiding research design, experimentation, and reporting. Acted as the primary liaison between student teams and corporate partners, ensuring timely delivery of project milestones and clear communication of technical findings.</li>
+                
+                <li>Machine Learning Unit - Assisted in delivering lectures and practical sessions on machine learning topics to undergraduate Computer Science students. Provided one-on-one support during lab sessions, helping students understand complex concepts and debug code.</li>
+                
+                <li>Artificial Intelligence Unit - Supported the teaching of symbolic AI fundamentals as well as multi-agent systems to third-year Computer Science undergraduates.</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>Lukkap</strong>
+                    <div><em>Data Scientist Intern</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2021-2022</div>
+                    <div>Madrid, Spain</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.</li>
+                
+                <li>Presented insights to cross-functional stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.</li>
+                
+            </ul>
+        </div>
+        
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+        <h2>Education</h2>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bristol</strong>
+                    <div><em>PhD in Artificial Intelligence</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2024-2027 (expected)</div>
+                    <div>Bristol, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Supervisor: Prof. Peter Flach</li>
+                
+                <li>Research: Neuro-symbolic methods for explainable and generalisable agents</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>University of Bath</strong>
+                    <div><em>BSc Mathematics and Physics (First-Class Honours)</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2019-2023</div>
+                    <div>Bath, UK</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Dissertation: Forecasting dangerous sea-wave events from radar scans with artificial neural networks - in collaboration with the UK Met Office</li>
+                
+                <li>Overall grade: 71\%</li>
+                
+            </ul>
+        </div>
+        
+    </section>
+
+    <!-- Publications -->
+    <section class="cv-section">
+        <h2>Publications</h2>
+        
+        <div class="cv-item">
+            <div style="margin-bottom: 0.3rem;">
+                <strong>Weight-Space Linear Recurrent Neural Networks</strong>
+            </div>
+            <div style="margin-bottom: 0.2rem;">Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin</div>
+            <div style="margin-bottom: 0.2rem;"><em>Submitted to ICLR 2026</em>, 2025</div>
+            
+            <div>
+                
+                <a href="https://arxiv.org/abs/2506.01153" target="_blank" rel="noopener" style="margin-right: 1rem; text-decoration: underline;">[arXiv]</a>
+                
+            </div>
+            
+        </div>
+        
+    </section>
+
+    <!-- Side Projects -->
+    <section class="cv-section">
+        <h2>Side Projects</h2>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>Peptide deep sequencing analysis tool</strong>
+                    <div><em>Python</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2024</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Developed a tool to analyse peptide sequence data for peptide sequencing.</li>
+                
+                <li>Streamlined data processing and visualization, improving analysis efficiency.</li>
+                
+            </ul>
+        </div>
+        
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>GniiamGniiam Restaurant Tech Platform</strong>
+                    <div><em>React, Node.js, MongoDB</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>2023-2024</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                
+                <li>Co-founded and developed a QR-based web application for restaurant order management.</li>
+                
+                <li>Built customer-facing ordering interface and analytics dashboard.</li>
+                
+            </ul>
+        </div>
+        
+    </section>
+
+    <!-- Skills -->
+    <section class="cv-section">
+        <h2>Skills</h2>
+        <ul class="cv-list">
+            
+            <li><strong>Programming Languages & Frameworks:</strong> Python, C, JavaScript, Prolog, Haskell, React, Node.js</li>
+            
+            <li><strong>Data Science & Machine Learning:</strong> Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques</li>
+            
+        </ul>
+    </section>
+
+    <!-- Additional Information -->
+    <section class="cv-section">
+        <h2>Additional Information</h2>
+        <p><strong>Languages:</strong> English (fluent), Spanish (native).</p>
+        <p><strong>Interests:</strong> Programming, Physics, Mathematics, History and Philosophy.</p>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="cv-actions">
+        <button onclick="window.print()" class="cv-button">Print from Browser</button>
+        <a href="/assets/cv.pdf" class="cv-button" id="pdf-download-btn">Download PDF</a>
+    </div>
+
+    <script>
+        // Check if PDF exists and disable button if not
+        fetch('/assets/cv.pdf', { method: 'HEAD' })
+            .then(response => {
+                if (!response.ok) {
+                    const btn = document.getElementById('pdf-download-btn');
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = (e) => {
+                        e.preventDefault();
+                        alert('PDF not available yet. The LaTeX-compiled PDF is generated during GitHub Actions deployment. Use "Print from Browser" for now.');
+                    };
+                }
+            })
+            .catch(() => {
+                // Silently handle error - PDF might not exist locally
+            });
+    </script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Card Overlay for CV page -->
+        <div class="contact-card-overlay" id="overlay-bg-cv">
+            <div class="information_card">
+                <div class="contact-info-card">
+                    <p class="card-name">Enrique Crespo Fernández</p>
+                    <div class="contact-info-detail">
+                        <p><strong>Email</strong></p>
+                        <p><a href="mailto:enrique.crespofernandez@bristol.ac.uk">enrique.crespofernandez@bristol.ac.uk</a></p>
+                    </div>
+                    <div class="contact-info-detail">
+                        <p><strong>Address</strong></p>
+                        <p>One Cathedral Square</p>
+                        <p>Bristol, UK</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            // Contact info card functionality for CV page
+            var overlayBgCv = document.getElementById('overlay-bg-cv');
+            var contactTriggerCv = document.getElementById('contact-info-trigger-cv');
+
+            if (contactTriggerCv && overlayBgCv) {
+                contactTriggerCv.onclick = function(e) {
+                    e.preventDefault();
+                    overlayBgCv.style.display = 'flex';
+                };
+
+                overlayBgCv.addEventListener('click', function(event) {
+                    if (event.target === overlayBgCv) {
+                        overlayBgCv.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

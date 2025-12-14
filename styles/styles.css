@@ -16,10 +16,11 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sulphur Point', sans-serif;
     font-weight: 300;
     line-height: 1.7;
     letter-spacing: 0.02em;
+    font-size: 1rem;
     transition: background-color 0.5s, color 0.5s;
 }
 
@@ -50,17 +51,17 @@ body.dark-theme {
    ================================= */
 
 h1 {
-    font-family: 'Marcellus', serif;
+    font-family: 'Poiret One', cursive;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: var(--accent-color);
     font-weight: normal;
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Marcellus', serif;
+    font-family: 'Poiret One', cursive;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: var(--accent-color);
     font-weight: normal;
 }
@@ -449,6 +450,47 @@ code {
 
 
 /* =================================
+   PROFILE MENU - Minimalist Links
+   ================================= */
+
+.profile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.profile-menu-item {
+    display: block;
+    text-align: center;
+    padding: 0.5rem;
+    border: 1px solid var(--accent-color);
+    color: var(--text-main);
+    text-decoration: none;
+    font-style: normal;
+    transition: all 0.3s;
+}
+
+.profile-menu-item .menu-label {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+}
+
+.profile-menu-item:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    text-decoration: none;
+}
+
+.profile-menu-item.active {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+
+/* =================================
    CONTACT CARD - Art Deco Flip
    ================================= */
 
@@ -465,13 +507,18 @@ code {
     align-items: center;
 }
 
+.dark-theme .contact-card-overlay {
+    background: rgba(26,26,26,0.95);
+}
+
 
 /* Styles for information card and its child entities */
 .information_card {
-    font-family: 'Fira Code', monospace;
+    font-family: 'Sulphur Point', sans-serif;
     position: relative;
-    width: 450px;
-    height: 315px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #front_end_card {
     position: absolute;
@@ -515,10 +562,12 @@ code {
     transform: rotateY(180deg);
 }
 .contact-info-card {
-    background: transparent;
-    color: white;
-    padding: 15px;
-    border-radius: 15px;
+    background: var(--bg-color);
+    color: var(--text-main);
+    padding: 2rem;
+    border: var(--deco-border);
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+    max-width: 500px;
 }
 .code-line {
     display: flex;
@@ -548,11 +597,35 @@ code {
     color: #dcdcaa;
 }
 .card-name {
-    font-family: 'Marcellus', serif;
+    font-family: 'Poiret One', cursive;
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.contact-info-detail {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.contact-info-detail p {
+    margin: 0.25rem 0;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+.contact-info-detail strong {
+    font-family: 'Poiret One', cursive;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+}
+
+.contact-info-detail a {
+    color: var(--text-muted) !important;
+    text-decoration: underline;
 }
 .card-website-link {
     color: #888; 
@@ -590,6 +663,22 @@ code {
     border: 1px solid #eee;
 }
 
+.project object,
+.project embed {
+    border: 1px solid var(--border-style);
+    background: var(--bg-color);
+}
+
+.project-pdf {
+    min-height: 300px;
+    max-height: 400px;
+}
+
+.dark-theme .project object,
+.dark-theme .project embed {
+    filter: invert(0.9) hue-rotate(180deg);
+}
+
 .project a[href*="PDF"],
 .project a[href*="CODE"],
 .project a[href*="DEMO"],
@@ -612,10 +701,10 @@ code {
     padding: 5px 15px;
     margin-right: 5px;
     margin-bottom: 5px;
-    font-family: 'Marcellus', serif;
+    font-family: 'Poiret One', cursive;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     cursor: pointer;
     border-radius: 0;
     transition: all 0.3s;
@@ -658,46 +747,41 @@ code {
     list-style-type: none;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .isotope-pager-project .pager {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
     display: block;
-    padding: 4px 7px;
+    padding: 8px 16px;
     background-color: transparent;
-    border: 1px solid #333333;
-    margin: 0 5px;
-    border-radius: 7px;
-    transition: 0.5s;
+    border: var(--deco-border);
+    margin: 0 8px;
+    transition: all 0.3s;
+    color: var(--text-main);
 }
-.isotope-pager-project .pager:hover {
-    background-color: rgba(194, 194, 194, 0.45);
+
+.isotope-pager-project .pager:hover:not(:disabled) {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
     cursor: pointer;
 }
-.isotope-pager-project .pager.active {
-    background-color: rgba(194, 194, 194, 0.45);
+
+.isotope-pager-project .current-page {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    color: var(--accent-color);
 }
 
-
-/* Light theme styles for pager button */
-.light-theme .isotope-pager-project .pager {
-    border: 1px solid #333333;
-    color: #333333;
-}
-
-
-/* Dark theme styles for pager button */
-.dark-theme .isotope-pager-project .pager {
-    border: 1px solid #ffffff;
-    color: #ffffff;
-}
-
-
-/* Disabled stye for pager buttons */
 .isotope-pager-project .pager:disabled {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: default;
-    opacity: 0.5;
-    border: 1px solid #aaaaaa;
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 
@@ -707,46 +791,41 @@ code {
     list-style-type: none;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .isotope-pager-github .pager {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
     display: block;
-    padding: 4px 7px;
+    padding: 8px 16px;
     background-color: transparent;
-    border: 1px solid #333333;
-    margin: 0 5px;
-    border-radius: 7px;
-    transition: 0.5s;
+    border: var(--deco-border);
+    margin: 0 8px;
+    transition: all 0.3s;
+    color: var(--text-main);
 }
-.isotope-pager-github .pager:hover {
-    background-color: rgba(194, 194, 194, 0.45);
+
+.isotope-pager-github .pager:hover:not(:disabled) {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
     cursor: pointer;
 }
-.isotope-pager-github .pager.active {
-    background-color: rgba(194, 194, 194, 0.45);
+
+.isotope-pager-github .current-page {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    color: var(--accent-color);
 }
 
-
-/* Light theme styles for pager button */
-.light-theme .isotope-pager-github .pager {
-    border: 1px solid #333333;
-    color: #333333;
-}
-
-
-/* Dark theme styles for pager button */
-.dark-theme .isotope-pager-github .pager {
-    border: 1px solid #ffffff;
-    color: #ffffff;
-}
-
-
-/* Disabled stye for pager buttons */
 .isotope-pager-github .pager:disabled {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: default;
-    opacity: 0.5;
-    border: 1px solid #aaaaaa;
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 
@@ -764,10 +843,10 @@ code {
     padding: 5px 15px;
     margin-right: 5px;
     margin-bottom: 5px;
-    font-family: 'Marcellus', serif;
+    font-family: 'Poiret One', cursive;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     cursor: pointer;
     border-radius: 0;
     transition: all 0.3s;
@@ -1263,15 +1342,28 @@ footer .text-right {
 }
 
 .update-date {
-    font-family: 'Marcellus', serif;
-    font-size: 2rem;
+    font-family: 'Poiret One', cursive;
     line-height: 1;
     padding-right: 1rem;
-    border-right: 1px solid #000;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    min-width: 120px;
+    border-right: var(--deco-border);
+    letter-spacing: 0.1em;
+    min-width: 100px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.update-month {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.update-year {
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    color: var(--text-muted);
 }
 
 .update-content {
@@ -1284,9 +1376,9 @@ footer .text-right {
    ================================= */
 
 .toggle-theme-button {
-    font-family: 'Marcellus', serif;
+    font-family: 'Poiret One', cursive;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     font-size: 1.5rem;
     border: var(--border-style);
     padding: 8px 14px;

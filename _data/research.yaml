@@ -1,33 +1,33 @@
+# Section header
+section_header: publications
+
 categories:
 
-  - data-filter: perception manipulation
-    category-name: perception + manipulation
+  - data-filter: Symbolic AI
+    category-name: Symbolic AI
 
-  - data-filter: slam
-    category-name: slam
-
-  - data-filter: framework
-    category-name: framework
+  - data-filter: Sequence Modeling
+    category-name: Sequence Modeling
 
 
 projects:
 
   - title: Weight-Space Linear Recurrent Neural Networks
-    system-name: 
-    gif: assets/img/WARP_comp_h.drawio.gif
+    system-name:
+    gif: 
     conference: Arxiv
-    conference-web: assest
-    status: Subminted to ICLR 2026
+    conference-web: https://arxiv.org/abs/2506.01153
+    status: Submitted to ICLR 2026
     authors: Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin
     pdf: assets/papers/WEIGHT-SPACE_LINEAR_RECURRENT_NEURAL_NETWORKS.pdf
     code: https://github.com/ddrous/warp
-    demo: 
-    slides: 
-    talk: 
-    poster: 
-    abstract-less: We introduce WARP (Weight-space Adaptive Recurrent Prediction), a simple yet powerful model that unifies weight-space learning with linear recurrence to redefine sequence modeling. Unlike conventional recurrent neural networks (RNNs) 
+    demo:
+    slides:
+    talk:
+    poster:
+    abstract-less: We introduce WARP (Weight-space Adaptive Recurrent Prediction), a simple yet powerful model that unifies weight-space learning with linear recurrence to redefine sequence modeling. Unlike conventional recurrent neural networks (RNNs)
     abstract-more: which collapse temporal dynamics into fixed-dimensional hidden states, WARP explicitly parametrizes its hidden state as the weights and biases of a distinct auxiliary neural network, and uses input differences to drive its recurrence. This brain-inspired formulation enables efficient gradient-free adaptation of the auxiliary network at test-time, in-context learning abilities, and seamless integration of domain-specific physical priors. Empirical validation shows that WARP matches or surpasses state-of-the-art baselines on diverse classification tasks, featuring in the top three in 5 out of 6 real-world challenging datasets. Furthermore, extensive experiments across sequential image completion, multivariate time series forecasting, and dynamical system reconstruction demonstrate its expressiveness and generalisation capabilities. Remarkably, a physics-informed variant of our model outperforms the next best model by more than 10x. Ablation studies confirm the architectural necessity of key components, solidifying weight-space linear RNNs as a transformative paradigm for adaptive machine intelligence.
-    tag: weight-space 
-    category: slam
+    tag: weight-space
+    category: Sequence Modeling
 
   

@@ -1,5 +1,7 @@
+# Section header
+section_header: updates
+
 updates:
 
-  - picture: assets/img/updates_gan/boy_cochair.jpg
-    desc: I will serve as co-chair for the <hightlight>Object Detection session</hightlight> at IROS 2024.
-    time: Oct 2024
+  - desc: I will orginise the 2026 IAI-ProAI Spring Research Conference.
+    time: MAR 2026 

@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Marcellus&family=Fira+Code&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&family=Fira+Code&family=Poiret+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -31,9 +31,6 @@
 
     <body>
 
-        <!-- Moving particles -->
-        <canvas id="canvas"></canvas>
-
         <!-- Progress bar on top -->
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
@@ -43,35 +40,8 @@
         <a id="back-to-top-button"></a>
 
         <!-- Toggle dark/light theme button -->
-        <button class="toggle-theme-button" onclick="toggleTheme()">Theme</button>
+        <button class="toggle-theme-button" onclick="toggleTheme()">◐</button>
         
-        <!-- Assitant icon saying about theme changes -->
-        <!-- <div class="popup-icon-container" id="popupIconContainer" draggable="true">
-            <div class="icon"><img src="assets/img/mandu_icon.png" width="65" height="65"></div>
-            <div class="speech-balloon"></div>
-        </div>
-         -->
-        <!-- Dismissal area for assistant icon -->
-        <div class="dismissal-area" id="dismissalArea">&#10006;</div>
-
-        <!-- Navigation bar -->
-        <!-- Fusion of jQuery slidebar (https://codepen.io/BeshoyRomany/pen/qmNPwN) and animated hamburger menu (https://codepen.io/amberweinberg/pen/yeqJgG) -->
-        <!-- <nav>
-            <a class="nav-toggle-btn" onclick="toggleNav()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-            <ul>
-                <li><p onclick="scrollToTopDiv('html')"><span class="emoji">🏡</span> <span class="text">home</span></p></li>
-                <li><p onclick="scrollToTopDiv('#updates')"><span class="emoji">📜</span> <span class="text">updates</span></p></li>
-                <li><p onclick="scrollToTopDiv('#research')"><span class="emoji">📚</span> <span class="text">publications</span></p></li>
-                <li><p onclick="scrollToTopDiv('#outreach')"><span class="emoji">🧩</span> <span class="text">outreach</span></p></li>
-                <li><p onclick="scrollToTopDiv('#resources')"><span class="emoji">⛏️</span> <span class="text">resources</span></p></li>
-                <li><p onclick="scrollToTopDiv('#gallery')"><span class="emoji">🖼️</span> <span class="text">gallery</span></p></li>
-            </ul>
-        </nav> -->
-
         <!-- Content -->
         <div class="container" style="padding-top: 5rem; max-width: 1000px;">
             <!-- About section -->
@@ -86,64 +56,37 @@
             </div>
         </div>
         <hr />
-        <div class="profile-email">
-            <a href="mailto:enrique.crespofernandez@bristol.ac.uk">enrique.crespofernandez@bristol.ac.uk</a>
-        </div>
         <div class="social-icons">
              <a class="social-icon" href="https://scholar.google.com/citations?user=IcwCwJ8AAAAJ&amp;hl=es" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> 
             
              <a class="social-icon" href="https://github.com/QuiqueCrespo" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> 
              <a class="social-icon" href="https://www.linkedin.com/in/enrique-crespo-fernandez/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> 
             
-             <a class="social-icon" href="cv.html" target="_blank" rel="noopener" title="Resume"><i class="fas fa-file-alt"></i></a> 
+        </div>
+        <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-color: var(--accent-color);" />
+        <div class="profile-menu">
+            <a href="/cv_page.html" class="profile-menu-item">
+                <span class="menu-label">CV</span>
+            </a>
+            <a href="#" class="profile-menu-item" id="contact-info-trigger">
+                <span class="menu-label">Contact Info</span>
+            </a>
         </div>
         <p></p>
     </div>
 
-    <!-- Inspired by Thanh Tran -- https://codepen.io/thanhrossi/pen/pvOEzq -->
-    <!-- Re-written, redesigned, and integrated (from HTML (Pug) and CSS (Less) to pure HTML and CSS) -->
-    <div class="contact-card-overlay" id="overlay-bg">
-        <div class="information_card">
-            <div id="front_end_card">
-                <div class="front">
-                    <div class="contact-info-card">
-                        <div class="code-line"><span class="line-number">1</span><span class="code-content"><span class="keyword">class</span> <span class="namespace">ContactInformationCard</span>: </span></div>
-                        <div class="code-line"><span class="line-number">2</span><span class="code-content">  <span class="keyword">def</span> <span class="function">__init__</span>(<span class="self">self</span>):</span></div>
-                        <div class="code-line"><span class="line-number">3</span><span class="code-content">    <span class="self">self</span>.<span class="self">dept</span>  = <span class="string">"Department of Computer Science, University of Bristol"</span> </span></div>
-                        <div class="code-line"><span class="line-number">4</span><span class="code-content">    <span class="self">self</span>.<span class="self">lab</span>   = <span class="string">"Interactive Artificial Intelligence CDT"</span> </span></div>
-                        <div class="code-line"><span class="line-number">5</span><span class="code-content">    <span class="self">self</span>.<span class="self">email</span> = <span class="string">"enrique.crespofernandez@bristol.ac.uk"</span> </span></div>
-                        <div class="code-line"><span class="line-number">6</span><span class="code-content">    <span class="self">self</span>.<span class="self">phone</span> = <span class="string">"+34 626660775"</span> </span></div>
-                        <div class="code-line"><span class="line-number">7</span><span class="code-content"></span></div>
-                        <div class="code-line"><span class="line-number">8</span><span class="code-content">  <span class="keyword">def</span> <span class="function">flipCard</span>(<span class="self">self</span>):</span></div>
-                        <div class="code-line"><span class="line-number">9</span><span class="code-content">    <span class="function">print</span>(<span class="string">"tap on the card to flip."</span>)</span></div>
-                        <div class="code-line"><span class="line-number">10</span><span class="code-content"></span></div>
-                        <div class="code-line"><span class="line-number">11</span><span class="code-content">  <span class="keyword">def</span> <span class="function">closeCard</span>(<span class="self">self</span>):</span></div>
-                        <div class="code-line"><span class="line-number">12</span><span class="code-content">    <span class="function">print</span>(<span class="string">"tap outside to close it."</span>)</span></div>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="contact-info-card">
-                        <p class="card-name">Enrique Crespo Fernández</p>
-                        <a href="https://mkhangg.com/" target="_blank" rel="noopener" class="card-website-link" title="Website">mkhangg.com</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="col-lg-10 col-md-12">
         <div class="mb-5">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Marcellus', serif; text-transform: uppercase; letter-spacing: 0.1em;">Enrique Crespo Fernández</h1>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Poiret One', cursive; text-transform: uppercase; letter-spacing: 0.15em;">Enrique Crespo Fernández</h1>
             
-            <p class="lead" style="font-family: 'Marcellus', serif; font-size: 1.2rem; color: #555; margin-bottom: 1.5rem;">
+            <p class="lead" style="font-family: 'Poiret One', cursive; font-size: 1.2rem; color: #555; margin-bottom: 1.5rem;">
                 PhD Candidate, Interactive Artificial Intelligence @ University of Bristol
             </p>
             
             
             I am a PhD student at the UKRI funded <hightlight>Interactive Artificial Intelligence CDT</hightlight> at the <a href="https://www.bristol.ac.uk/" target="_blank" rel="noopener">University of Bristol</a> under the supervision of <a href="" target="_blank" rel="noopener">Prof. Peter Flach</a>, <a href="" target="_blank" rel="noopener">Dr. Telmo de Menezes e Silva Filho</a> and <a href="" target="_blank" rel="noopener">Dr. Oliver Ray</a>. My work mainly focuses on developing techniques to build robust and trustworthy autonomous agents. My primary research interest involves using Symbolic AI tools to build agents capable of synthesising causal world models in the language of First-Order Logic. I am also investigating in-context weight-space learning for physics-informed models.
             <p></p>
-            I completed my undergraduate degree in Maths &amp; Physics at the <a href="https://www.bath.ac.uk/" target="_blank" rel="noopener">University of Bath</a> in 2023. During my studies, I worked as a Data Scientist at <a href="https://www.lukkap.com/" target="_blank" rel="noopener">Lukkap</a>, where I developed data applications to automate analysis and extract insights, greatly optimising previous workflows. For my final year dissertation, I developed a CNN-based system to detect dangerous sea wave events on the Cornish coast using radar data, in collaboration with the Met Office. I joined the IAI CDT after graduation to further pursue a career in AI research.
+            I completed my undergraduate degree in Maths &amp; Physics at the <a href="https://www.bath.ac.uk/" target="_blank" rel="noopener">University of Bath</a> in 2023. During my studies, I worked as a Data Scientist at <a href="https://www.lukkap.com/" target="_blank" rel="noopener">Lukkap</a>, where I developed data applications to automate analysis and extract insights, greatly optimising previous workflows. For my final year dissertation, I developed a CNN-based system to detect dangerous sea wave events on the Cornish coast using radar data, in collaboration with the <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener">Met Office</a>. I joined the IAI CDT after graduation to further pursue a career in AI research.
             <p></p>
             <div class="codebox">
                 
@@ -166,10 +109,12 @@
                 
                     <div class="update-card">
     <div class="update-date">
-        Oct 2024
+        
+        <div class="update-month">MAR</div>
+        <div class="update-year">2026</div>
     </div>
     <div class="update-content">
-        I will serve as co-chair for the <hightlight>Object Detection session</hightlight> at IROS 2024.
+        I will orginise the 2026 IAI-ProAI Spring Research Conference.
     </div>
 </div>
                 
@@ -183,35 +128,35 @@
             <div id="filters-project" class="mb-4">
                 <button class="filter-button active" data-filter="*">all</button>
                 
-                    <button class="filter-button" data-filter="perception manipulation">perception + manipulation</button>
+                    <button class="filter-button" data-filter="Symbolic AI">Symbolic AI</button>
                 
-                    <button class="filter-button" data-filter="slam">slam</button>
-                
-                    <button class="filter-button" data-filter="framework">framework</button>
+                    <button class="filter-button" data-filter="Sequence Modeling">Sequence Modeling</button>
                 
             </div>
             <div id="projects" class="isotope">
                 
-                    <div class="project" data-filter="slam">
+                    <div class="project" data-filter="Sequence Modeling">
     <div class="row mb-4">
-        <div class="col-sm-4">
-            <img width="100%" height="auto" class="w-full rounded-lg" src="assets/img/WARP_comp_h.drawio.gif" />
-        </div>
-        <div class="col-sm-8">
+        <!-- <div class="col-sm-4">
             
-            <b>Weight-Space Linear Recurrent Neural Networks</b>
+            
+                <img width="100%" height="auto" class="w-full rounded-lg" src="" alt="Weight-Space Linear Recurrent Neural Networks">
+            
+        </div> -->
+        <div class="col-sm-12">
+            
+            <b style="text-transform: uppercase;">Weight-Space Linear Recurrent Neural Networks</b>
             <br />
-            <i><a href="assest" target="_blank" rel="noopener">Arxiv</a></i> 
-             <b style="color: #e74d3c">[Subminted to ICLR 2026]</b> 
-            <br />
-            Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin
-            <br />
-             <a href="assets/papers/WEIGHT-SPACE_LINEAR_RECURRENT_NEURAL_NETWORKS.pdf" target="_blank" rel="noopener">[PDF]</a> 
+            <i><a href="https://arxiv.org/abs/2506.01153" target="_blank" rel="noopener">[Arxiv]</a></i> 
+             | <a href="assets/papers/WEIGHT-SPACE_LINEAR_RECURRENT_NEURAL_NETWORKS.pdf" target="_blank" rel="noopener">[PDF]</a> 
              | <a href="https://github.com/ddrous/warp" target="_blank" rel="noopener">[CODE]</a> 
             
             
             
             
+              <b style="color: #e74d3c">[Submitted to ICLR 2026]</b> 
+            <br />
+            Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin
             <br />
             <u><b><i>Abstract</i></b>:</u> 
             We introduce WARP (Weight-space Adaptive Recurrent Prediction), a simple yet powerful model that unifies weight-space learning with linear recurrence to redefine sequence modeling. Unlike conventional recurrent neural networks (RNNs)
@@ -270,6 +215,24 @@
     </div> <!-- Close col-lg-10 -->
 </div>
 <p><!-- Close row --></p>
+
+<!-- Contact Card Overlay -->
+<div class="contact-card-overlay" id="overlay-bg">
+    <div class="information_card">
+        <div class="contact-info-card">
+            <p class="card-name">Enrique Crespo Fernández</p>
+            <div class="contact-info-detail">
+                <p><strong>Email</strong></p>
+                <p><a href="mailto:enrique.crespofernandez@bristol.ac.uk">enrique.crespofernandez@bristol.ac.uk</a></p>
+            </div>
+            <div class="contact-info-detail">
+                <p><strong>Address</strong></p>
+                <p>One Cathedral Square</p>
+                <p>Bristol, UK</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
         </div>

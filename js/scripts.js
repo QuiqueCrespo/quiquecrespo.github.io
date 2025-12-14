@@ -121,63 +121,69 @@ let startEvent = isMobile ? 'touchstart' : 'mousedown';
 let moveEvent = isMobile ? 'touchmove' : 'mousemove';
 let endEvent = isMobile ? 'touchend' : 'mouseup';
 
+// Get popup icon elements (may not exist on all pages)
+const popupIconContainer = document.getElementById('popupIconContainer');
+const dismissalArea = document.getElementById('dismissalArea');
 
 // Capture mouse down (desktop) or touch start (mobile) events
-popupIconContainer.addEventListener(startEvent, (e) => {
-    e.preventDefault();
-    isDragging = true;
-    let clientX = isMobile ? e.touches[0].clientX : e.clientX;
-    let clientY = isMobile ? e.touches[0].clientY : e.clientY;
+if (popupIconContainer && dismissalArea) {
+    popupIconContainer.addEventListener(startEvent, (e) => {
+        e.preventDefault();
+        isDragging = true;
+        let clientX = isMobile ? e.touches[0].clientX : e.clientX;
+        let clientY = isMobile ? e.touches[0].clientY : e.clientY;
 
-    startX = clientX;
-    startY = clientY;
-    originalX = popupIconContainer.getBoundingClientRect().left;
-    originalY = popupIconContainer.getBoundingClientRect().top;
-    dismissalArea.style.display = 'flex';
-    
-    // Hide the speech balloon as users start dragging and drag the icon
-    document.querySelector('.speech-balloon').classList.add('hidden');
-});
+        startX = clientX;
+        startY = clientY;
+        originalX = popupIconContainer.getBoundingClientRect().left;
+        originalY = popupIconContainer.getBoundingClientRect().top;
+        dismissalArea.style.display = 'flex';
 
-
-// Capture mouse move (desktop) or touch move (mobile) events
-document.addEventListener(moveEvent, (e) => {
-    if (!isDragging) {
-        return;
-    }
-    
-    let clientX = isMobile ? e.touches[0].clientX : e.clientX;
-    let clientY = isMobile ? e.touches[0].clientY : e.clientY;
-
-    let x = originalX + (clientX - startX);
-    let y = originalY + (clientY - startY);
-    popupIconContainer.style.left = `${x}px`;
-    popupIconContainer.style.bottom = `calc(100% - ${y}px - ${popupIconContainer.offsetHeight}px)`;
-});
+        // Hide the speech balloon as users start dragging and drag the icon
+        const speechBalloon = document.querySelector('.speech-balloon');
+        if (speechBalloon) speechBalloon.classList.add('hidden');
+    });
 
 
-// Capture mouse up (desktop) or touch end (mobile) events
-document.addEventListener(endEvent, (e) => {
-    const clickSound = new Audio('assets/sounds/disappear_sound.wav');
+    // Capture mouse move (desktop) or touch move (mobile) events
+    document.addEventListener(moveEvent, (e) => {
+        if (!isDragging) {
+            return;
+        }
 
-    if (!isDragging) {
-        return;
-    }
+        let clientX = isMobile ? e.touches[0].clientX : e.clientX;
+        let clientY = isMobile ? e.touches[0].clientY : e.clientY;
 
-    let clientX = isMobile ? e.changedTouches[0].clientX : e.clientX;
-    let clientY = isMobile ? e.changedTouches[0].clientY : e.clientY;
-    let centerX = window.innerWidth / 2;
-    let centerY = window.innerHeight;
+        let x = originalX + (clientX - startX);
+        let y = originalY + (clientY - startY);
+        popupIconContainer.style.left = `${x}px`;
+        popupIconContainer.style.bottom = `calc(100% - ${y}px - ${popupIconContainer.offsetHeight}px)`;
+    });
 
-    // Check if icon is near the middle bottom dismissal area
-    if (Math.abs(clientX - centerX) < 50 && Math.abs(clientY - centerY) < 100) {
-        popupIconContainer.classList.add('hidden');
-        clickSound.play();
-    }
 
-    dismissalArea.style.display = 'none';
-    isDragging = false;
-});
+    // Capture mouse up (desktop) or touch end (mobile) events
+    document.addEventListener(endEvent, (e) => {
+        const clickSound = new Audio('assets/sounds/disappear_sound.wav');
+
+        if (!isDragging) {
+            return;
+        }
+
+        let clientX = isMobile ? e.changedTouches[0].clientX : e.clientX;
+        let clientY = isMobile ? e.changedTouches[0].clientY : e.clientY;
+        let centerX = window.innerWidth / 2;
+        let centerY = window.innerHeight;
+
+        // Check if icon is near the middle bottom dismissal area
+        if (Math.abs(clientX - centerX) < 50 && Math.abs(clientY - centerY) < 100) {
+            popupIconContainer.classList.add('hidden');
+            clickSound.play();
+        }
+
+        dismissalArea.style.display = 'none';
+        isDragging = false;
+    });
+}
 
 
 // Hide speech balloon when scrolling down
@@ -202,26 +208,36 @@ function progressBar() {
 }
 
 
-// Scripts to activate/deactivate contact info card 
-var overlaybg = document.getElementById('overlay-bg');
+// Scripts to activate/deactivate contact info card
+$(document).ready(function() {
+    var overlaybg = document.getElementById('overlay-bg');
 
-document.getElementById('contact-card-trigger').onclick = function() {
-    overlaybg.style.display = 'flex';
-};
+    if (overlaybg) {
+        var contactTrigger = document.getElementById('contact-info-trigger');
+        if (contactTrigger) {
+            contactTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                overlaybg.style.display = 'flex';
+                console.log('Contact info clicked, overlay display set to flex');
+                return false;
+            });
+        } else {
+            console.log('Contact trigger not found');
+        }
 
-overlaybg.addEventListener('click', function(event) {
-    if (event.target === overlaybg) {
-        overlaybg.style.display = 'none';
+        overlaybg.addEventListener('click', function(event) {
+            if (event.target === overlaybg) {
+                overlaybg.style.display = 'none';
+            }
+        });
+    } else {
+        console.log('Overlay background not found');
     }
 });
 
 
-// Play the flipping-card sound when user flips the contact info card
-document.getElementById('front_end_card').addEventListener('click', function() {
-    this.classList.toggle('flip');
-    const flipAudio = new Audio('assets/sounds/flipcard_sound.mp3');
-    flipAudio.play();
-});
+// Removed flipping-card functionality - contact card now displays info directly
 
 
 // Get all filter buttons and change their active status as user clicks
@@ -327,6 +343,14 @@ function updatePagerProjects() {
     var $isotopePager = ($('.' + pagerClass).length == 0 ) ? $('<div class="' + pagerClass + '"></div>') : $('.' + pagerClass);
     $isotopePager.html('');
 
+    // Hide pagination if only one page
+    if (currentNumberPages <= 1) {
+        $isotopePager.hide();
+        return;
+    }
+
+    $isotopePager.show();
+
     var $previous = $('<button class="pager" id="previous-page">&#8592; previous</button>');
     $previous.click(function() {
         if (currentPage > 1) {
@@ -338,7 +362,7 @@ function updatePagerProjects() {
     if (currentPage === 1) {
         $previous.prop('disabled', true);
     }
-    
+
     var $next = $('<button class="pager" id="next-page">next &#8594;</button>');
     $next.click(function() {
         if (currentPage < currentNumberPages) {
@@ -351,8 +375,8 @@ function updatePagerProjects() {
         $next.prop('disabled', true);
     }
 
-    var $currentPageIndicator = $('<span class="current-page">&nbsp; page ' + currentPage + ' of ' + currentNumberPages + ' &nbsp; </span>');
-    
+    var $currentPageIndicator = $('<span class="current-page">page ' + currentPage + ' of ' + currentNumberPages + '</span>');
+
     $previous.appendTo($isotopePager);
     $currentPageIndicator.appendTo($isotopePager);
     $next.appendTo($isotopePager);
@@ -487,6 +511,14 @@ function updatePagerGithub() {
     var $isotopePager = ($('.' + pagerClass_1).length == 0 ) ? $('<div class="' + pagerClass_1 + '"></div>') : $('.' + pagerClass_1);
     $isotopePager.html('');
 
+    // Hide pagination if only one page
+    if (currentNumberPages_1 <= 1) {
+        $isotopePager.hide();
+        return;
+    }
+
+    $isotopePager.show();
+
     var $previous = $('<button class="pager" id="previous-page">&#8592; previous</button>');
     $previous.click(function() {
         if (currentPage_1 > 1) {
@@ -498,7 +530,7 @@ function updatePagerGithub() {
     if (currentPage_1 === 1) {
         $previous.prop('disabled', true);
     }
-    
+
     var $next = $('<button class="pager" id="next-page">next &#8594;</button>');
     $next.click(function() {
         if (currentPage_1 < currentNumberPages_1) {
@@ -511,8 +543,8 @@ function updatePagerGithub() {
         $next.prop('disabled', true);
     }
 
-    var $currentPage_1Indicator = $('<span class="current-page">&nbsp; page ' + currentPage_1 + ' of ' + currentNumberPages_1 + ' &nbsp; </span>');
-    
+    var $currentPage_1Indicator = $('<span class="current-page">page ' + currentPage_1 + ' of ' + currentNumberPages_1 + '</span>');
+
     $previous.appendTo($isotopePager);
     $currentPage_1Indicator.appendTo($isotopePager);
     $next.appendTo($isotopePager);
@@ -634,80 +666,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Automatically update year in footer
 document.getElementById("currentYear").textContent = new Date().getFullYear();
-
-
-// Canvas for particle moves
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const particles = [];
-
-
-// Resize canvas width and height
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-
-// Class for Particle
-class Particle {
-    
-    constructor() {
-        this.reset();
-    }
-
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 2;
-        this.vy = (Math.random() - 0.5) * 2;
-        const isDark = document.body.classList.contains('dark-theme');
-        const rgb = isDark ? '255, 255, 255' : '100, 100, 100';
-        this.color = 'rgba(' + rgb + ', ' + 0.7 + ')';
-        this.baseColor = rgb;
-        this.lifespan = 100;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        const isDark = document.body.classList.contains('dark-theme');
-        const rgb = isDark ? '255, 255, 255' : '100, 100, 100';
-        this.color = 'rgba(' + rgb + ', ' + this.lifespan--/100 + ')';
-
-        if (this.lifespan <= 0) {
-            this.reset();
-        }
-    }
-
-    draw(ctx) {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-
-// Initialize 101 particles
-for (let i = 0; i < 101; i++) {
-    particles.push(new Particle());
-}
-
-
-// Make the particles move
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(particle => {
-        particle.update();
-        particle.draw(ctx);
-    });
-
-    requestAnimationFrame(animate);
-}
-
-// Animate the particles
-animate();
