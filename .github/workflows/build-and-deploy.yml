@@ -47,10 +47,28 @@ jobs:
           compiler: latexmk
           latexmk_use_xelatex: true
 
+      - name: Debug - Find PDF location
+        run: |
+          echo "Looking for cv.pdf files:"
+          find . -name "cv.pdf" -type f
+          echo "Contents of _site/assets/pdf/:"
+          ls -la _site/assets/pdf/ || echo "Directory doesn't exist or is empty"
+
       - name: Move PDF to Assets
         run: |
-          mv _site/assets/pdf/cv.pdf _site/assets/cv.pdf
-          echo "PDF moved to _site/assets/cv.pdf"
+          # The latex-action generates the PDF in the same directory as the .tex file
+          if [ -f cv.pdf ]; then
+            mv cv.pdf _site/assets/cv.pdf
+            echo "PDF moved from root to _site/assets/cv.pdf"
+          elif [ -f _site/assets/pdf/cv.pdf ]; then
+            mv _site/assets/pdf/cv.pdf _site/assets/cv.pdf
+            echo "PDF moved from _site/assets/pdf/ to _site/assets/cv.pdf"
+          else
+            echo "ERROR: Could not find cv.pdf"
+            exit 1
+          fi
+          echo "Final location: _site/assets/cv.pdf"
+          ls -lh _site/assets/cv.pdf
 
       # -----------------------------
 
