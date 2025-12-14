@@ -433,12 +433,18 @@ function initializeIsotopeProjects() {
 document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.getElementById('github-cards');
+    if (!container) return; // Exit if resources section doesn't exist on this page
+
     const repoElements = container.querySelectorAll('div[data-url]');
 
     repoElements.forEach(repoElement => {
         const repoUrl = repoElement.getAttribute('data-url');
-        
-        axios.get(repoUrl)
+
+        // Convert GitHub web URL to API URL
+        // https://github.com/owner/repo -> https://api.github.com/repos/owner/repo
+        const apiUrl = repoUrl.replace('https://github.com/', 'https://api.github.com/repos/');
+
+        axios.get(apiUrl)
             .then(response => {
                 const { name, description, html_url, stargazers_count, forks_count, language } = response.data;
                 const cardHtml = `
@@ -449,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="repo-description">${description || 'No description provided.'}</div>
                         <div class="repo-stats">
                             <i class="fas fa-code language-icon"></i>
-                            <span class="language">${language}</span>
+                            <span class="language">${language || 'N/A'}</span>
                             <div>
                                 <i class="fas fa-star star-icon"></i>
                                 <span class="stats-number">${stargazers_count}</span>
@@ -462,13 +468,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
 
                 repoElement.outerHTML = cardHtml;
-                
+
                 // Refresh GitHub cards isotope layout
-                $cards.isotope('layout');
-                
+                if (typeof $cards !== 'undefined') {
+                    $cards.isotope('layout');
+                }
+
             })
             .catch(error => {
                 console.error('Error fetching repository data for', repoUrl, error);
+                // Display error card
+                repoElement.outerHTML = `
+                    <div class="repo-header">
+                        <i class="far fa-bookmark bookmark-icon"></i>
+                        <span class="repo-name">Failed to load repository</span>
+                    </div>
+                    <div class="repo-description">Could not fetch data from ${repoUrl}</div>
+                `;
             });
     });
 });

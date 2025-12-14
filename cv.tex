@@ -11,14 +11,15 @@ permalink: /assets/pdf/cv.tex
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{fontawesome5}
 
 % Page geometry
 \geometry{
     letterpaper,
-    left=0.5in,
-    right=0.5in,
-    top=0.3in,
-    bottom=0.4in
+    left=0.4in,
+    right=0.4in,
+    top=0.25in,
+    bottom=0.25in
 }
 
 % Colors
@@ -40,7 +41,7 @@ permalink: /assets/pdf/cv.tex
     {\MakeUppercase{#1}}
     [\titlerule]
 
-\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
 
 % Remove page numbers
 \pagestyle{empty}
@@ -59,72 +60,71 @@ permalink: /assets/pdf/cv.tex
 
 % Header
 \begin{center}
-    {\fontsize{22}{26}\selectfont\textbf{\MakeUppercase{ {{ site.data.cv.personal.name }} }}} \\[3pt]
-    {{ site.data.cv.personal.phone }} $|$ {{ site.data.cv.personal.email }} \\[1pt]
-    \href{ {{ site.data.cv.personal.linkedin }} }{ {{ site.data.cv.personal.linkedin_handle }} } $|$
-    \href{ {{ site.data.cv.personal.github }} }{ {{ site.data.cv.personal.github_handle }} } \\[1pt]
-    {{ site.data.cv.personal.location }}
+    {\fontsize{18}{20}\selectfont\textbf{\MakeUppercase{ {{ site.data.cv.personal.name }} }}} \\[2pt]
+    {{ site.data.cv.personal.phone }} $|$ {{ site.data.cv.personal.email }} $|$ {{ site.data.cv.personal.location }} \\[1pt]
+    \faLinkedin\ \href{ {{ site.data.cv.personal.linkedin }} }{ {{ site.data.cv.personal.linkedin_handle }} } $|$
+    \faGithub\ \href{ {{ site.data.cv.personal.github }} }{ {{ site.data.cv.personal.github_handle }} }
 \end{center}
 
-\vspace{8pt}
+\vspace{4pt}
 
 % Summary
-{{ site.data.cv.summary }}
+{\small {{ site.data.cv.summary }}}
 
-\vspace{8pt}
+\vspace{3pt}
 
 % Experience
 \section{Experience}
 {% for job in site.data.cv.experience %}
 \cvitem{ {{ job.institution }} }{ {{ job.dates }} }{ {{ job.position }} }{ {{ job.location }} }
-\begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=1pt]
-{% for resp in job.responsibilities %}    \item {{ resp }}
+\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+{% for resp in job.responsibilities %}    \item {\small {{ resp }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{8pt}
+{% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
 % Education
 \section{Education}
 {% for edu in site.data.cv.education %}
 \cvitem{ {{ edu.institution }} }{ {{ edu.dates }} }{ {{ edu.degree }} }{ {{ edu.location }} }
-\begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=1pt]
-{% for detail in edu.details %}    \item {{ detail }}
+\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+{% for detail in edu.details %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{8pt}
+{% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
 % Publications
 \section{Publications}
 {% for pub in site.data.cv.publications %}
-\textbf{ {{ pub.title }} } \\
+{\small \textbf{ {{ pub.title }} } \\
 {{ pub.authors }} \\
-\textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}
-{% unless forloop.last %}\vspace{6pt}
+\textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}}
+{% unless forloop.last %}\vspace{2pt}
 {% endunless %}{% endfor %}
 
-\vspace{8pt}
+\vspace{3pt}
 
 % Side Projects
 \section{Side Projects}
 {% for project in site.data.cv.side_projects %}
 \cvitem{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }{ }
-\begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=1pt]
-{% for detail in project.description %}    \item {{ detail }}
+\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+{% for detail in project.description %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{8pt}
+{% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
-\vspace{8pt}
+\vspace{3pt}
 
 % Skills
 \section{Skills}
-\begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=2pt]
-{% for skill in site.data.cv.skills %}    \item \textbf{ {{ skill.category }}: } {{ skill.items }}
+\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+{% for skill in site.data.cv.skills %}    \item {\small \textbf{ {{ skill.category }}: } {{ skill.items }}}
 {% endfor %}\end{itemize}
 
 % Additional Information
 \section{Additional Information}
-\textbf{Languages:} {{ site.data.cv.additional.languages }} \\
-\textbf{Interests:} {{ site.data.cv.additional.interests }}
+{\small \textbf{Languages:} {{ site.data.cv.additional.languages }} \\
+\textbf{Interests:} {{ site.data.cv.additional.interests }}}
 
 \end{document}
