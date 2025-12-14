@@ -93,21 +93,34 @@ permalink: /assets/pdf/cv.tex
 {% unless forloop.last %}\vspace{8pt}
 {% endunless %}{% endfor %}
 
+% Publications
+\section{Publications}
+{% for pub in site.data.cv.publications %}
+\textbf{ {{ pub.title }} } \\
+{{ pub.authors }} \\
+\textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}
+{% unless forloop.last %}\vspace{6pt}
+{% endunless %}{% endfor %}
+
+\vspace{8pt}
+
+% Side Projects
+\section{Side Projects}
+{% for project in site.data.cv.side_projects %}
+\cvitem{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }{ }
+\begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=1pt]
+{% for detail in project.description %}    \item {{ detail }}
+{% endfor %}\end{itemize}
+{% unless forloop.last %}\vspace{8pt}
+{% endunless %}{% endfor %}
+
+\vspace{8pt}
+
 % Skills
 \section{Skills}
 \begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=2pt]
 {% for skill in site.data.cv.skills %}    \item \textbf{ {{ skill.category }}: } {{ skill.items }}
 {% endfor %}\end{itemize}
-
-% Leadership & Volunteer
-\section{Leadership \& Volunteer Experience}
-{% for vol in site.data.cv.volunteer %}
-\cvitem{ {{ vol.role }} }{ {{ vol.dates }} }{ {{ vol.organization }} }{ {{ vol.location }} }
-\begin{itemize}[leftmargin=18pt, topsep=3pt, itemsep=1pt]
-{% for resp in vol.responsibilities %}    \item {{ resp }}
-{% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{8pt}
-{% endunless %}{% endfor %}
 
 % Additional Information
 \section{Additional Information}
