@@ -43,8 +43,9 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: _site/assets/pdf/cv.tex
-          args: -pdf -file-line-error -interaction=nonstopmode
+          args: -file-line-error -interaction=nonstopmode
           compiler: latexmk
+          latexmk_use_xelatex: true
 
       - name: Move PDF to Assets
         run: |
