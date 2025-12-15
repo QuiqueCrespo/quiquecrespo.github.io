@@ -15,13 +15,6 @@ btn.on('click', function(e) {
 });
 
 
-// Toggle navigation menu bar
-function toggleNav() {
-    document.querySelector('nav').classList.toggle('animated-menu');
-    document.querySelector('.nav-toggle-btn').classList.toggle('active');
-}
-
-
 // Change the text interchangably "See More" and "See Less"
 function toggleText(linkElement) {
     var collapseId = linkElement.getAttribute('href').substring(1);
@@ -105,73 +98,6 @@ function initializeOwlCarousel() {
     }
 }
 
-// Touch and mouse event listeners
-let isDragging = false;
-let isMobile = 'ontouchstart' in window;
-let startEvent = isMobile ? 'touchstart' : 'mousedown';
-let moveEvent = isMobile ? 'touchmove' : 'mousemove';
-let endEvent = isMobile ? 'touchend' : 'mouseup';
-
-// Get popup icon elements (may not exist on all pages)
-const popupIconContainer = document.getElementById('popupIconContainer');
-const dismissalArea = document.getElementById('dismissalArea');
-
-// Capture mouse down (desktop) or touch start (mobile) events
-if (popupIconContainer && dismissalArea) {
-    popupIconContainer.addEventListener(startEvent, (e) => {
-        e.preventDefault();
-        isDragging = true;
-        let clientX = isMobile ? e.touches[0].clientX : e.clientX;
-        let clientY = isMobile ? e.touches[0].clientY : e.clientY;
-
-        startX = clientX;
-        startY = clientY;
-        originalX = popupIconContainer.getBoundingClientRect().left;
-        originalY = popupIconContainer.getBoundingClientRect().top;
-        dismissalArea.style.display = 'flex';
-    });
-
-
-    // Capture mouse move (desktop) or touch move (mobile) events
-    document.addEventListener(moveEvent, (e) => {
-        if (!isDragging) {
-            return;
-        }
-
-        let clientX = isMobile ? e.touches[0].clientX : e.clientX;
-        let clientY = isMobile ? e.touches[0].clientY : e.clientY;
-
-        let x = originalX + (clientX - startX);
-        let y = originalY + (clientY - startY);
-        popupIconContainer.style.left = `${x}px`;
-        popupIconContainer.style.bottom = `calc(100% - ${y}px - ${popupIconContainer.offsetHeight}px)`;
-    });
-
-
-    // Capture mouse up (desktop) or touch end (mobile) events
-    document.addEventListener(endEvent, (e) => {
-        const clickSound = new Audio('assets/sounds/disappear_sound.wav');
-
-        if (!isDragging) {
-            return;
-        }
-
-        let clientX = isMobile ? e.changedTouches[0].clientX : e.clientX;
-        let clientY = isMobile ? e.changedTouches[0].clientY : e.clientY;
-        let centerX = window.innerWidth / 2;
-        let centerY = window.innerHeight;
-
-        // Check if icon is near the middle bottom dismissal area
-        if (Math.abs(clientX - centerX) < 50 && Math.abs(clientY - centerY) < 100) {
-            popupIconContainer.classList.add('hidden');
-            clickSound.play();
-        }
-
-        dismissalArea.style.display = 'none';
-        isDragging = false;
-    });
-}
-
 
 // Update progress bar as user scrolls down
 window.onscroll = function() {progressBar()};
@@ -195,11 +121,8 @@ $(document).ready(function() {
                 e.preventDefault();
                 e.stopPropagation();
                 overlaybg.style.display = 'flex';
-                console.log('Contact info clicked, overlay display set to flex');
                 return false;
             });
-        } else {
-            console.log('Contact trigger not found');
         }
 
         overlaybg.addEventListener('click', function(event) {
@@ -209,9 +132,6 @@ $(document).ready(function() {
         });
     }
 });
-
-
-// Removed flipping-card functionality - contact card now displays info directly
 
 
 // Get all filter buttons and change their active status as user clicks
@@ -598,13 +518,7 @@ function initializeIsotopeGithub() {
 }
 
 
-// // Guarantee correct layouts when all web resources are fully loaded 
-// This version is slow --> only re-layout when all the gifs are fully loaded
-// $(window).on('load', function() {
-//     initializeOwlCarousel();
-//     initializeIsotopeProjects();
-// });
-// This version is faster --> re-layout when all the images are fully loaded not neccessarily all the gifs
+// Guarantee correct layouts when images are fully loaded
 $(document).ready(function() {
     var Images = $('img[src$=".jpg"], img[src$=".jpeg"], img[src$=".png"]').get();
     var imageLoadPromises = Images.map(function(img) {
