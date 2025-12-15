@@ -12,6 +12,25 @@
     --deco-border: 3px double #1a1a1a;
 }
 
+/* Theme classes on html element (applied by inline script to prevent flash) */
+html.light-theme {
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --accent-color: #000000;
+    --border-style: 1px solid #1a1a1a;
+    --deco-border: 3px double #1a1a1a;
+}
+
+html.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-main: #e8e8e8;
+    --text-muted: #aaaaaa;
+    --accent-color: #ffffff;
+    --border-style: 1px solid #e8e8e8;
+    --deco-border: 3px double #e8e8e8;
+}
+
 /* Document body styles */
 body {
     background-color: var(--bg-color);
