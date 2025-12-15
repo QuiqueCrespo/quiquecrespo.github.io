@@ -48,8 +48,8 @@ permalink: /assets/pdf/cv.tex
 
 % Custom commands
 \newcommand{\cvitem}[4]{
-    \textbf{#1} \hfill \textit{#2} \\
-    \textit{#3} \hfill \textit{#4}
+    \textbf{#1} \textit{#3} \hfill \textit{#2} \\
+    \hfill \textit{#4}
 }
 
 % Reduce spacing
@@ -96,10 +96,9 @@ permalink: /assets/pdf/cv.tex
 % Publications
 \section{Publications}
 {% for pub in site.data.cv.publications %}
-{\small \textbf{ {{ pub.title }} } \\
+{\small \textbf{ {{ pub.title }} } \textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}} 
 {{ pub.authors }} \\
-\textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}}
-{% unless forloop.last %}\vspace{2pt}
+{% unless forloop.last %}\vspace{2pt} 
 {% endunless %}{% endfor %}
 
 \vspace{3pt}

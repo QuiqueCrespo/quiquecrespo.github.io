@@ -64,13 +64,13 @@ education:
     location: Bath, UK
     dates: 2019-2023
     details:
-      - "Dissertation: Forecasting dangerous sea-wave events from radar scans with artificial neural networks - in collaboration with the UK Met Office"
+      - "Dissertation: Classification dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office"
       - "Overall grade: 71\\%"
 
 # Publications
 publications:
   - title: "Weight-Space Linear Recurrent Neural Networks"
-    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin"
+    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, Enrique Crespo Fernandez, ..."
     venue: "Submitted to ICLR 2026"
     year: "2025"
     links:
