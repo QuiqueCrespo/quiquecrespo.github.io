@@ -66,16 +66,18 @@ title: CV | Enrique Crespo-Fernández
         <div class="cv-item">
             <div style="margin-bottom: 0.3rem;">
                 <strong>{{ pub.title }}</strong>
+                <div style="margin-bottom: 0.2rem;"><em>{{ pub.venue }}</em>,
+                    {{ pub.year }}, 
+                    {% if pub.links %}
+                    {% for link in pub.links %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener" style="margin-right: 1rem; text-decoration: underline;">[{{ link.name }}]</a>
+                    {% endfor %}
+                    {% endif %}
+                </div>
             </div>
             <div style="margin-bottom: 0.2rem;">{{ pub.authors }}</div>
-            <div style="margin-bottom: 0.2rem;"><em>{{ pub.venue }}</em>, {{ pub.year }}</div>
-            {% if pub.links %}
-            <div>
-                {% for link in pub.links %}
-                <a href="{{ link.url }}" target="_blank" rel="noopener" style="margin-right: 1rem; text-decoration: underline;">[{{ link.name }}]</a>
-                {% endfor %}
-            </div>
-            {% endif %}
+            
+            
         </div>
         {% endfor %}
     </section>

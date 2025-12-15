@@ -53,33 +53,20 @@ function scrollToTopDiv(divTag) {
 
 // Button for toggle theme (dark/light)
 function toggleTheme() {
-    const bodyEl = document.body;
     const htmlEl = document.documentElement;
     const buttonEl = document.querySelector('.toggle-theme-button');
 
-    if (bodyEl.classList.contains('light-theme')) {
+    if (htmlEl.classList.contains('light-theme')) {
         // Switch to dark theme
         htmlEl.classList.remove('light-theme');
         htmlEl.classList.add('dark-theme');
-        bodyEl.classList.remove('light-theme');
-        bodyEl.classList.add('dark-theme');
-        if (buttonEl) {
-            buttonEl.classList.remove('light-theme');
-            buttonEl.classList.add('dark-theme');
-            buttonEl.innerText = '◐';
-        }
+        if (buttonEl) buttonEl.innerText = '◐';
         localStorage.setItem('theme', 'dark');
     } else {
         // Switch to light theme
         htmlEl.classList.remove('dark-theme');
         htmlEl.classList.add('light-theme');
-        bodyEl.classList.remove('dark-theme');
-        bodyEl.classList.add('light-theme');
-        if (buttonEl) {
-            buttonEl.classList.remove('dark-theme');
-            buttonEl.classList.add('light-theme');
-            buttonEl.innerText = '◑';
-        }
+        if (buttonEl) buttonEl.innerText = '◑';
         localStorage.setItem('theme', 'light');
     }
 }
@@ -395,13 +382,16 @@ function setPaginationProjects() {
 
 
 function initializeIsotopeProjects() {
+    // Exit early if #projects doesn't exist on this page
+    if (!$projects) return;
+
     // Set number of pages, return to first page,
     setPaginationProjects();
     showPageProjects(1);
 
 
-    // Filter projects based on category, including change active buttons, filter projects, 
-    // set the number of pages, return to the first page, and update the pager indicator 
+    // Filter projects based on category, including change active buttons, filter projects,
+    // set the number of pages, return to the first page, and update the pager indicator
     $('#filters-project .filter-button').click(function() {
         $('#filters-project .filter-button').removeClass('active');
         $(this).addClass('active');
@@ -586,13 +576,16 @@ function setPaginationGithub() {
 
 
 function initializeIsotopeGithub() {
+    // Exit early if #github-cards doesn't exist on this page
+    if (!$cards) return;
+
     // Set number of pages, return to first page,
     setPaginationGithub();
     showPageGithub(1);
 
 
-    // Filter cards based on category, including change active buttons, filter cards, 
-    // set the number of pages, return to the first page, and update the pager indicator 
+    // Filter cards based on category, including change active buttons, filter cards,
+    // set the number of pages, return to the first page, and update the pager indicator
     $('#filters-resources .filter-button').click(function() {
         $('#filters-resources .filter-button').removeClass('active');
         $(this).addClass('active');
@@ -632,39 +625,30 @@ $(document).ready(function() {
 });
 
 
-// Apply theme to body and update button on DOMContentLoaded
+// Update toggle button text on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
     const buttonEl = document.querySelector('.toggle-theme-button');
+    if (!buttonEl) return;
+
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
-    // Apply theme to body (html already has it from inline script)
-    if (isDark) {
-        document.body.classList.add('dark-theme');
-        document.body.classList.remove('light-theme');
-        if (buttonEl) buttonEl.innerText = '◐';
-    } else {
-        document.body.classList.add('light-theme');
-        document.body.classList.remove('dark-theme');
-        if (buttonEl) buttonEl.innerText = '◑';
-    }
+    // Update button text (theme already applied to html element by inline script)
+    buttonEl.innerText = isDark ? '◐' : '◑';
 
     // Listen for browser preference changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) {
+            const htmlEl = document.documentElement;
             if (e.matches) {
-                document.documentElement.classList.remove('light-theme');
-                document.documentElement.classList.add('dark-theme');
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-                if (buttonEl) buttonEl.innerText = '◐';
+                htmlEl.classList.remove('light-theme');
+                htmlEl.classList.add('dark-theme');
+                buttonEl.innerText = '◐';
             } else {
-                document.documentElement.classList.remove('dark-theme');
-                document.documentElement.classList.add('light-theme');
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-                if (buttonEl) buttonEl.innerText = '◑';
+                htmlEl.classList.remove('dark-theme');
+                htmlEl.classList.add('light-theme');
+                buttonEl.innerText = '◑';
             }
         }
     });
