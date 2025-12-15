@@ -37,7 +37,7 @@ research-introduction:
 research-interests:
 
   - field: Symbolic AI
-    subfields: Logic Programming, Inductive Logic Programming, Meta-Interpretative Learning
+    subfields: Logic Programming, Inductive Logic Programming, Meta-Interpretive Learning
   
   - field: Online Learning
     subfields: Causal Reasoning, Lifelong Learning, In-context Learning

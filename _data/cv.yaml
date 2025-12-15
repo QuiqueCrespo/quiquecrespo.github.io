@@ -64,7 +64,7 @@ education:
     location: Bath, UK
     dates: 2019-2023
     details:
-      - "Dissertation: Classification dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office"
+      - "Dissertation: Classifying dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office"
       - "Overall grade: 71\\%"
 
 # Publications
