@@ -2,6 +2,16 @@
 
 <html lang="en">
     <head>
+        <!-- Apply theme immediately to prevent flash - must be first script -->
+        <script>
+            (function() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+                const themeClass = isDark ? 'dark-theme' : 'light-theme';
+                document.documentElement.classList.add(themeClass);
+            })();
+        </script>
 
         <!-- Metadata -->
         <meta charset="utf-8"/>

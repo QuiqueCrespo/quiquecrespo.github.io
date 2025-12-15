@@ -11,11 +11,7 @@ $(window).scroll(function() {
 
 btn.on('click', function(e) {
     e.preventDefault();
-    const speechBalloon = document.querySelector('.speech-balloon');
-    const clickSound = new Audio('assets/sounds/collision_sound.wav');
     $('html, body').animate({scrollTop:0}, '300');
-    speechBalloon.innerText = 'back to top!';
-    clickSound.play();
 });
 
 
@@ -58,28 +54,33 @@ function scrollToTopDiv(divTag) {
 // Button for toggle theme (dark/light)
 function toggleTheme() {
     const bodyEl = document.body;
+    const htmlEl = document.documentElement;
     const buttonEl = document.querySelector('.toggle-theme-button');
-    const speechBalloon = document.querySelector('.speech-balloon');
-    const clickSound = new Audio('assets/sounds/switch_sound.wav');
 
     if (bodyEl.classList.contains('light-theme')) {
+        // Switch to dark theme
+        htmlEl.classList.remove('light-theme');
+        htmlEl.classList.add('dark-theme');
         bodyEl.classList.remove('light-theme');
         bodyEl.classList.add('dark-theme');
-        buttonEl.classList.remove('light-theme');
-        buttonEl.classList.add('dark-theme');
-        buttonEl.innerText = '◐';
+        if (buttonEl) {
+            buttonEl.classList.remove('light-theme');
+            buttonEl.classList.add('dark-theme');
+            buttonEl.innerText = '◐';
+        }
         localStorage.setItem('theme', 'dark');
-        speechBalloon.innerText = 'dark mode';
-        clickSound.play();
     } else {
+        // Switch to light theme
+        htmlEl.classList.remove('dark-theme');
+        htmlEl.classList.add('light-theme');
         bodyEl.classList.remove('dark-theme');
         bodyEl.classList.add('light-theme');
-        buttonEl.classList.remove('dark-theme');
-        buttonEl.classList.add('light-theme');
-        buttonEl.innerText = '◑';
+        if (buttonEl) {
+            buttonEl.classList.remove('dark-theme');
+            buttonEl.classList.add('light-theme');
+            buttonEl.innerText = '◑';
+        }
         localStorage.setItem('theme', 'light');
-        speechBalloon.innerText = 'light mode';
-        clickSound.play();
     }
 }
 
@@ -97,21 +98,24 @@ window.addEventListener('scroll', function() {
 
 // Owl carousel for updates
 function initializeOwlCarousel() {
-    $('.owl-carousel').owlCarousel({
-        loop: false,
-        rewind: false,
-        margin: 10,
-        nav: true,
-        dots: false,
-        lazyLoad: false,
-        slideBy: 'page',
-        responsive: {
-            0: {items: 1.75},
-            600: {items: 3},
-            900: {items: 5},
-            1200: {items: 6}
-        }
-    });
+    // Only initialize if owlCarousel is available and element exists
+    if ($('.owl-carousel').length && typeof $.fn.owlCarousel === 'function') {
+        $('.owl-carousel').owlCarousel({
+            loop: false,
+            rewind: false,
+            margin: 10,
+            nav: true,
+            dots: false,
+            lazyLoad: false,
+            slideBy: 'page',
+            responsive: {
+                0: {items: 1.75},
+                600: {items: 3},
+                900: {items: 5},
+                1200: {items: 6}
+            }
+        });
+    }
 }
 
 // Touch and mouse event listeners
@@ -138,10 +142,6 @@ if (popupIconContainer && dismissalArea) {
         originalX = popupIconContainer.getBoundingClientRect().left;
         originalY = popupIconContainer.getBoundingClientRect().top;
         dismissalArea.style.display = 'flex';
-
-        // Hide the speech balloon as users start dragging and drag the icon
-        const speechBalloon = document.querySelector('.speech-balloon');
-        if (speechBalloon) speechBalloon.classList.add('hidden');
     });
 
 
@@ -186,17 +186,6 @@ if (popupIconContainer && dismissalArea) {
 }
 
 
-// Hide speech balloon when scrolling down
-window.addEventListener('scroll', function() {
-    let scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    if (scrollPosition > 300) {
-        document.querySelector('.speech-balloon').classList.add('hidden');
-    } else {
-        document.querySelector('.speech-balloon').classList.remove('hidden');
-    }
-});
-
-
 // Update progress bar as user scrolls down
 window.onscroll = function() {progressBar()};
 
@@ -231,8 +220,6 @@ $(document).ready(function() {
                 overlaybg.style.display = 'none';
             }
         });
-    } else {
-        console.log('Overlay background not found');
     }
 });
 
@@ -241,9 +228,8 @@ $(document).ready(function() {
 
 
 // Get all filter buttons and change their active status as user clicks
-var filterButtonsProject = document.querySelectorAll('#filters-project .filter-button'); 
-var filterButtonsGithub = document.querySelectorAll('#filters-resources .filter-button'); 
-var speechBalloon = document.querySelector('.speech-balloon');
+var filterButtonsProject = document.querySelectorAll('#filters-project .filter-button');
+var filterButtonsGithub = document.querySelectorAll('#filters-resources .filter-button');
 
 filterButtonsProject.forEach(function(filterButtonProject) {
     filterButtonProject.addEventListener('click', function() {
@@ -251,12 +237,6 @@ filterButtonsProject.forEach(function(filterButtonProject) {
             flrbtn.classList.remove('active');
         });
         this.classList.add('active');
-        if (this.textContent === "perception + manipulation") {
-            speechBalloon.innerText = 'see RoPM projects!';
-        } else {
-            speechBalloon.innerText = 'see ' + this.textContent + ' projects!';
-        }
-        speechBalloon.classList.remove('hidden');
     });
 });
 
@@ -266,8 +246,6 @@ filterButtonsGithub.forEach(function(filterButtonGithub) {
             flrbtn.classList.remove('active');
         });
         this.classList.add('active');
-        speechBalloon.innerText = 'see ' + this.textContent + ' repos!';
-        speechBalloon.classList.remove('hidden');
     });
 });
 
@@ -314,17 +292,24 @@ var currentFilter = '*';
 var filterAtribute = 'data-filter';
 var pageAtribute = 'data-page-project';
 var pagerClass = 'isotope-pager-project';
-var $projects = $('#projects').isotope({
-    itemcategory: '.project',
-    layoutMode: 'vertical'
-});
+var $projects = null;
+
+// Only initialize isotope if #projects exists
+if ($('#projects').length) {
+    $projects = $('#projects').isotope({
+        itemcategory: '.project',
+        layoutMode: 'vertical'
+    });
+}
 
 
 // Filter based on input category
 function filterCategoryProjects(category) {
-    $projects.isotope({
-        filter: category
-    });
+    if ($projects) {
+        $projects.isotope({
+            filter: category
+        });
+    }
 }
 
 
@@ -470,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 repoElement.outerHTML = cardHtml;
 
                 // Refresh GitHub cards isotope layout
-                if (typeof $cards !== 'undefined') {
+                if ($cards) {
                     $cards.isotope('layout');
                 }
 
@@ -498,17 +483,24 @@ var currentFilter_1 = '*';
 var filterAtribute_1 = 'data-filter';
 var pageAtribute_1 = 'data-page-github';
 var pagerClass_1 = 'isotope-pager-github';
-var $cards = $('#github-cards').isotope({
-    itemcategory: '.github-card',
-    layoutMode: 'fitRows'
-});
+var $cards = null;
+
+// Only initialize isotope if #github-cards exists
+if ($('#github-cards').length) {
+    $cards = $('#github-cards').isotope({
+        itemcategory: '.github-card',
+        layoutMode: 'fitRows'
+    });
+}
 
 
 // Filter based on input category
 function filterCategoryGithub(category) {
-    $cards.isotope({
-        filter: category
-    });
+    if ($cards) {
+        $cards.isotope({
+            filter: category
+        });
+    }
 }
 
 
@@ -640,40 +632,39 @@ $(document).ready(function() {
 });
 
 
-// Dark/Light theme based on browser preference
+// Apply theme to body and update button on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
     const buttonEl = document.querySelector('.toggle-theme-button');
-    const speechBalloon = document.querySelector('.speech-balloon');
-
-    // Check if user has a saved preference
     const savedTheme = localStorage.getItem('theme');
-
-    // If no saved preference, use browser preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    // Apply theme to body (html already has it from inline script)
+    if (isDark) {
         document.body.classList.add('dark-theme');
-        buttonEl.innerText = '◐';
-        speechBalloon.innerText = 'dark mode';
+        document.body.classList.remove('light-theme');
+        if (buttonEl) buttonEl.innerText = '◐';
     } else {
         document.body.classList.add('light-theme');
-        buttonEl.innerText = '◑';
-        speechBalloon.innerText = 'light mode';
+        document.body.classList.remove('dark-theme');
+        if (buttonEl) buttonEl.innerText = '◑';
     }
 
     // Listen for browser preference changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) {
             if (e.matches) {
+                document.documentElement.classList.remove('light-theme');
+                document.documentElement.classList.add('dark-theme');
                 document.body.classList.remove('light-theme');
                 document.body.classList.add('dark-theme');
-                buttonEl.innerText = '◐';
-                speechBalloon.innerText = 'dark mode';
+                if (buttonEl) buttonEl.innerText = '◐';
             } else {
+                document.documentElement.classList.remove('dark-theme');
+                document.documentElement.classList.add('light-theme');
                 document.body.classList.remove('dark-theme');
                 document.body.classList.add('light-theme');
-                buttonEl.innerText = '◑';
-                speechBalloon.innerText = 'light mode';
+                if (buttonEl) buttonEl.innerText = '◑';
             }
         }
     });
@@ -681,4 +672,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Automatically update year in footer
-document.getElementById("currentYear").textContent = new Date().getFullYear();
+const currentYearEl = document.getElementById("currentYear");
+if (currentYearEl) {
+    currentYearEl.textContent = new Date().getFullYear();
+}
