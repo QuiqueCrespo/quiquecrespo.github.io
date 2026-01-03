@@ -53,7 +53,17 @@ permalink: /assets/pdf/cv.tex
 }
 
 \newcommand{\cvitemsp}[3]{
-    \textbf{#1} \textit{#3} \hfill \textit{#2} \\
+    \textbf{#1} \textit{#3} \hfill \textit{#2}
+}
+
+% UPDATED COMMAND: 4 Arguments
+% #1: Title
+% #2: Links
+% #3: Venue + Year
+% #4: Authors
+\newcommand{\cvitempb}[4]{
+    {\small \textbf{#1} #2 \hfill \textit{#3} \\
+    #4}
 }
 
 % Reduce spacing
@@ -100,9 +110,17 @@ permalink: /assets/pdf/cv.tex
 % Publications
 \section{Publications}
 {% for pub in site.data.cv.publications %}
-{\small \textbf{ {{ pub.title }} } \textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}}
-\\ {{ pub.authors }} 
-{% unless forloop.last %}\vspace{2pt} 
+\cvitempb{ {{ pub.title }} }
+{
+    {% if pub.links %}
+      {% for link in pub.links %}
+         \href{ {{ link.url }} }{[\small {{ link.name }}]}
+      {% endfor %}
+    {% endif %}
+}
+{ {{ pub.venue }}, {{ pub.year }} }
+{ {{ pub.authors }} }
+{% unless forloop.last %}\vspace{3pt} 
 {% endunless %}{% endfor %}
 
 % Side Projects
