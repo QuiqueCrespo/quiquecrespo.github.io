@@ -100,15 +100,15 @@ permalink: /assets/pdf/cv.tex
 % Publications
 \section{Publications}
 {% for pub in site.data.cv.publications %}
-{\small \textbf{ {{ pub.title }} } \textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}} 
-{{ pub.authors }} \\
+{\small \textbf{ {{ pub.title }} } \textit{ {{ pub.venue }} }, {{ pub.year }}{% if pub.links %} {% for link in pub.links %}[\href{ {{ link.url }} }{ {{ link.name }} }] {% endfor %}{% endif %}}
+\\ {{ pub.authors }} 
 {% unless forloop.last %}\vspace{2pt} 
 {% endunless %}{% endfor %}
 
 % Side Projects
 \section{Side Projects}
 {% for project in site.data.cv.side_projects %}
-\cvitemsm{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }{ }
+\cvitemsm{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for detail in project.description %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
