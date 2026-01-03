@@ -108,7 +108,7 @@ permalink: /assets/pdf/cv.tex
 % Side Projects
 \section{Side Projects}
 {% for project in site.data.cv.side_projects %}
-\cvitemsm{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
+\cvitemsp{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for detail in project.description %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
