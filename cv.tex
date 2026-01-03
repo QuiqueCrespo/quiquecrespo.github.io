@@ -62,7 +62,7 @@ permalink: /assets/pdf/cv.tex
 % #3: Venue + Year
 % #4: Authors
 \newcommand{\cvitempb}[4]{
-    {\textbf #1}\textit{#2} \hfill \textit{#3} \\
+    \textbf{#1} \textit{#2} \hfill \textit{#3} \\
     #4
 }
 
@@ -111,11 +111,13 @@ permalink: /assets/pdf/cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    {%- if pub.links -%}
-      {%- for link in pub.links -%}
+    { % <--- OPENING BRACE FOR ARGUMENT 2
+    {% if pub.links %}
+      {% for link in pub.links %}
         \href{ {{ link.url }} }{[\small {{ link.name }}]} 
-      {%- endfor -%}
-    {%- endif -%}
+      {% endfor %}
+    {% endif %}
+    } % <--- CLOSING BRACE FOR ARGUMENT 2
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
 {% unless forloop.last %}\vspace{3pt} 
@@ -136,7 +138,8 @@ permalink: /assets/pdf/cv.tex
 \section{Skills}
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for skill in site.data.cv.skills %}    \item {\small \textbf{ {{ skill.category }}: } {{ skill.items }}}
-{% endfor %}\end{itemize}
+{% endfor %}
+\end{itemize}
 
 % Additional Information
 \section{Additional Information}
