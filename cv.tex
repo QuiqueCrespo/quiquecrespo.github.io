@@ -106,11 +106,18 @@ permalink: /assets/pdf/cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    {{% if pub.links %}{% for link in pub.links %}\href{ {{ link.url }} }{[\small {{ link.name }}]} {% endfor %}{% endif %}} 
+    { % <--- This brace starts Argument #2 (Links)
+    {% if pub.links %} % <--- FIXED: Removed the extra curly brace
+      {% for link in pub.links %}
+        \href{ {{ link.url }} }{[\small {{ link.name }}]} 
+      {% endfor %}
+    {% endif %}
+    } % <--- This brace ends Argument #2
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
-{% unless forloop.last %}\vspace{6pt} 
+{% unless forloop.last %}\vspace{4pt} 
 {% endunless %}{% endfor %}
+
 
 % Side Projects
 \section{Side Projects}
