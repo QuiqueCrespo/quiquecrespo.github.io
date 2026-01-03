@@ -57,9 +57,8 @@ permalink: /assets/pdf/cv.tex
 }
 
 \newcommand{\cvitempb}[4]{
-    % Added "~" before #2 to fix the touching text bug
-    \noindent \textbf{#1} \ #2 \hfill \textit{#3} \par 
-    \noindent {\small #4} \par
+    \noindent \textbf{#1}~#2 \hfill \textit{#3} \\ % Title + Links ---Fill--- Venue
+    {\small #4} \par                               % Authors on the next line
 }
 % Reduce spacing
 \setlength{\parindent}{0pt}
@@ -106,13 +105,7 @@ permalink: /assets/pdf/cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    { % <--- This brace starts Argument #2 (Links)
-    {% if pub.links %} % <--- FIXED: Removed the extra curly brace
-      {% for link in pub.links %}
-        \href{ {{ link.url }} }{[\small {{ link.name }}]} 
-      {% endfor %}
-    {% endif %}
-    } % <--- This brace ends Argument #2
+    {% if pub.links %}{% for link in pub.links %}\href{ {{ link.url }} }{[\small {{ link.name }}]} {% endfor %}{% endif %}
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
 {% unless forloop.last %}\vspace{4pt} 
