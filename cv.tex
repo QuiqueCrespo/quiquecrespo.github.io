@@ -56,15 +56,10 @@ permalink: /assets/pdf/cv.tex
     \textbf{#1} \textit{#3} \hfill \textit{#2}
 }
 
-% UPDATED COMMAND: 4 Arguments
-% #1: Title
-% #2: Links
-% #3: Venue + Year
-% #4: Authors
 \newcommand{\cvitempb}[4]{
-    \noindent \textbf{#1} \hfill #2 \par  % Title + Links (ends with paragraph break)
-    \noindent \textit{#3} \par            % Venue (ends with paragraph break)
-    \noindent \textit{#4}                 % Authors
+    \noindent \textbf{#1} #2 \par     % Title + Links (on same line)
+    \noindent \textit{#3} \par        % Venue (Italic)
+    \noindent {\small #4} \par        % Authors (Regular font, slightly smaller)
 }
 
 % Reduce spacing
@@ -112,16 +107,10 @@ permalink: /assets/pdf/cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    { % <--- OPENING BRACE FOR ARGUMENT 2
-    {% if pub.links %}
-      {% for link in pub.links %}
-        \href{ {{ link.url }} }{[\small {{ link.name }}]} 
-      {% endfor %}
-    {% endif %}
-    } % <--- CLOSING BRACE FOR ARGUMENT 2
+    {\hfill {% if pub.links %}{% for link in pub.links %}\href{ {{ link.url }} }{[\small {{ link.name }}]} {% endfor %}{% endif %}} 
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
-{% unless forloop.last %}\vspace{3pt} 
+{% unless forloop.last %}\vspace{6pt} 
 {% endunless %}{% endfor %}
 
 % Side Projects
