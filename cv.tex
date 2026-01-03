@@ -57,8 +57,8 @@ permalink: /assets/pdf/cv.tex
 }
 
 \newcommand{\cvitempb}[4]{
-    \noindent \textbf{#1} #2 \par     % Title + Links (on same line)
-    \noindent \textit{#3} \par        % Venue (Italic)
+    \noindent \textbf{#1}#2 \hfill \textit{#3} \par     % Title + Links (on same line)
+    % \noindent \textit{#3} \par        % Venue (Italic)
     \noindent {\small #4} \par        % Authors (Regular font, slightly smaller)
 }
 
@@ -107,7 +107,7 @@ permalink: /assets/pdf/cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    {\hfill {% if pub.links %}{% for link in pub.links %}\href{ {{ link.url }} }{[\small {{ link.name }}]} {% endfor %}{% endif %}} 
+    {{% if pub.links %}{% for link in pub.links %}\href{ {{ link.url }} }{[\small {{ link.name }}]} {% endfor %}{% endif %}} 
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
 {% unless forloop.last %}\vspace{6pt} 
