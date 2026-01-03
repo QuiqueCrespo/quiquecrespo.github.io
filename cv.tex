@@ -52,6 +52,10 @@ permalink: /assets/pdf/cv.tex
     \hfill \textit{#4}
 }
 
+\newcommand{\cvitemsp}[3]{
+    \textbf{#1} \textit{#3} \hfill \textit{#2} \\
+}
+
 % Reduce spacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -101,19 +105,16 @@ permalink: /assets/pdf/cv.tex
 {% unless forloop.last %}\vspace{2pt} 
 {% endunless %}{% endfor %}
 
-\vspace{3pt}
-
 % Side Projects
 \section{Side Projects}
 {% for project in site.data.cv.side_projects %}
-\cvitem{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }{ }
+\cvitemsm{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }{ }
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for detail in project.description %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
 {% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
-\vspace{3pt}
 
 % Skills
 \section{Skills}
