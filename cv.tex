@@ -57,11 +57,10 @@ permalink: /assets/pdf/cv.tex
 }
 
 \newcommand{\cvitempb}[4]{
-    \noindent \textbf{#1} #2 \hfill \textit{#3} \par     % Title + Links (on same line)
-    % \noindent \textit{#3} \par        % Venue (Italic)
-    \noindent {\small #4} \par        % Authors (Regular font, slightly smaller)
+    % Added "~" before #2 to fix the touching text bug
+    \noindent \textbf{#1}~#2 \hfill \textit{#3} \par 
+    \noindent {\small #4} \par
 }
-
 % Reduce spacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
