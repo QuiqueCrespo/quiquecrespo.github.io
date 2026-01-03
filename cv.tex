@@ -62,9 +62,9 @@ permalink: /assets/pdf/cv.tex
 % #3: Venue + Year
 % #4: Authors
 \newcommand{\cvitempb}[4]{
-    \textbf{#1} \hfill #2 \\   % Title bolded correctly, Links (#2) pushed right
-    \textit{#3} \\             % Venue
-    \textit{#4}                % Authors
+    \noindent \textbf{#1} \hfill #2 \par  % Title + Links (ends with paragraph break)
+    \noindent \textit{#3} \par            % Venue (ends with paragraph break)
+    \noindent \textit{#4}                 % Authors
 }
 
 % Reduce spacing
