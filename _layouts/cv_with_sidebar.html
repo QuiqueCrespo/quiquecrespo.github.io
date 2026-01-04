@@ -187,7 +187,7 @@
             // Check if PDF exists and disable link if not
             var pdfDownloadLink = document.getElementById('pdf-download-link-cv');
             if (pdfDownloadLink) {
-                fetch('/assets/cv.pdf', { method: 'HEAD' })
+                fetch('/assets/enrique-crespo-fernandez-cv.pdf', { method: 'HEAD' })
                     .then(response => {
                         if (!response.ok) {
                             pdfDownloadLink.style.opacity = '0.5';
