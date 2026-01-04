@@ -49,7 +49,6 @@ permalink: /assets/pdf/cv.tex
 % Custom commands
 \newcommand{\cvitem}[4]{
     \textbf{#1} \textit{#3} - \textit{#4} \hfill \textit{#2} 
-    % \hfill \textit{#4}
 }
 
 \newcommand{\cvitemsp}[3]{
@@ -79,7 +78,7 @@ permalink: /assets/pdf/cv.tex
 % Summary
 {\small {{ site.data.cv.summary }}}
 
-\vspace{3pt}
+\vspace{1pt}
 
 % Experience
 \section{Experience}
@@ -88,7 +87,8 @@ permalink: /assets/pdf/cv.tex
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for resp in job.responsibilities %}    \item {\small {{ resp }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{3pt}
+{% unless forloop.last %}
+\vspace{1pt}
 {% endunless %}{% endfor %}
 
 % Education
@@ -98,7 +98,8 @@ permalink: /assets/pdf/cv.tex
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for detail in edu.details %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{3pt}
+{% unless forloop.last %}
+\vspace{1pt}
 {% endunless %}{% endfor %}
 
 % Publications
@@ -108,7 +109,8 @@ permalink: /assets/pdf/cv.tex
     {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
-{% unless forloop.last %}\vspace{4pt} 
+{% unless forloop.last %}
+\vspace{1pt} 
 {% endunless %}{% endfor %}
 
 
@@ -119,7 +121,8 @@ permalink: /assets/pdf/cv.tex
 \begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
 {% for detail in project.description %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}\vspace{3pt}
+{% unless forloop.last %}
+\vspace{1pt}
 {% endunless %}{% endfor %}
 
 
