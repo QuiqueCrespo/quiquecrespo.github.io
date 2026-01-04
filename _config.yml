@@ -13,4 +13,4 @@ exclude:
 
 # Include .tex files for LaTeX CV generation
 include:
-  - cv.tex
+  - enrique-crespo-fernandez-cv.tex
