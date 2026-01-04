@@ -21,7 +21,7 @@ personal:
   phone: +34 626660775
   email: enrique.crespofernandez@bristol.ac.uk
   linkedin: https://www.linkedin.com/in/enrique-crespo-fernandez/
-  linkedin_handle: LinkedIn
+  linkedin_handle: enrique-crespo-fernandez
   github: https://github.com/QuiqueCrespo
   github_handle: QuiqueCrespo
   location: Bristol, United Kingdom
@@ -47,6 +47,7 @@ experience:
     dates: 2021-2022
     responsibilities:
       - Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.
+      - Developed a psicometric model and analysis pipeline from the ground up to extract personality traits from employee survey data, enabling HR teams to better understand workforce dynamics and inform talent management strategies. Opening a new revenue stream for the company.
       - Presented insights to cross-functional stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.
 
 # Education
@@ -58,14 +59,16 @@ education:
     details:
       - "Supervisor: Prof. Peter Flach"
       - "Research: Neuro-symbolic methods for explainable and generalisable agents"
+      - "My day to day research focuses on leveraging structured reasoning techniques to build autonomous agents that can learn and adapt online in high-stakes, human-in-the-loop environments."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
     location: Bath, UK
     dates: 2019-2023
     details:
-      - "Dissertation: Classifying dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office"
-      - "Overall grade: 71\\%"
+      - "Dissertation: Classifying dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office (71\\%)"
+      - "Notable modules: Quantum mechanics (88\\%), General relativity (71\\%), Analysis 2 (85\\%), Algebra 2 (81\\%)"
+      - "Overall final grade: 72\\%"
 
 # Publications
 publications:
@@ -79,8 +82,8 @@ publications:
 
 # Skills
 skills:
-  - category: Programming Languages and Frameworks
-    items: Python, C, JavaScript, Prolog, Haskell, React, Node.js
+  - category: Programming Languages 
+    items: Python, C, JavaScript, Prolog, Haskell
 
   - category: Data Science and Machine Learning
     items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
@@ -104,4 +107,4 @@ side_projects:
 # Additional Information
 additional:
   languages: English (fluent), Spanish (native).
-  interests: Programming, Physics, Mathematics, History and Philosophy.
+  interests: Software Development, Functional Programming, Formal Reasoning, Theoretical Physics, Medieval History and Classical Philosophy.
