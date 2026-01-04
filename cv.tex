@@ -63,6 +63,8 @@ permalink: /assets/pdf/cv.tex
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
+\setlist[itemize]{leftmargin=16pt, nosep}
+
 \begin{document}
 
 % Header
@@ -73,18 +75,16 @@ permalink: /assets/pdf/cv.tex
     \faGithub\ \href{ {{ site.data.cv.personal.github }} }{ {{ site.data.cv.personal.github_handle }} }
 \end{center}
 
-\vspace{2pt}
 
 % Summary
 {\small {{ site.data.cv.summary }}}
 
-\vspace{1pt}
 
 % Experience
 \section{Experience}
 {% for job in site.data.cv.experience %}
 \cvitem{ {{ job.institution }} }{ {{ job.dates }} }{ {{ job.position }} }{ {{ job.location }} }
-\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+\begin{itemize}
 {% for resp in job.responsibilities %}    \item {\small {{ resp }}}
 {% endfor %}\end{itemize}
 {% unless forloop.last %}
@@ -95,11 +95,10 @@ permalink: /assets/pdf/cv.tex
 \section{Education}
 {% for edu in site.data.cv.education %}
 \cvitem{ {{ edu.institution }} }{ {{ edu.dates }} }{ {{ edu.degree }} }{ {{ edu.location }} }
-\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+\begin{itemize}
 {% for detail in edu.details %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
 {% unless forloop.last %}
-\vspace{1pt}
 {% endunless %}{% endfor %}
 
 % Publications
@@ -110,7 +109,6 @@ permalink: /assets/pdf/cv.tex
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
 {% unless forloop.last %}
-\vspace{1pt} 
 {% endunless %}{% endfor %}
 
 
@@ -118,17 +116,16 @@ permalink: /assets/pdf/cv.tex
 \section{Side Projects}
 {% for project in site.data.cv.side_projects %}
 \cvitemsp{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
-\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+\begin{itemize}
 {% for detail in project.description %}    \item {\small {{ detail }}}
 {% endfor %}\end{itemize}
 {% unless forloop.last %}
-\vspace{1pt}
 {% endunless %}{% endfor %}
 
 
 % Skills
 \section{Skills}
-\begin{itemize}[leftmargin=16pt, topsep=1pt, itemsep=0pt]
+\begin{itemize}
 {% for skill in site.data.cv.skills %}    \item {\small \textbf{ {{ skill.category }}: } {{ skill.items }}}
 {% endfor %}
 \end{itemize}
