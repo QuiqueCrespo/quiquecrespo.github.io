@@ -47,8 +47,8 @@ experience:
     dates: 2021-2022
     responsibilities:
       - Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.
-      - Developed a psicometric model and analysis pipeline from the ground up to extract personality traits from employee survey data, enabling HR teams to better understand workforce dynamics and inform talent management strategies. Opening a new revenue stream for the company.
-      - Presented insights to cross-functional stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.
+      - Developed a psicometric model and analysis pipeline from the ground up to extract personality traits from employee survey data, enabling HR teams to better understand workforce dynamics. Opening a new revenue stream for the company.
+      - Presented insights to stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.
 
 # Education
 education:
@@ -57,23 +57,23 @@ education:
     location: Bristol, UK
     dates: 2024-2027 (expected)
     details:
-      - "Supervisor: Prof. Peter Flach"
-      - "Research: Neuro-symbolic methods for explainable and generalisable agents"
-      - "My day to day research focuses on leveraging structured reasoning techniques to build autonomous agents that can learn and adapt online."
+      - "Supervisor: Prof. Peter Flach."
+      - "Research: Neuro-symbolic methods for explainable and generalisable agents."
+      - "My day to day research focuses on leveraging structured reasoning to build autonomous agents that can learn and adapt online."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
     location: Bath, UK
     dates: 2019-2023
     details:
-      - "Dissertation: Classifying dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office (71\\%)"
-      - "Notable modules: Quantum mechanics (88\\%), General relativity (71\\%), Analysis 2 (85\\%), Algebra 2 (81\\%)"
-      - "Overall final grade: 72\\%"
+      - "Dissertation: Classifying dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office (71\\%)."
+      - "Notable modules: Quantum mechanics (88\\%), General relativity (71\\%), Analysis 2 (85\\%), Algebra 2 (81\\%)."
+      - "Overall final grade: 72\\%."
 
 # Publications
 publications:
   - title: "Weight-Space Linear Recurrent Neural Networks"
-    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, Enrique Crespo Fernandez, ..."
+    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, Enrique Crespo Fernandez, et al."
     venue: "Submitted to ICLR 2026"
     year: "2025"
     links:
