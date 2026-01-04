@@ -105,7 +105,7 @@ permalink: /assets/pdf/cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}}
+    {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
     { {{ pub.venue }}, {{ pub.year }} }
     { {{ pub.authors }} }
 {% unless forloop.last %}\vspace{4pt} 
