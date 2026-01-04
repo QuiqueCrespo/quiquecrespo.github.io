@@ -28,7 +28,7 @@ personal:
 
 # Professional Summary
 summary: |
-  I am a second-year PhD candidate at the Interactive Artificial Intelligence CDT seeking an industry research internship. My work focuses on developing neurosymbolic methods to build robust, explainable, and generalisable autonomous agents. I am interested in applying AI to high-stakes, human-in-the-loop domains such as energy, security, and defence. In these critical settings, I strive to build AI systems that are robust, reliable, and transparently audited by humans, ensuring accountability and ethical alignment. My research mainly focuses on leveraging symbolic AI techniques, such as logic programming and program synthesis, to enable agents to learn and reason about their environments online. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks.
+  AI Researcher specializing in the intersection of Deep Learning and Formal Reasoning. Currently a PhD candidate developing neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. I hold a strong mathematical foundation in Algebra and Theoretical Physics, which informs my work on interpretability and generalization beyond statistical correlation. Proficient in logic and functional programming, I am dedicated to moving beyond "black box" models by integrating structured knowledge representations into autonomous agents. I am seeking a research role that demands rigorous theoretical understanding and the ability to innovate at the fundamental architectural level.
 
 # Experience
 experience:
