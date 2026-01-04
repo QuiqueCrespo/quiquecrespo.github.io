@@ -59,7 +59,7 @@ education:
     details:
       - "Supervisor: Prof. Peter Flach"
       - "Research: Neuro-symbolic methods for explainable and generalisable agents"
-      - "My day to day research focuses on leveraging structured reasoning techniques to build autonomous agents that can learn and adapt online in high-stakes, human-in-the-loop environments."
+      - "My day to day research focuses on leveraging structured reasoning techniques to build autonomous agents that can learn and adapt online."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
