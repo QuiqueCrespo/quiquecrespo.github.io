@@ -17,7 +17,7 @@ projects:
     gif: 
     conference: Arxiv
     conference-web: https://arxiv.org/abs/2506.01153
-    status: Submitted to ICLR 2026
+    status: ICLR 2026
     authors: Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin
     pdf: assets/papers/WEIGHT-SPACE_LINEAR_RECURRENT_NEURAL_NETWORKS.pdf
     code: https://github.com/ddrous/warp

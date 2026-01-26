@@ -74,7 +74,7 @@ education:
 publications:
   - title: "Weight-Space Linear Recurrent Neural Networks"
     authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, Enrique Crespo Fernandez, et al."
-    venue: "Submitted to ICLR 2026"
+    venue: "ICLR 2026"
     year: "2025"
     links:
       - name: arXiv
