@@ -105,9 +105,9 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 \section{Publications}
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
-    {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
     { {{ pub.venue }}, {{ pub.year }} }
-    { {{ pub.authors }} }
+    { {{ pub.authors }} } {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
+
 {% unless forloop.last %}
 {% endunless %}{% endfor %}
 
