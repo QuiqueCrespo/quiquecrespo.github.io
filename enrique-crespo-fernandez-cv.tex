@@ -56,8 +56,8 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 }
 
 \newcommand{\cvitempb}[4]{
-    \noindent \textbf{#1} #2 \hfill \textit{#3} \\ % Title + Links ---Fill--- Venue
-    {\small #4} \par                               % Authors on the next line
+    \noindent \textbf{#1} \hfill \textit{#3} \\ % Title + Links ---Fill--- Venue
+    {\small #4} #2 \par                               % Authors on the next line
 }
 % Reduce spacing
 \setlength{\parindent}{0pt}
@@ -106,7 +106,7 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 {% for pub in site.data.cv.publications %}
 \cvitempb{ {{ pub.title }} }
     { {{ pub.venue }}, {{ pub.year }} }
-    { {{ pub.authors }} } {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
+    { {{ pub.authors }} }  {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
 
 {% unless forloop.last %}
 {% endunless %}{% endfor %}
