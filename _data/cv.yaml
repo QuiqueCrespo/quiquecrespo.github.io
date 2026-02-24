@@ -28,7 +28,7 @@ personal:
 
 # Professional Summary
 summary: |
-  AI Researcher specializing in the intersection of Deep Learning and Formal Reasoning. Currently a PhD candidate developing neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. I hold a strong mathematical foundation in Algebra and Theoretical Physics, which informs my work on interpretability and generalization beyond statistical correlation. Proficient in logic and functional programming, I am dedicated to moving beyond "black box" models by integrating structured knowledge representations into autonomous agents. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the ability to innovate at the fundamental architectural level.
+  AI Researcher specializing in the intersection of Deep Learning and Formal Reasoning. Currently a PhD candidate developing neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. I hold a strong mathematical foundation in Mathematics and Theoretical Physics, which informs my work on interpretability and generalization beyond statistical correlation. Proficient in logic and functional programming, I am dedicated to moving beyond "black box" models by integrating structured knowledge representations into autonomous agents. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the ability to innovate at the fundamental architectural level.
 
 # Experience
 experience:
@@ -115,4 +115,4 @@ side_projects:
 # Additional Information
 additional:
   languages: English (fluent), Spanish (native).
-  interests: Software Development, Functional Programming, Formal Reasoning, Theoretical Physics, Medieval History and Classical Philosophy.
+  interests: Functional Programming, Formal Reasoning, Theoretical Physics, Category Theory, History and Classical Philosophy.
