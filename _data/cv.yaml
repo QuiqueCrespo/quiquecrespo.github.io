@@ -82,7 +82,7 @@ publications:
 
   - title: "Continual learning and refinement of causal models through dynamic predicate invention"
     authors: "Enrique Crespo-Fernandez, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach"
-    venue: "Submitted to UCLR Workshop @ ICLR 2026"
+    venue: "UCLR @ ICLR"
     year: "2026"
     links:
       - name: arXiv
