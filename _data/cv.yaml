@@ -28,7 +28,7 @@ personal:
 
 # Professional Summary
 summary: |
-  AI Researcher specializing in the intersection of Deep Learning and Formal Reasoning. Currently a PhD candidate developing neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. I hold a strong mathematical foundation in Mathematics and Theoretical Physics, which informs my work on interpretability and generalization beyond statistical correlation. Proficient in logic and functional programming, I am dedicated to moving beyond "black box" models by integrating structured knowledge representations into autonomous agents. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the ability to innovate at the fundamental architectural level.
+  AI Researcher specializing in the intersection of Deep Learning and Formal Reasoning. Currently a PhD candidate developing neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. I hold a strong mathematical foundation in Mathematics and Theoretical Physics, which informs my work on interpretability and generalization beyond statistical correlation through program synthesis. Proficient in logic programming, I am dedicated to moving beyond "black box" models by integrating structured knowledge representations into autonomous agents. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the ability to innovate at the fundamental architectural level.
 
 # Experience
 experience:
@@ -77,21 +77,21 @@ publications:
     venue: "ICLR"
     year: "2026"
     links:
-      - name: ICLR
+      - name: Link
         url: https://iclr.cc/virtual/2026/poster/10006465
 
   - title: "Continual learning and refinement of causal models through dynamic predicate invention"
     authors: "Enrique Crespo-Fernandez, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach"
-    venue: "UCLR @ ICLR"
+    venue: "UCLR@ICLR"
     year: "2026"
     links:
-      - name: arXiv
+      - name: Link
         url: https://arxiv.org/abs/2602.17217
 
 # Skills
 skills:
   - category: Programming Languages 
-    items: Python, Prolog,  C, JavaScript, Haskell
+    items: Python, Prolog, ASP, C, JavaScript
 
   - category: Data Science and Machine Learning
     items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
@@ -115,4 +115,4 @@ side_projects:
 # Additional Information
 additional:
   languages: English (fluent), Spanish (native).
-  interests: Functional Programming, Formal Reasoning, Theoretical Physics, Category Theory, History and Classical Philosophy.
+  interests: Learning Theory, Theoretical Physics, Category Theory, History and road cycling.
