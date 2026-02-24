@@ -3,8 +3,8 @@ section_header: publications
 
 categories:
 
-  - data-filter: Symbolic AI
-    category-name: Symbolic AI
+  - data-filter: Neuro-Symbolic AI
+    category-name: Neuro-Symbolic AI
 
   - data-filter: Sequence Modeling
     category-name: Sequence Modeling
@@ -15,11 +15,11 @@ projects:
   - title: Weight-Space Linear Recurrent Neural Networks
     system-name:
     gif: 
-    conference: Arxiv
-    conference-web: https://arxiv.org/abs/2506.01153
+    conference: ICLR 2026
+    conference-web: https://iclr.cc/virtual/2026/poster/10006465
     status: ICLR 2026
     authors: Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A.W. Barton, Tom Deakin
-    pdf: assets/papers/WEIGHT-SPACE_LINEAR_RECURRENT_NEURAL_NETWORKS.pdf
+    pdf: 
     code: https://github.com/ddrous/warp
     demo:
     slides:
@@ -30,4 +30,21 @@ projects:
     tag: weight-space
     category: Sequence Modeling
 
+  - title: Continual learning and refinement of causal models through dynamic predicate invention
+    system-name:
+    gif: 
+    conference: Arxiv
+    conference-web: https://arxiv.org/abs/2602.17217
+    status: Sumbitted to UCLR Workshop @ ICLR 2026
+    authors: <u>Enrique Crespo-Fernandez</u>, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach
+    pdf: 
+    code: 
+    demo:
+    slides:
+    talk:
+    poster:
+    abstract-less: Efficiently navigating complex environments requires agents to internalize the underlying logic of their world, yet standard world modelling methods often struggle with sample inefficiency, lack of transparency, and poor scalability. 
+    abstract-more: We propose a framework for constructing symbolic causal world models entirely online by integrating continuous model learning and repair into the agent's decision loop, by leveraging the power of Meta-Interpretive Learning and predicate invention to find semantically meaningful and reusable abstractions, allowing an agent to construct a hierarchy of disentangled, high-quality concepts from its observations. We demonstrate that our lifted inference approach scales to domains with complex relational dynamics, where propositional methods suffer from combinatorial explosion, while achieving sample-efficiency orders of magnitude higher than the established PPO neural-network-based baseline.
+    tag: Inductive Logic Programming
+    category: Neuro-Symbolic AI
   
