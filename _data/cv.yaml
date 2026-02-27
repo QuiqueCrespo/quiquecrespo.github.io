@@ -27,9 +27,7 @@ personal:
   location: Bristol, United Kingdom
 
 # Professional Summary
-summary: |
-  AI Researcher specializing in the intersection of Deep Learning and Formal Reasoning. Currently a PhD candidate developing neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. I hold a strong mathematical foundation in Mathematics and Theoretical Physics, which informs my work on interpretability and generalization beyond statistical correlation through program synthesis. Proficient in logic programming, I am dedicated to moving beyond "black box" models by integrating structured knowledge representations into autonomous agents. Outside my main research area, I have experience in deep learning, particularly in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the ability to innovate at the fundamental architectural level.
-
+summary: AI Researcher specializing at the intersection of Deep Learning and Formal Reasoning. As a PhD candidate, I develop neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. My foundation in Mathematics and Theoretical Physics drives my focus on interpretability, pushing AI beyond mere statistical correlation. Proficient in logic programming, I am dedicated to replacing 'black-box' models with autonomous agents grounded in structured knowledge. Beyond this core focus, I have applied deep learning expertise in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the opportunity to innovate at the fundamental architectural level.
 # Experience
 experience:
   - institution: University of Bristol
