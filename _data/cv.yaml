@@ -56,8 +56,8 @@ education:
     dates: 2024-2027 (expected)
     details:
       - "Supervisor: Prof. Peter Flach."
-      - "Research: Neuro-symbolic methods for explainable and generalisable agents."
-      - "My day to day research focuses on leveraging structured reasoning to build autonomous agents that can learn and adapt online."
+      - "Work title: Learning to Search in Inductive Logic Programming."
+      - "My day to day research focuses on leveraging neural networks to augment symbolic program search."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
@@ -92,23 +92,9 @@ skills:
     items: Python, Prolog, ASP, C, JavaScript
 
   - category: Data Science and Machine Learning
-    items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis, NLP techniques
+    items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis
 
-# Side Projects
-side_projects:
-  - name: Peptide deep sequencing analysis tool
-    technologies: Python
-    dates: "2024"
-    description:
-      - Engineered a high-throughput bioinformatics pipeline to process raw peptide deep-sequencing data, automating previously manual alignment tasks.
-      - Optimized data ingestion and visualization workflows, significantly reducing analysis latency and enabling the interpretation of complex sequencing datasets.
 
-  - name: Gniiam (Restaurant Tech Platform)
-    technologies: React, Node.js, MongoDB
-    dates: "2023-2024"
-    description:
-      - Co-founded a full-stack distributed system for real-time order management, via QR-code endpoints.
-      - Built customer-facing ordering interface and analytics dashboard.
 
 # Additional Information
 additional:
