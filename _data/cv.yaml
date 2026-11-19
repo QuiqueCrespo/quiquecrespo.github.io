@@ -6,6 +6,7 @@ section_headers:
   experience: Experience
   education: Education
   publications: Publications
+  side_projects: Side Projects
   skills: Skills
   additional: Additional Information
 
@@ -92,6 +93,23 @@ skills:
 
   - category: Data Science and Machine Learning
     items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis
+
+
+# Side Projects
+side_projects:
+  - name: Peptide deep sequencing analysis tool
+    technologies: Python
+    dates: "2024"
+    description:
+      - Engineered a high-throughput bioinformatics pipeline to process raw peptide deep-sequencing data, automating previously manual alignment tasks.
+      - Optimized data ingestion and visualization workflows, significantly reducing analysis latency and enabling the interpretation of complex sequencing datasets.
+
+  - name: Gniiam (Restaurant Tech Platform)
+    technologies: React, Node.js, MongoDB
+    dates: "2023-2024"
+    description:
+      - Co-founded a full-stack distributed system for real-time order management, via QR-code endpoints.
+      - Built customer-facing ordering interface and analytics dashboard.
 
 
 

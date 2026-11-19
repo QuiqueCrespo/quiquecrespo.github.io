@@ -112,15 +112,15 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 {% endunless %}{% endfor %}
 
 
-% % Side Projects
-% \section{Side Projects}
-% {% for project in site.data.cv.side_projects %}
-% \cvitemsp{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
-% \begin{itemize}
-% {% for detail in project.description %}    \item {\small {{ detail }}}
-% {% endfor %}\end{itemize}
-% {% unless forloop.last %}
-% {% endunless %}{% endfor %}
+% Side Projects
+\section{Side Projects}
+{% for project in site.data.cv.side_projects %}
+\cvitemsp{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
+\begin{itemize}
+{% for detail in project.description %}    \item {\small {{ detail }}}
+{% endfor %}\end{itemize}
+{% unless forloop.last %}
+{% endunless %}{% endfor %}
 
 
 % Skills
