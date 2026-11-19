@@ -79,7 +79,7 @@ publications:
 
   - title: "Continual learning and refinement of causal models through dynamic predicate invention"
     authors: "Enrique Crespo-Fernandez, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach"
-    venue: "UCLRS"
+    venue: "UCLR"
     year: "2026"
     links:
       - name: Link
@@ -98,4 +98,4 @@ skills:
 # Additional Information
 additional:
   languages: English (fluent), Spanish (native).
-  interests: Learning Theory, Theoretical Physics, Category Theory, History and road cycling.
+  interests: Learning Theory, Theoretical Physics, History and Cycling.
