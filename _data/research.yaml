@@ -6,8 +6,8 @@ categories:
   - data-filter: Neuro-Symbolic AI
     category-name: Neuro-Symbolic AI
 
-  - data-filter: Sequence Modeling
-    category-name: Sequence Modeling
+  - data-filter: Sequence Modelling
+    category-name: Sequence Modelling
 
 
 projects:
@@ -25,15 +25,15 @@ projects:
     slides:
     talk:
     poster:
-    abstract-less: We introduce WARP (Weight-space Adaptive Recurrent Prediction), a simple yet powerful model that unifies weight-space learning with linear recurrence to redefine sequence modeling. Unlike conventional recurrent neural networks (RNNs)
-    abstract-more: which collapse temporal dynamics into fixed-dimensional hidden states, WARP explicitly parametrizes its hidden state as the weights and biases of a distinct auxiliary neural network, and uses input differences to drive its recurrence. This brain-inspired formulation enables efficient gradient-free adaptation of the auxiliary network at test-time, in-context learning abilities, and seamless integration of domain-specific physical priors. Empirical validation shows that WARP matches or surpasses state-of-the-art baselines on diverse classification tasks, featuring in the top three in 5 out of 6 real-world challenging datasets. Furthermore, extensive experiments across sequential image completion, multivariate time series forecasting, and dynamical system reconstruction demonstrate its expressiveness and generalisation capabilities. Remarkably, a physics-informed variant of our model outperforms the next best model by more than 10x. Ablation studies confirm the architectural necessity of key components, solidifying weight-space linear RNNs as a transformative paradigm for adaptive machine intelligence.
+    abstract-less: We introduce WARP (Weight-space Adaptive Recurrent Prediction), a simple yet powerful model that unifies weight-space learning with linear recurrence to redefine sequence modelling. Unlike conventional recurrent neural networks (RNNs)
+    abstract-more: which collapse temporal dynamics into fixed-dimensional hidden states, WARP explicitly parametrises its hidden state as the weights and biases of a distinct auxiliary neural network, and uses input differences to drive its recurrence. This brain-inspired formulation enables efficient gradient-free adaptation of the auxiliary network at test-time, in-context learning abilities, and seamless integration of domain-specific physical priors. Empirical validation shows that WARP matches or surpasses state-of-the-art baselines on diverse classification tasks, featuring in the top three in 5 out of 6 real-world challenging datasets. Furthermore, extensive experiments across sequential image completion, multivariate time series forecasting, and dynamical system reconstruction demonstrate its expressiveness and generalisation capabilities. Remarkably, a physics-informed variant of our model outperforms the next best model by more than 10x. Ablation studies confirm the architectural necessity of key components, solidifying weight-space linear RNNs as a transformative paradigm for adaptive machine intelligence.
     tag: weight-space
-    category: Sequence Modeling
+    category: Sequence Modelling
 
   - title: Continual learning and refinement of causal models through dynamic predicate invention
     system-name:
     gif: 
-    conference: Arxiv
+    conference: arXiv
     conference-web: https://arxiv.org/abs/2602.17217
     status: UCLR Workshop @ ICLR 2026
     authors: <u>Enrique Crespo-Fernandez</u>, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach
@@ -43,8 +43,8 @@ projects:
     slides:
     talk:
     poster:
-    abstract-less: Efficiently navigating complex environments requires agents to internalize the underlying logic of their world, yet standard world modelling methods often struggle with sample inefficiency, lack of transparency, and poor scalability. 
-    abstract-more: We propose a framework for constructing symbolic causal world models entirely online by integrating continuous model learning and repair into the agent's decision loop, by leveraging the power of Meta-Interpretive Learning and predicate invention to find semantically meaningful and reusable abstractions, allowing an agent to construct a hierarchy of disentangled, high-quality concepts from its observations. We demonstrate that our lifted inference approach scales to domains with complex relational dynamics, where propositional methods suffer from combinatorial explosion, while achieving sample-efficiency orders of magnitude higher than the established PPO neural-network-based baseline.
+    abstract-less: Efficiently navigating complex environments requires agents to internalise the underlying logic of their world, yet standard world modelling methods often struggle with sample inefficiency, lack of transparency, and poor scalability. 
+    abstract-more: We propose a framework for constructing symbolic causal world models entirely online by integrating continuous model learning and repair into the agent's decision loop. By leveraging Meta-Interpretive Learning and predicate invention to find semantically meaningful and reusable abstractions, our approach allows an agent to construct a hierarchy of disentangled, high-quality concepts from its observations. We demonstrate that our lifted inference approach scales to domains with complex relational dynamics, where propositional methods suffer from combinatorial explosion, while achieving sample-efficiency orders of magnitude higher than the established PPO neural-network-based baseline.
     tag: Inductive Logic Programming
     category: Neuro-Symbolic AI
   

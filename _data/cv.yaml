@@ -27,7 +27,7 @@ personal:
   location: Bristol, United Kingdom
 
 # Professional Summary
-summary: AI Researcher specializing at the intersection of Deep Learning and Formal Reasoning. As a PhD candidate, I develop neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. My foundation in Mathematics and Theoretical Physics drives my focus on interpretability, pushing AI beyond mere statistical correlation. Proficient in logic programming, I am dedicated to replacing 'black-box' models with autonomous agents grounded in structured knowledge. Beyond this core focus, I have applied deep learning expertise in sequence modeling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the opportunity to innovate at the fundamental architectural level.
+summary: AI researcher working at the intersection of Deep Learning and Formal Reasoning. As a PhD candidate, I develop neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. My foundation in Mathematics and Theoretical Physics drives my focus on interpretability, pushing AI beyond mere statistical correlation. Proficient in logic programming, I am dedicated to replacing 'black-box' models with autonomous agents grounded in structured knowledge. Beyond this core focus, I have applied deep learning expertise in sequence modelling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the opportunity to innovate at the fundamental architectural level.
 # Experience
 experience:
   - institution: University of Bristol
@@ -45,7 +45,7 @@ experience:
     dates: 2021-2022
     responsibilities:
       - Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.
-      - Developed a psicometric model and analysis pipeline from the ground up to extract personality traits from employee survey data, enabling HR teams to better understand workforce dynamics. Opening a new revenue stream for the company.
+      - Developed a psychometric model and analysis pipeline from the ground up to extract personality traits from employee survey data, enabling HR teams to better understand workforce dynamics and opening a new revenue stream for the company.
       - Presented insights to stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.
 
 # Education
@@ -56,8 +56,8 @@ education:
     dates: 2024-2027 (expected)
     details:
       - "Supervisor: Prof. Peter Flach."
-      - "Work title: Learning to Search in Inductive Logic Programming."
-      - "My day to day research focuses on leveraging neural networks to augment symbolic program search."
+      - "Working title: Learning to Search in Inductive Logic Programming."
+      - "My day-to-day research focuses on leveraging neural networks to augment symbolic program search."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
@@ -92,7 +92,7 @@ skills:
     items: Python, Prolog, ASP, C, JavaScript
 
   - category: Data Science and Machine Learning
-    items: Deep-learning architectures (Pytorch), ML algorithms, logic-based systems, program synthesis
+    items: Deep-learning architectures (PyTorch), ML algorithms, logic-based systems, program synthesis
 
 
 # Side Projects
@@ -102,18 +102,18 @@ side_projects:
     dates: "2024"
     description:
       - Engineered a high-throughput bioinformatics pipeline to process raw peptide deep-sequencing data, automating previously manual alignment tasks.
-      - Optimized data ingestion and visualization workflows, significantly reducing analysis latency and enabling the interpretation of complex sequencing datasets.
+      - Optimised data ingestion and visualisation workflows, significantly reducing analysis latency and enabling the interpretation of complex sequencing datasets.
 
   - name: Gniiam (Restaurant Tech Platform)
     technologies: React, Node.js, MongoDB
     dates: "2023-2024"
     description:
-      - Co-founded a full-stack distributed system for real-time order management, via QR-code endpoints.
-      - Built customer-facing ordering interface and analytics dashboard.
+      - Co-founded a restaurant-tech start-up and engineered its full-stack distributed system for real-time order management via QR-code endpoints.
+      - Built the customer-facing ordering interface and analytics dashboard.
 
 
 
 # Additional Information
 additional:
   languages: English (fluent), Spanish (native).
-  interests: Learning Theory, Theoretical Physics, History and Cycling.
+  interests: Learning Theory, Theoretical Physics, History, and Cycling.
