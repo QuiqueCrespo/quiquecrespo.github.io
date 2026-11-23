@@ -1,19 +1,19 @@
 <!-- Footer section -->
 
         <footer>
-            <div class="row">
-                <div class="col-md-6 text-left">
+            <div class="footer-inner">
+                <div class="text-left">
                     <div class="footer-copy">© {{ site.title }}, <span id="currentYear"></span></div>
                     <a href="{{ site.data.footer.github-repo-url }}" target="_blank" rel="noopener" class="footer-source">{{ site.data.footer.github-link-text }}</a>
                 </div>
-                <div class="col-md-6 text-right">
+                <div class="text-right">
                     {% for logo in site.data.footer.logos %}{% include_relative _libs/footer_widget.html %}{% endfor %}
                 </div>
             </div>
         </footer>
 
-    </div> <!-- Close col-lg-9 -->
-</div> <!-- Close row -->
+    </main> <!-- Close main-column -->
+</div> <!-- Close site-grid -->
 
 <!-- Contact Card Overlay -->
 <div class="contact-card-overlay" id="overlay-bg">

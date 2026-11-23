@@ -52,11 +52,18 @@ html.dark-theme {
     --btn-primary-fg: #111214;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
     background-color: var(--bg-color);
     background-image: var(--bg-glow);
     background-attachment: fixed;
@@ -71,6 +78,10 @@ body {
     overflow-x: hidden;
 }
 
+p { margin-top: 0; margin-bottom: 1rem; }
+h1, h2, h3, h4, h5, h6 { margin-top: 0; }
+button, input { font: inherit; }
+
 #symbolic-canvas {
     position: fixed;
     inset: 0;
@@ -84,15 +95,40 @@ body {
 .site-shell {
     position: relative;
     z-index: 1;
-    padding-top: 4rem;
-    padding-bottom: 2.5rem;
+    width: 100%;
     max-width: 1080px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2.5rem;
 }
 
 .cv-shell {
     padding-top: 2.75rem;
     padding-bottom: 3.5rem;
 }
+
+.site-grid {
+    display: grid;
+    grid-template-columns: 235px minmax(0, 1fr);
+    gap: 2.75rem;
+    align-items: start;
+}
+
+@media (max-width: 991px) {
+    .site-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.section-gap,
+.mb-5 { margin-bottom: 3rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.icon-mr { margin-right: 0.45rem; }
+
+.collapsible { display: none; }
+.collapsible.is-open { display: block; }
+.collapsible-inline { display: none; }
+.collapsible-inline.is-open { display: inline; }
 
 
 /* =================================
@@ -1110,10 +1146,8 @@ a:hover {
         display: none !important;
     }
 
-    .col-lg-9 {
-        width: 100% !important;
-        max-width: 100% !important;
-        flex: 0 0 100% !important;
+    .site-grid {
+        grid-template-columns: 1fr !important;
     }
 
     .cv-content {
@@ -1243,8 +1277,12 @@ footer {
     font-size: 0.86rem;
 }
 
-footer .row {
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
 }
 
 .footer-copy {
@@ -1319,9 +1357,10 @@ footer .text-right {
 .paper-shell {
     position: relative;
     z-index: 1;
+    width: 100%;
     max-width: 900px;
-    padding-top: 2.25rem;
-    padding-bottom: 3rem;
+    margin: 0 auto;
+    padding: 2.25rem 1.5rem 3rem;
 }
 
 .paper-topbar {

@@ -5,7 +5,6 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-# Permissions needed to deploy to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -16,7 +15,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,53 +39,44 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      # --- LATEX PDF COMPILATION ---
+      # --- FAST LATEX PDF COMPILATION (CACHED PDF + TECTONIC) ---
 
-      - name: Compile LaTeX CV
-        uses: xu-cheng/latex-action@v3
+      - name: Cache compiled CV PDF
+        id: pdf-cache
+        uses: actions/cache@v4
         with:
-          root_file: _site/assets/pdf/enrique-crespo-fernandez-cv.tex
-          args: -file-line-error -interaction=nonstopmode
-          compiler: latexmk
-          latexmk_use_xelatex: true
+          path: _site/assets/enrique-crespo-fernandez-cv.pdf
+          key: cv-pdf-${{ hashFiles('_data/cv.yaml', 'enrique-crespo-fernandez-cv.tex') }}
 
-      - name: Debug - Find PDF location
-        run: |
-          echo "Looking for enrique-crespo-fernandez-cv.pdf files:"
-          find . -name "enrique-crespo-fernandez-cv.pdf" -type f
-          echo "Contents of _site/assets/pdf/:"
-          ls -la _site/assets/pdf/ || echo "Directory doesn't exist or is empty"
+      - name: Cache Tectonic binary & TeX bundle
+        if: steps.pdf-cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/bin/tectonic
+            ~/.cache/Tectonic
+          key: tectonic-${{ runner.os }}-v1-${{ hashFiles('enrique-crespo-fernandez-cv.tex') }}
+          restore-keys: |
+            tectonic-${{ runner.os }}-v1-
 
-      - name: Move PDF to Assets
+      - name: Install & Compile LaTeX CV with Tectonic
+        if: steps.pdf-cache.outputs.cache-hit != 'true'
         run: |
-          # The latex-action generates the PDF in the same directory as the .tex file
-          if [ -f enrique-crespo-fernandez-cv.pdf ]; then
-            mv enrique-crespo-fernandez-cv.pdf _site/assets/enrique-crespo-fernandez-cv.pdf
-            echo "PDF moved from root to _site/assets/enrique-crespo-fernandez-cv.pdf"
-          elif [ -f _site/assets/pdf/enrique-crespo-fernandez-cv.pdf ]; then
-            mv _site/assets/pdf/enrique-crespo-fernandez-cv.pdf _site/assets/enrique-crespo-fernandez-cv.pdf
-            echo "PDF moved from _site/assets/pdf/ to _site/assets/enrique-crespo-fernandez-cv.pdf"
-          else
-            echo "ERROR: Could not find enrique-crespo-fernandez-cv.pdf"
-            exit 1
+          mkdir -p "$HOME/.local/bin" _site/assets
+          if [ ! -x "$HOME/.local/bin/tectonic" ]; then
+            curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+            mv tectonic "$HOME/.local/bin/tectonic"
           fi
-          echo "Final location: _site/assets/enrique-crespo-fernandez-cv.pdf"
+          "$HOME/.local/bin/tectonic" -o _site/assets _site/assets/pdf/enrique-crespo-fernandez-cv.tex
           ls -lh _site/assets/enrique-crespo-fernandez-cv.pdf
 
-      # -----------------------------
+      # ----------------------------------------------------------
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site"
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

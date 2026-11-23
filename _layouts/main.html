@@ -1,31 +1,25 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
-        <!-- Apply theme immediately to prevent flash - must be first script -->
+        <!-- Apply theme immediately to prevent flash -->
         <script>
             (function() {
                 const savedTheme = localStorage.getItem('theme');
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-                const themeClass = isDark ? 'dark-theme' : 'light-theme';
-                document.documentElement.classList.add(themeClass);
+                document.documentElement.classList.add(isDark ? 'dark-theme' : 'light-theme');
             })();
         </script>
 
-        <!-- Metadata -->
         <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="{{ site.title }} — PhD candidate in Artificial Intelligence at the University of Bristol."/>
         <meta name="author" content="{{ site.title }}"/>
         <title>{{ site.title }} | {{ site.info }}</title>
         <link rel="icon" type="image/x-icon" href="/{{ site.icon-pic }}"/>
 
         <!-- Font Awesome icons -->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
 
         <!-- Google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,38 +31,19 @@
     </head>
 
     <body>
-        <!-- Subtle interactive neuro-symbolic graph background -->
         <canvas id="symbolic-canvas" aria-hidden="true"></canvas>
 
-        <!-- Progress bar on top -->
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
 
-        <!-- Back to top button -->
         <button id="back-to-top-button" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
-
-        <!-- Toggle dark/light theme button -->
         <button class="toggle-theme-button" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">◐</button>
 
-        <!-- Content -->
-        <div class="container site-shell">
+        <div class="site-shell">
             {{ content }}
         </div>
 
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-        <!-- Bootstrap Bundle (includes Popper) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Isotope JS -->
-        <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.2/dist/isotope.pkgd.min.js"></script>
-
-        <!-- Axios JS -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-        <!-- Core theme JS -->
-        <script src="/js/scripts.js"></script>
+        <script defer src="/js/scripts.js?v={{ site.time | date: '%s' }}"></script>
     </body>
 </html>

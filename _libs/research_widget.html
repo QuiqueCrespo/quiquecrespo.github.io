@@ -22,11 +22,11 @@
             {% if project.talk %}<a class="action-pill" href="{{ project.talk }}" target="_blank" rel="noopener"><i class="fas fa-video"></i> Talk</a>{% endif %}
             {% if project.poster %}<a class="action-pill" href="{{ project.poster }}" target="_blank" rel="noopener"><i class="fas fa-image"></i> Poster</a>{% endif %}
             {% if project.bibtex %}
-            <button type="button" class="action-pill bibtex-toggle-btn" data-toggle="collapse" data-target="#bib-{{ project.tag }}" aria-expanded="false"><i class="fas fa-quote-right"></i> BibTeX</button>
+            <button type="button" class="action-pill bibtex-toggle-btn" data-collapse="#bib-{{ project.tag }}" aria-expanded="false"><i class="fas fa-quote-right"></i> BibTeX</button>
             {% endif %}
         </div>
         {% if project.bibtex %}
-        <div class="collapse bibtex-drawer" id="bib-{{ project.tag }}">
+        <div class="collapsible bibtex-drawer" id="bib-{{ project.tag }}">
             <div class="bibtex-box">
                 <button type="button" class="copy-inline-btn bibtex-copy-btn" data-copy-target="#bib-code-{{ project.tag }}">Copy</button>
                 <pre id="bib-code-{{ project.tag }}"><code>{{ project.bibtex | strip }}</code></pre>
@@ -36,10 +36,10 @@
         <div class="project-abstract">
             <span class="abstract-label">Abstract</span>
             {{ project.abstract-less }}
-            <span class="collapse" id="{{ project.tag }}">
+            <span class="collapsible-inline" id="{{ project.tag }}">
                 {{ project.abstract-more }}
             </span>
-            <a href="#{{ project.tag }}" data-toggle="collapse" class="abstract-toggle" id="link-{{ project.tag }}">... Read more</a>
+            <a href="#{{ project.tag }}" data-collapse="#{{ project.tag }}" class="abstract-toggle" id="link-{{ project.tag }}">... Read more</a>
         </div>
     </div>
 </article>
