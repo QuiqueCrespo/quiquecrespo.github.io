@@ -2,14 +2,15 @@
 
         <div id="resources" class="mb-5">
             <h2>{{ site.data.resources.section_header }}</h2>
-            {{ site.data.resources.introduction }}
-            <p></p>
+            <p>{{ site.data.resources.introduction }}</p>
+            {% if site.data.resources.categories.size > 1 %}
             <div id="filters-resources" class="mb-4">
                 <button class="filter-button active" data-filter="*">all</button>
                 {% for category in site.data.resources.categories %}
                     <button class="filter-button" data-filter="{{ category.data-filter }}">{{ category.category-name }}</button>
                 {% endfor %}
             </div>
+            {% endif %}
             <div id="github-cards" class="isotope">
                 {% for link in site.data.resources.links %}
                     {% include_relative _libs/resources_widget.html %}

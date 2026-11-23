@@ -1,42 +1,40 @@
-# basic information
+# Basic information
 name: Enrique Crespo Fernández
-subtitle: PhD Candidate, Interactive Artificial Intelligence @ University of Bristol
+subtitle: PhD Candidate in AI @ University of Bristol · Math & Physics (BSc)
 profile-pic: assets/img/profile_pic.png
-# pronunciation: /kʰæŋ/
- 
 
-# social links
+# Social links
 scholar: https://scholar.google.com/citations?user=IcwCwJ8AAAAJ&hl=es
 researchgate:
 github: https://github.com/QuiqueCrespo
 linkedin: https://www.linkedin.com/in/enrique-crespo-fernandez/
 youtube:
-resume: cv_page.html  # link to CV page with sidebar
-projects:           # delete "show" or leave it blank to hide this icon
-location:
-codepen:
-orcid:            
+resume: cv_page.html
 
-# information for contact card
-dept: Department of Computer Science, University of Bristol
+# Information for contact card
+dept: School of Computer Science, University of Bristol
 lab: Interactive Artificial Intelligence CDT
 email: enrique.crespofernandez@bristol.ac.uk
-phone: +34 626660775
+phone: "+34 626 660 775"
 website: https://quiquecrespo.github.io/
 address-line1: One Cathedral Square
 address-line2: Bristol, UK
 
-# about me
-first-paragraph: I am a PhD student at the UKRI-funded <hightlight>Interactive Artificial Intelligence CDT</hightlight> at the <a href="https://www.bristol.ac.uk/" target="_blank" rel="noopener">University of Bristol</a> under the supervision of <a href="" target="_blank" rel="noopener">Prof. Peter Flach</a>, <a href="" target="_blank" rel="noopener">Dr. Telmo de Menezes e Silva Filho</a> and <a href="" target="_blank" rel="noopener">Dr. Oliver Ray</a>. My work mainly focuses on neuro-symbolic program synthesis. My primary research interest involves using neural networks to augment symbolic program search, mainly in logic programming. On the side, I am also investigating in-context learning for physics-informed models.
+# About me
+first-paragraph: >-
+  I am a PhD candidate in the UKRI-funded <a href="https://www.bristol.ac.uk/cdt/interactive-ai/" target="_blank" rel="noopener"><span class="highlight">Interactive Artificial Intelligence CDT</span></a> at the <a href="https://www.bristol.ac.uk/" target="_blank" rel="noopener">University of Bristol</a>, supervised by <a href="https://research-information.bris.ac.uk/en/persons/peter-a-flach" target="_blank" rel="noopener">Prof. Peter Flach</a>, <a href="https://research-information.bris.ac.uk/en/persons/telmo-de-menezes-e-silva-filho" target="_blank" rel="noopener">Dr. Telmo de Menezes e Silva Filho</a>, and <a href="https://research-information.bris.ac.uk/en/persons/oliver-ray" target="_blank" rel="noopener">Dr. Oliver Ray</a>. My research sits at the intersection of neuro-symbolic reasoning, program synthesis, and adaptive sequence modelling—combining neural networks with inductive logic programming to accelerate symbolic search and learn continual causal world models, alongside work on weight-space linear recurrent architectures and physics-informed in-context learning.
 
-second-paragraph: I completed my undergraduate degree in Maths & Physics at the <a href="https://www.bath.ac.uk/" target="_blank" rel="noopener">University of Bath</a> in 2023. During my studies, I worked as a Data Scientist at <a href="https://www.lukkap.com/" target="_blank" rel="noopener">Lukkap</a>, where I developed data applications to automate analysis and extract insights, greatly optimising previous workflows. For my final-year dissertation, I developed a CNN-based system to detect dangerous sea wave events on the Cornish coast using radar data, in collaboration with the <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener">Met Office</a>. I joined the IAI CDT after graduation to further pursue a career in AI research.
+second-paragraph: >-
+  Previously, I earned a First-Class Honours BSc in Mathematics &amp; Physics at the <a href="https://www.bath.ac.uk/" target="_blank" rel="noopener">University of Bath</a> (2023), where my dissertation built a CNN-based detector for extreme sea-wave events from noisy coastal radar scans in collaboration with the <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener">UK Met Office</a>. During my degree, I also worked as a Data Scientist Intern at <a href="https://www.lukkap.com/" target="_blank" rel="noopener">Lukkap</a>, building end-to-end NLP and statistical psychometric pipelines to extract actionable signal from large-scale survey data.
 
-research-introduction: 
+research-introduction:
 
 research-interests:
+  - field: Neuro-Symbolic Reasoning
+    subfields: Inductive Logic Programming, Program Synthesis, Causal World Models
 
-  - field: Symbolic AI
-    subfields: Logic Programming, Inductive Logic Programming, Neuro-symbolic Program Synthesis
-  
-  - field: Online Learning
-    subfields: Causal Reasoning, Lifelong Learning, In-context Learning
+  - field: Sequence &amp; Adaptive Modelling
+    subfields: Linear Recurrent Architectures, Test-Time Adaptation, In-Context Learning
+
+  - field: Statistical &amp; Scientific ML
+    subfields: Learning from Noisy Data, Physics-Informed Models, Continual Learning

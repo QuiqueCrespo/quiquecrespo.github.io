@@ -42,21 +42,13 @@ body {
     font-size: 1rem;
     transition: background-color 0.5s, color 0.5s;
 }
- 
+
 
 /* =================================
    TYPOGRAPHY - Classic vs Modern
    ================================= */
 
-h1 {
-    font-family: 'Poiret One', cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent-color);
-    font-weight: normal;
-}
-
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Poiret One', cursive;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -73,25 +65,38 @@ h2 {
     width: 100%;
 }
 
+.site-name {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.site-subtitle {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
 /* Hyperlink styles */
 a {
     color: var(--text-main);
     text-decoration: underline;
     font-style: italic;
 }
+
 a:hover {
-    color: var(--text-main);
+    color: var(--accent-color);
     text-decoration: underline;
 }
 
-hightlight {
+.highlight {
     background-color: #f0f0f0;
     padding: 0 4px;
     border-radius: 2px;
     font-weight: 500;
 }
 
-.dark-theme hightlight {
+.dark-theme .highlight {
     background-color: #3a3a3a;
     color: #ffffff;
 }
@@ -101,38 +106,35 @@ hightlight {
     font-size: 1.2rem;
 }
 
-
-/* Styles for user selection */
+/* User selection */
 ::selection {
     background-color: #ffb699;
-    transition: 0.5s;
 }
 
-/* Light theme style for user selection */
 .light-theme ::selection {
     background-color: #ffb699;
 }
 
-/* Dark theme style for user selection */
 .dark-theme ::selection {
     background-color: #545454;
 }
 
-
-/* Code-style text for research interest */
+/* Code-style text for research interests */
 code {
-    font-family: "Consolas";
+    font-family: 'Fira Code', monospace;
     color: #333;
     background-color: #f1f1f1;
-    padding: 2px 4px 2px 4px;
+    padding: 2px 4px;
     font-size: 83%;
     border-radius: 5px;
     transition: 0.5s;
 }
+
 .light-theme code {
     color: #fff;
     background-color: #909090;
 }
+
 .dark-theme code {
     color: #333;
     background-color: #f1f1f1;
@@ -140,18 +142,20 @@ code {
 
 /* Code container styles */
 .codebox {
-    font-family: "Consolas";
+    font-family: 'Fira Code', monospace;
     color: #333;
     border-left: 4px solid #4a5568;
-    padding: 0.25rem 0 0.25rem 0.75rem;
-    opacity: 0.85;
-    font-size: 89%;
+    padding: 0.5rem 0.75rem;
+    opacity: 0.9;
+    font-size: 86%;
     transition: 0.5s;
 }
+
 .light-theme .codebox {
     color: #333;
     background-color: #f5f5f5;
 }
+
 .dark-theme .codebox {
     color: #fff;
     background-color: #2d2d2d;
@@ -167,12 +171,12 @@ code {
     margin-bottom: 2rem;
 }
 
-/* Border styles for profile picture */
 .ring-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .ring {
     width: 160px;
     height: 160px;
@@ -180,6 +184,7 @@ code {
     box-sizing: border-box;
     position: relative;
 }
+
 .hollow-ring {
     width: 152px;
     height: 152px;
@@ -192,12 +197,15 @@ code {
     z-index: 1;
     transition: 0.5s;
 }
+
 .light-theme .hollow-ring {
     background-color: #ffffff;
 }
+
 .dark-theme .hollow-ring {
     background-color: #333333;
 }
+
 .profile-image {
     width: 152px;
     height: 152px;
@@ -210,37 +218,19 @@ code {
     outline: 1px solid #000;
     outline-offset: 4px;
     z-index: 2;
+    object-fit: cover;
 }
+
 .light-theme .profile-image {
     border: 1px solid #000;
     outline: 1px solid #000;
 }
+
 .dark-theme .profile-image {
     border: 1px solid #fff;
     outline: 1px solid #fff;
 }
 
-
-/* =================================
-   PROFILE EMAIL
-   ================================= */
-
-.profile-email {
-    text-align: center;
-    margin: 1rem 0;
-    font-size: 0.9rem;
-}
-
-.profile-email a {
-    color: var(--text-main);
-    text-decoration: underline;
-    font-style: normal;
-    font-family: 'Fira Code', monospace;
-}
-
-.profile-email a:hover {
-    text-decoration: underline;
-}
 
 /* =================================
    SOCIAL ICONS - Minimalist
@@ -259,18 +249,17 @@ code {
     justify-content: center;
     color: var(--text-main);
     transition: transform 0.2s ease;
+    text-decoration: none;
+    font-style: normal;
 }
 
-.social-icons .social-icon i {
+.social-icons .social-icon i,
+.social-icons .social-icon svg {
     color: var(--accent-color) !important;
     font-size: 1.2rem !important;
 }
 
 .social-icons .social-icon:hover {
-    transform: translateY(-2px);
-}
-
-.social-icons .social-icon:hover i {
     transform: translateY(-2px);
 }
 
@@ -304,20 +293,16 @@ code {
     font-size: 0.85rem;
 }
 
-.profile-menu-item:hover {
+.profile-menu-item:hover,
+.profile-menu-item.active {
     background: var(--accent-color);
     color: var(--bg-color);
     text-decoration: none;
 }
 
-.profile-menu-item.active {
-    background: var(--accent-color);
-    color: var(--bg-color);
-}
-
 
 /* =================================
-   CONTACT CARD - Art Deco Flip
+   CONTACT CARD - Art Deco Overlay
    ================================= */
 
 .contact-card-overlay {
@@ -327,18 +312,16 @@ code {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     z-index: 9999;
     justify-content: center;
     align-items: center;
 }
 
 .dark-theme .contact-card-overlay {
-    background: rgba(26,26,26,0.95);
+    background: rgba(26, 26, 26, 0.95);
 }
 
-
-/* Styles for information card */
 .information_card {
     font-family: 'Sulphur Point', sans-serif;
     position: relative;
@@ -352,7 +335,7 @@ code {
     color: var(--text-main);
     padding: 2rem;
     border: var(--deco-border);
-    box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
     max-width: 500px;
 }
 
@@ -362,11 +345,16 @@ code {
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
+    text-align: center;
 }
 
 .contact-info-detail {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     text-align: center;
+}
+
+.contact-info-detail:last-child {
+    margin-bottom: 0;
 }
 
 .contact-info-detail p {
@@ -394,13 +382,14 @@ code {
    ================================= */
 
 #projects {
-    margin: 0px;
+    margin: 0;
 }
 
 .project {
     margin-bottom: 2.5rem;
     border-left: 2px solid var(--accent-color);
     padding-left: 1.5rem;
+    width: 100%;
 }
 
 .project img {
@@ -409,28 +398,24 @@ code {
 
 .project object,
 .project embed {
-    border: 1px solid var(--border-style);
+    border: var(--border-style);
     background: var(--bg-color);
 }
 
-.project-pdf {
-    min-height: 300px;
-    max-height: 400px;
-}
-
-.dark-theme .project object,
-.dark-theme .project embed {
-    filter: invert(0.9) hue-rotate(180deg);
-}
-
-.project a[href*="PDF"],
-.project a[href*="CODE"],
-.project a[href*="DEMO"],
-.project a[href*="SLIDES"],
-.project a[href*="TALK"],
-.project a[href*="POSTER"] {
+.project-links a {
     font-family: 'Fira Code', monospace;
     font-size: 0.85rem;
+    font-style: normal;
+}
+
+.project-status {
+    color: #e74d3c;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+}
+
+.collapse.in {
+    display: inline !important;
 }
 
 
@@ -438,10 +423,11 @@ code {
    FILTER BUTTONS - Art Deco Style
    ================================= */
 
-#filters-project .filter-button {
+#filters-project .filter-button,
+#filters-resources .filter-button {
     background: transparent;
-    border: 1px solid #000;
-    color: #000;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
     padding: 5px 15px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -455,81 +441,19 @@ code {
 }
 
 #filters-project .filter-button:hover,
-#filters-project .filter-button.active {
-    background: #000;
-    color: #fff;
-}
-
-/* Light theme styles for filter button */
-.light-theme #filters-project .filter-button {
-    border: 1px solid #000;
-    color: #000;
-}
-
-.light-theme #filters-project .filter-button:hover,
-.light-theme #filters-project .filter-button.active {
-    background: #000;
-    color: #fff;
-}
-
-/* Dark theme styles for filter button */
-.dark-theme #filters-project .filter-button {
-    border: 1px solid #ffffff;
-    color: #ffffff;
-}
-
-.dark-theme #filters-project .filter-button:hover,
-.dark-theme #filters-project .filter-button.active {
-    background: #ffffff;
-    color: #000;
-}
-
-
-/* Styles for pager buttons */
-.isotope-pager-project {
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.isotope-pager-project .pager {
-    font-family: 'Poiret One', cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    display: block;
-    padding: 8px 16px;
-    background-color: transparent;
-    border: var(--deco-border);
-    margin: 0 8px;
-    transition: all 0.3s;
-    color: var(--text-main);
-}
-
-.isotope-pager-project .pager:hover:not(:disabled) {
-    background-color: var(--accent-color);
+#filters-project .filter-button.active,
+#filters-resources .filter-button:hover,
+#filters-resources .filter-button.active {
+    background: var(--accent-color);
     color: var(--bg-color);
-    cursor: pointer;
-}
-
-.isotope-pager-project .current-page {
-    font-family: 'Poiret One', cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    padding: 8px 16px;
-    color: var(--accent-color);
-}
-
-.isotope-pager-project .pager:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
 }
 
 
-/* Styles for pager buttons */
+/* =================================
+   ISOTOPE PAGERS
+   ================================= */
+
+.isotope-pager-project,
 .isotope-pager-github {
     display: flex;
     list-style-type: none;
@@ -538,6 +462,7 @@ code {
     margin-top: 2rem;
 }
 
+.isotope-pager-project .pager,
 .isotope-pager-github .pager {
     font-family: 'Poiret One', cursive;
     text-transform: uppercase;
@@ -552,12 +477,14 @@ code {
     color: var(--text-main);
 }
 
+.isotope-pager-project .pager:hover:not(:disabled),
 .isotope-pager-github .pager:hover:not(:disabled) {
     background-color: var(--accent-color);
     color: var(--bg-color);
     cursor: pointer;
 }
 
+.isotope-pager-project .current-page,
 .isotope-pager-github .current-page {
     font-family: 'Poiret One', cursive;
     text-transform: uppercase;
@@ -567,245 +494,123 @@ code {
     color: var(--accent-color);
 }
 
+.isotope-pager-project .pager:disabled,
 .isotope-pager-github .pager:disabled {
     opacity: 0.3;
     cursor: not-allowed;
 }
 
 
-/* More/Less button for widgets */
-.collapse.in { 
-    display: inline !important; 
-}
+/* =================================
+   GITHUB REPOSITORY CARDS
+   ================================= */
 
-
-/* Styles for filter buttons */
-#filters-resources .filter-button {
-    background: transparent;
-    border: 1px solid #000;
-    color: #000;
-    padding: 5px 15px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-family: 'Poiret One', cursive;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    border-radius: 0;
-    transition: all 0.3s;
-}
-
-#filters-resources .filter-button:hover,
-#filters-resources .filter-button.active {
-    background: #000;
-    color: #fff;
-}
-
-/* Light theme styles for filter button */
-.light-theme #filters-resources .filter-button {
-    border: 1px solid #000;
-    color: #000;
-}
-
-.light-theme #filters-resources .filter-button:hover,
-.light-theme #filters-resources .filter-button.active {
-    background: #000;
-    color: #fff;
-}
-
-/* Dark theme styles for filter button */
-.dark-theme #filters-resources .filter-button {
-    border: 1px solid #ffffff;
-    color: #ffffff;
-}
-
-.dark-theme #filters-resources .filter-button:hover,
-.dark-theme #filters-resources .filter-button.active {
-    background: #ffffff;
-    color: #000;
-}
-
-
-/* Handle for gallery and pictures in gallery */
-div.gallery {
-    margin: 3px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    float: left;
-    width: 212px;
-}
-div.gallery:nth-child(8n+1) {
-    clear: both;
-}
-div.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 7px;
-}
-div.desc {
-    padding: 8px;
-    text-align: center;
-}
-
-
-/* Styles for update cards */
-.news-card {
-    background-color: none;
-    width: 180px;
-    height: 291px;
-    border-radius: 7px;
-    margin: 3px;
-    border: 1px solid #ccc;
-    float: left;
-    display: flex;
-    flex-direction: column;
-}
-.news-desc {
-    flex-grow: 1;
-    padding: 0.4rem 1rem 0rem 1rem;
-    font-size: 13px;
-}
-.news-time {
-    color: grey;
-    padding: 0rem 1rem 0.6rem 1rem;
-    font-size: 12px;
-}
-.owl-carousel .owl-nav .owl-prev, .owl-carousel .owl-nav .owl-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    font-size: 60px;
-    padding: 20px;
-    width: 40px;
-    height: 40px; 
-    align-items: center;
-    justify-content: center;
-    opacity: 0.5; 
-}
-.owl-carousel .owl-nav .owl-prev {
-    left: -30px;
-}
-.owl-carousel .owl-nav .owl-next {
-    right: -33px;
-}
-.owl-carousel .owl-dots {
-    display: none;
-}
-.owl-carousel {
-    margin: 0;
-    position: relative;
-}
-
-
-/* Styles for Github cards container */
 #github-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    max-width: 1600px;
-    margin: 15px;
+    margin: 15px 0;
 }
 
-
-/* Styles for GitHub cards */
 .github-card {
-    flex: 0 1 calc(50% - 20px);
-    margin: 0px 15px 10px 0px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-    width: 500px;
+    flex: 0 1 calc(50% - 16px);
+    margin: 0 16px 10px 0;
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 440px;
+    max-width: 100%;
     padding: 16px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     transition: 0.5s;
 }
+
 .dark-theme .github-card {
     background-color: #292929;
     color: #ffffff;
-    border-color: #343434;
+    border-color: #3a3a3a;
 }
+
 @media (max-width: 768px) {
     .github-card {
         flex: 0 1 100%;
-        width: auto;
+        width: 100%;
+        margin-right: 0;
     }
 }
 
-
-/* Styles for repository information */
 .repo-header {
     display: flex;
     align-items: center;
     margin-bottom: 8px;
-    transition: 0.5s;
 }
+
 .repo-header .bookmark-icon {
     margin-right: 8px;
     color: #586069;
-    transition: 0.5s;
 }
+
 .repo-name {
-    font-weight: 500;
+    font-weight: 600;
     color: #0366d6;
     font-size: 16px;
     text-decoration: none;
-    transition: 0.5s;
+    font-style: normal;
 }
+
+.dark-theme .repo-name {
+    color: #58a6ff;
+}
+
 .repo-name:hover {
     text-decoration: underline;
-    color: #0366d6;
 }
-.dark-theme .repo-name:hover {
-    text-decoration: underline;
-    color: #0366d6;
-}
+
 .repo-description {
     font-size: 13px;
     color: #586069;
-    margin-bottom: 16px;
-    line-height: 1.4;
-    transition: 0.5s;
+    margin-bottom: 14px;
+    line-height: 1.45;
 }
-.stats-number {
-    margin-left: 4px;
-    transition: 0.5s;
-}
+
 .repo-stats {
     display: flex;
     align-items: center;
     font-size: 14px;
-    transition: 0.5s;
+    gap: 16px;
 }
-.repo-stats > * {
+
+.repo-stats > div {
     display: flex;
     align-items: center;
-    margin-right: 16px;
 }
-.repo-stats i {
-    margin-right: 8px;
+
+.repo-stats i,
+.repo-stats svg {
+    margin-right: 6px;
 }
+
 .language-icon {
     color: #007bff;
-    margin-right: 8px;
-    transition: 0.5s;
 }
+
+.star-icon {
+    color: #ffc107;
+}
+
+.fork-icon {
+    color: #333;
+}
+
 .dark-theme .repo-description,
 .dark-theme .stats-number,
 .dark-theme .language {
-    color: #ffffff;
+    color: #e0e0e0;
 }
-.star-icon {
-    color: #ffc107;
-    transition: 0.5s;
-}
-.fork-icon {
-    color: #333;
-    transition: 0.5s;
-}
+
 .dark-theme .bookmark-icon,
 .dark-theme .fork-icon {
     color: #bbbbbb;
@@ -813,126 +618,290 @@ div.desc {
 
 
 /* =================================
-   BACK-TO-TOP BUTTON - Art Deco
+   UPDATES SECTION - Art Deco Cards
+   ================================= */
+
+.updates-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.update-card {
+    border: var(--border-style);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.update-date {
+    font-family: 'Poiret One', cursive;
+    line-height: 1;
+    padding-right: 1rem;
+    border-right: var(--deco-border);
+    letter-spacing: 0.1em;
+    min-width: 96px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.update-month {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.update-year {
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+}
+
+.update-content {
+    flex: 1;
+}
+
+
+/* =================================
+   CV PAGE STYLES
+   ================================= */
+
+.cv-content {
+    padding: 0.25rem 0;
+    line-height: 1.5;
+    font-size: 0.92rem;
+}
+
+.cv-title {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+    font-size: 1.85rem;
+}
+
+.cv-section {
+    margin-bottom: 1.15rem;
+}
+
+.cv-summary {
+    margin-bottom: 1rem;
+}
+
+.cv-summary p {
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.cv-section h2 {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-bottom: var(--deco-border);
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.55rem;
+}
+
+.cv-section p {
+    margin-bottom: 0.3rem;
+}
+
+.cv-item {
+    margin-bottom: 0.65rem;
+}
+
+.cv-item:last-child {
+    margin-bottom: 0;
+}
+
+.cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.15rem;
+}
+
+.cv-item-left strong {
+    font-size: 0.96rem;
+}
+
+.cv-tech {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.cv-item-right {
+    text-align: right;
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.cv-pub-authors {
+    font-size: 0.88rem;
+    margin-bottom: 0.1rem;
+}
+
+.cv-pub-venue {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.cv-pub-links {
+    margin-left: 0.5rem;
+}
+
+.cv-pub-links a {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    font-style: normal;
+    margin-right: 0.45rem;
+}
+
+.cv-list {
+    margin-left: 1.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    padding-left: 0.25rem;
+}
+
+.cv-list li {
+    margin-bottom: 0.15rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 576px) {
+    .cv-item-header {
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .cv-item-right {
+        text-align: left;
+    }
+}
+
+@media print {
+    .profile-container,
+    .toggle-theme-button {
+        display: none !important;
+    }
+
+    .col-lg-10 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .cv-content {
+        padding: 0 !important;
+    }
+}
+
+
+/* =================================
+   BACK-TO-TOP & THEME TOGGLE BUTTONS
    ================================= */
 
 #back-to-top-button {
-    display: inline-block;
-    background-color: transparent;
-    width: 50px;
-    height: 50px;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    width: 44px;
+    height: 44px;
     border: 2px solid var(--accent-color);
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 24px;
+    right: 24px;
     transition: all 0.3s;
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
-}
-#back-to-top-button::after {
-    content: "\f077";
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 1.5em;
-    line-height: 46px;
-    color: var(--accent-color);
-}
-#back-to-top-button:hover {
     cursor: pointer;
-    background-color: var(--accent-color);
+    font-size: 1.1rem;
+    padding: 0;
 }
-#back-to-top-button:hover::after {
+
+#back-to-top-button:hover {
+    background-color: var(--accent-color);
     color: var(--bg-color);
 }
-#back-to-top-button:active {
-    background-color: var(--accent-color);
-}
+
 #back-to-top-button.show {
     opacity: 1;
     visibility: visible;
 }
 
-
-/* Toggle theme button styles */
 .toggle-theme-button {
-    width: 55px;
-    height: 55px;
-    border-radius: 7px;
-    cursor: pointer;
+    width: 44px;
+    height: 44px;
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000; 
-    transition: background-color 0.5s ease, color 0.5s ease;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.35rem;
+    border: var(--border-style);
+    background: var(--bg-color);
+    color: var(--accent-color);
+    line-height: 1;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-theme-button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
 }
 
 
-/* Light theme styles for toggle theme button */
-.light-theme .toggle-theme-button {
-    background-color: #919191;
-    color: #ffffff;
-}
+/* =================================
+   PROGRESS BAR & SCROLLBAR
+   ================================= */
 
-
-/* Dark theme styles for toggle theme button */
-.dark-theme .toggle-theme-button {
-    background-color: #ccc;
-    color: #333333;
-}
-
-
-/* Styles for progress bar */
 .progress-bar-container {
     width: 100%;
-    height: 1px;
+    height: 2px;
     background: #f1f1f1;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 1001;
     transition: 0.5s;
 }
+
 .progress-bar {
     height: 2px;
     background: var(--accent-color);
     width: 0%;
 }
-.light-theme .progress-bar-container {
-    background: #f1f1f1;
-}
+
 .dark-theme .progress-bar-container {
     background: #3a3a3a;
 }
 
-
-/* =================================
-   SCROLLBAR - Minimalist
-   ================================= */
-
 ::-webkit-scrollbar-track {
-    background-color: #ffffff;
+    background-color: var(--bg-color);
 }
+
 ::-webkit-scrollbar-thumb {
-    background-color: #1a1a1a;
+    background-color: var(--accent-color);
 }
-::-webkit-scrollbar-thumb:hover {
-    background-color: #000;
-}
+
 ::-webkit-scrollbar {
     width: 8px;
-}
-
-
-/* Styles for middle-layer moving-particle canvas */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
 }
 
 
@@ -977,83 +946,4 @@ footer .text-right {
     align-items: center;
     justify-content: flex-end;
     gap: 1rem;
-}
-
-
-/* =================================
-   IMAGES - Full Color
-   ================================= */
-
-
-/* =================================
-   UPDATES SECTION - Art Deco Cards
-   ================================= */
-
-.updates-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.update-card {
-    border: var(--border-style);
-    padding: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.dark-theme .update-card {
-    border-color: #e8e8e8;
-}
-
-.update-date {
-    font-family: 'Poiret One', cursive;
-    line-height: 1;
-    padding-right: 1rem;
-    border-right: var(--deco-border);
-    letter-spacing: 0.1em;
-    min-width: 100px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.update-month {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent-color);
-}
-
-.update-year {
-    font-size: 1rem;
-    margin-top: 0.25rem;
-    color: var(--text-muted);
-}
-
-.update-content {
-    flex: 1;
-}
-
-
-/* =================================
-   THEME TOGGLE BUTTON
-   ================================= */
-
-.toggle-theme-button {
-    font-family: 'Poiret One', cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 1.5rem;
-    border: var(--border-style);
-    padding: 8px 14px;
-    background: transparent;
-    color: var(--accent-color);
-    line-height: 1;
-}
-
-.toggle-theme-button:hover {
-    background: var(--accent-color);
-    color: var(--bg-color);
 }

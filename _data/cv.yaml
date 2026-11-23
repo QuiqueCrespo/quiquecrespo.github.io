@@ -1,12 +1,13 @@
 # CV Data Structure
-# This file contains all the information for your CV
+# Single source of truth for both cv_page.html and enrique-crespo-fernandez-cv.tex
 
 # Section Headers
 section_headers:
-  experience: Experience
   education: Education
   publications: Publications
-  side_projects: Side Projects
+  experience: Industry Experience
+  side_projects: Engineering & Side Projects
+  teaching: Teaching
   skills: Skills
   additional: Additional Information
 
@@ -18,8 +19,10 @@ labels:
 # Personal Information
 personal:
   name: Enrique Crespo Fernández
-  phone: +34 626660775
+  phone: "+34 626 660 775"
   email: enrique.crespofernandez@bristol.ac.uk
+  website: https://quiquecrespo.github.io
+  website_handle: quiquecrespo.github.io
   linkedin: https://www.linkedin.com/in/enrique-crespo-fernandez/
   linkedin_handle: enrique-crespo-fernandez
   github: https://github.com/QuiqueCrespo
@@ -27,91 +30,97 @@ personal:
   location: Bristol, United Kingdom
 
 # Professional Summary
-summary: AI researcher working at the intersection of Deep Learning and Formal Reasoning. As a PhD candidate, I develop neuro-symbolic methods that leverage program synthesis to enable online learning and logical inference. My foundation in Mathematics and Theoretical Physics drives my focus on interpretability, pushing AI beyond mere statistical correlation. Proficient in logic programming, I am dedicated to replacing 'black-box' models with autonomous agents grounded in structured knowledge. Beyond this core focus, I have applied deep learning expertise in sequence modelling and physics-informed neural networks. I am seeking a research role that demands rigorous theoretical understanding and the opportunity to innovate at the fundamental architectural level.
-# Experience
-experience:
-  - institution: University of Bristol
-    position: Teaching Assistant
-    location: Bristol, UK
-    dates: 2024-2025
-    responsibilities:
-      - Data Science Project Unit - Supervised and mentored postgraduate Data Science students on industry-sponsored group projects, guiding research design, experimentation, and reporting. Acted as the primary liaison between student teams and corporate partners, ensuring timely delivery of project milestones and clear communication of technical findings.
-      - Machine Learning Unit - Assisted in delivering lectures and practical sessions on machine learning topics to undergraduate Computer Science students. Provided one-on-one support during lab sessions, helping students understand complex concepts and debug code.
-      - Artificial Intelligence Unit - Supported the teaching of symbolic AI fundamentals as well as multi-agent systems to third-year Computer Science undergraduates. 
-
-  - institution: Lukkap
-    position: Data Scientist Intern
-    location: Madrid, Spain
-    dates: 2021-2022
-    responsibilities:
-      - Built an end-to-end machine-learning pipeline to process and analyse open-ended survey responses, integrating clustering, tree-based models, and NLP sentiment analysis; cut analysis time from days to minutes.
-      - Developed a psychometric model and analysis pipeline from the ground up to extract personality traits from employee survey data, enabling HR teams to better understand workforce dynamics and opening a new revenue stream for the company.
-      - Presented insights to stakeholders and delivered training sessions enabling non-technical colleagues to use the analysis tools independently.
+summary: "AI PhD candidate at the University of Bristol (UKRI Interactive AI CDT) with a First-Class BSc in Mathematics and Physics, researching neuro-symbolic reasoning, program synthesis, and adaptive sequence modelling. Published at ICLR 2026 on weight-space linear RNNs and continual causal world models. Seeking AI Research or Quantitative Research roles focused on reasoning, sequential prediction, and learning from noisy, structured data."
 
 # Education
 education:
   - institution: University of Bristol
-    degree: PhD in Artificial Intelligence
+    degree: PhD in Artificial Intelligence (UKRI Interactive AI CDT)
     location: Bristol, UK
-    dates: 2024-2027 (expected)
+    dates: 2024–2027 (expected)
     details:
-      - "Supervisor: Prof. Peter Flach."
+      - "Supervisors: Prof. Peter Flach, Dr. Telmo de Menezes e Silva Filho, and Dr. Oliver Ray."
       - "Working title: Learning to Search in Inductive Logic Programming."
-      - "My day-to-day research focuses on leveraging neural networks to augment symbolic program search."
+      - "Research spans neuro-symbolic program synthesis, continual causal world modelling, and adaptive linear recurrent sequence architectures."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
     location: Bath, UK
-    dates: 2019-2023
+    dates: 2019–2023
     details:
-      - "Dissertation: Classifying dangerous sea-wave events from radar scans with CNNs - in collaboration with the Met Office (71\\%)."
-      - "Notable modules: Quantum mechanics (88\\%), General relativity (71\\%), Analysis 2 (85\\%), Algebra 2 (81\\%)."
-      - "Overall final grade: 72\\%."
+      - "Overall final grade: 72% (First-Class Honours). Notable modules: Quantum Mechanics (88%), Analysis 2 (85%), Algebra 2 (81%), General Relativity (71%)."
+      - "Dissertation (71%): Built a CNN-based classifier to detect extreme sea-wave events from noisy coastal radar scans, in collaboration with the UK Met Office."
 
 # Publications
 publications:
   - title: "Weight-Space Linear Recurrent Neural Networks"
-    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, Enrique Crespo-Fernandez, et al."
-    venue: "ICLR"
+    authors: "Roussel Desmond Nzoyem, Nawid Keshtmand, Enrique Crespo-Fernandez, Idriss Tsayem, Raul Santos-Rodriguez, David A. W. Barton, Tom Deakin"
+    venue: "International Conference on Learning Representations (ICLR)"
     year: "2026"
     links:
-      - name: Link
+      - name: ICLR
         url: https://iclr.cc/virtual/2026/poster/10006465
+      - name: arXiv
+        url: https://arxiv.org/abs/2506.01153
+      - name: Code
+        url: https://github.com/ddrous/warp
 
-  - title: "Continual learning and refinement of causal models through dynamic predicate invention"
+  - title: "Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention"
     authors: "Enrique Crespo-Fernandez, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach"
-    venue: "UCLR"
+    venue: "Workshop on Unifying Concept Representation Learning (UCRL) @ ICLR"
     year: "2026"
     links:
-      - name: Link
+      - name: arXiv
         url: https://arxiv.org/abs/2602.17217
 
-# Skills
-skills:
-  - category: Programming Languages 
-    items: Python, Prolog, ASP, C, JavaScript
+# Industry Experience
+experience:
+  - institution: Lukkap
+    position: Data Scientist Intern
+    location: Madrid, Spain
+    dates: 2021–2022
+    responsibilities:
+      - "Built an end-to-end machine-learning pipeline to extract signal from noisy, unstructured survey text using clustering, tree-based models, and NLP sentiment analysis, cutting turnaround from days to minutes."
+      - "Developed a psychometric statistical model and automated analysis pipeline from scratch to infer latent traits from employee survey data, enabling HR diagnostics and opening a new revenue stream."
+      - "Presented analytical insights to stakeholders and trained non-technical teams to operate the analytical tools independently."
 
-  - category: Data Science and Machine Learning
-    items: Deep-learning architectures (PyTorch), ML algorithms, logic-based systems, program synthesis
-
-
-# Side Projects
+# Engineering & Side Projects
 side_projects:
-  - name: Peptide deep sequencing analysis tool
+  - name: Peptide Deep-Sequencing Analysis Pipeline
     technologies: Python
     dates: "2024"
     description:
-      - Engineered a high-throughput bioinformatics pipeline to process raw peptide deep-sequencing data, automating previously manual alignment tasks.
-      - Optimised data ingestion and visualisation workflows, significantly reducing analysis latency and enabling the interpretation of complex sequencing datasets.
+      - "Engineered an automated high-throughput bioinformatics pipeline to ingest, filter, and align raw peptide deep-sequencing data, replacing manual alignment workflows."
+      - "Optimised data-processing and visualisation stages to accelerate downstream analysis of noisy, high-dimensional sequencing datasets."
 
   - name: Gniiam (Restaurant Tech Platform)
     technologies: React, Node.js, MongoDB
-    dates: "2023-2024"
+    dates: "2023–2024"
     description:
-      - Co-founded a restaurant-tech start-up and engineered its full-stack distributed system for real-time order management via QR-code endpoints.
-      - Built the customer-facing ordering interface and analytics dashboard.
+      - "Co-founded a restaurant-tech startup and architected its full-stack distributed backend for real-time order processing via QR-code endpoints."
+      - "Built the customer-facing ordering web application and real-time merchant analytics dashboard."
 
+# Teaching
+teaching:
+  - institution: University of Bristol
+    position: Teaching Assistant
+    location: Bristol, UK
+    dates: 2024–2025
+    responsibilities:
+      - "Data Science Project Unit: Mentored postgraduate teams on industry-sponsored research projects and acted as primary liaison with corporate partners."
+      - "Machine Learning Unit: Assisted lectures and practical labs for undergraduate Computer Science students, supporting theory and code debugging."
+      - "Artificial Intelligence Unit: Supported teaching of symbolic AI fundamentals and multi-agent systems for final-year Computer Science undergraduates."
 
+# Skills
+skills:
+  - category: Programming Languages
+    items: Python, C, Prolog, Answer Set Programming (Clingo), JavaScript
+
+  - category: Machine Learning & Modelling
+    items: PyTorch, Sequence Modelling, Neuro-Symbolic AI, Inductive Logic Programming, Program Synthesis, Statistical & Physics-Informed Modelling
+
+  - category: Engineering & Tools
+    items: Git, Linux, LaTeX, React, Node.js, MongoDB
 
 # Additional Information
 additional:

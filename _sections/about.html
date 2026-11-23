@@ -5,7 +5,7 @@
         <div class="ring-container">
             <div class="ring">
                 <div class="hollow-ring">
-                    <img class="profile-image" src="{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
+                    <img class="profile-image" src="/{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
                 </div>
             </div>
         </div>
@@ -26,29 +26,27 @@
                 <span class="menu-label">Contact Info</span>
             </a>
         </div>
-        <p></p>
     </div>
 
     <div class="col-lg-10 col-md-12">
         <div class="mb-5">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-family: 'Poiret One', cursive; text-transform: uppercase; letter-spacing: 0.15em;">{{ site.data.about.name }}</h1>
+            <h1 class="site-name">{{ site.data.about.name }}</h1>
             {% if site.data.about.subtitle %}
-            <p class="lead" style="font-family: 'Poiret One', cursive; font-size: 1.2rem; color: #555; margin-bottom: 1.5rem;">
+            <p class="lead site-subtitle">
                 {{ site.data.about.subtitle }}
             </p>
             {% endif %}
             {% if site.data.about.pronunciation %}
-            <p class="lead" style="font-family: 'Poiret One', cursive; font-size: 1.2rem; color: #555;">
+            <p class="lead site-subtitle">
                 {{ site.data.about.pronunciation }}
             </p>
             {% endif %}
-            {{ site.data.about.first-paragraph }}
-            <p></p>
-            {{ site.data.about.second-paragraph }}
-            <p></p>
+            <p>{{ site.data.about.first-paragraph }}</p>
+            <p>{{ site.data.about.second-paragraph }}</p>
             <div class="codebox">
-                {{ site.data.about.research-introduction }}
-                <p></p>
+                {% if site.data.about.research-introduction %}
+                <p>{{ site.data.about.research-introduction }}</p>
+                {% endif %}
                 {% for interest in site.data.about.research-interests %}
                     {% include_relative _libs/about_widget.html %}
                 {% endfor %}

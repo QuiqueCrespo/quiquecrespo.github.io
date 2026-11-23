@@ -1,38 +1,14 @@
 ---
 layout: cv_with_sidebar
-title: CV | Enrique Crespo-Fernández
+title: CV | Enrique Crespo Fernández
 ---
 
 <div class="cv-content">
-    <h1 style="font-family: 'Poiret One', cursive; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.6rem; font-size: 1.6rem;">{{ site.data.cv.personal.name }}</h1>
+    <h1 class="cv-title">{{ site.data.cv.personal.name }}</h1>
 
     <!-- Summary -->
-    <section class="cv-section" style="margin-bottom: 0.6rem;">
-        <p style="margin-bottom: 0; line-height: 1.4;">{{ site.data.cv.summary }}</p>
-    </section>
-
-    <!-- Experience -->
-    <section class="cv-section">
-        <h2>{{ site.data.cv.section_headers.experience }}</h2>
-        {% for job in site.data.cv.experience %}
-        <div class="cv-item">
-            <div class="cv-item-header">
-                <div class="cv-item-left">
-                    <strong>{{ job.institution }}</strong>
-                    <div><em>{{ job.position }}</em></div>
-                </div>
-                <div class="cv-item-right">
-                    <div>{{ job.dates }}</div>
-                    <div>{{ job.location }}</div>
-                </div>
-            </div>
-            <ul class="cv-list">
-                {% for responsibility in job.responsibilities %}
-                <li>{{ responsibility }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endfor %}
+    <section class="cv-section cv-summary">
+        <p>{{ site.data.cv.summary }}</p>
     </section>
 
     <!-- Education -->
@@ -64,33 +40,63 @@ title: CV | Enrique Crespo-Fernández
         <h2>{{ site.data.cv.section_headers.publications }}</h2>
         {% for pub in site.data.cv.publications %}
         <div class="cv-item">
-            <div style="margin-bottom: 0.3rem;">
-                <strong>{{ pub.title }}</strong>
-                <div style="margin-bottom: 0.2rem;"><em>{{ pub.venue }}</em>,
-                    {{ pub.year }}, 
-                    {% if pub.links %}
-                    {% for link in pub.links %}
-                    <a href="{{ link.url }}" target="_blank" rel="noopener" style="margin-right: 1rem; text-decoration: underline;">[{{ link.name }}]</a>
-                    {% endfor %}
-                    {% endif %}
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>{{ pub.title }}</strong>
+                </div>
+                <div class="cv-item-right">
+                    <div>{{ pub.year }}</div>
                 </div>
             </div>
-            <div style="margin-bottom: 0.2rem;">{{ pub.authors }}</div>
-            
-            
+            <div class="cv-pub-authors">
+                {{ pub.authors | replace: 'Enrique Crespo-Fernandez', '<strong>Enrique Crespo-Fernandez</strong>' | replace: 'Enrique Crespo Fernandez', '<strong>Enrique Crespo Fernandez</strong>' }}
+            </div>
+            <div class="cv-pub-venue">
+                <em>{{ pub.venue }}</em>, {{ pub.year }}
+                {% if pub.links %}
+                <span class="cv-pub-links">
+                    {% for link in pub.links %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">[{{ link.name }}]</a>
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </div>
         </div>
         {% endfor %}
     </section>
 
-    <!-- Side Projects
+    <!-- Industry Experience -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.experience }}</h2>
+        {% for job in site.data.cv.experience %}
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>{{ job.institution }}</strong>
+                    <div><em>{{ job.position }}</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>{{ job.dates }}</div>
+                    <div>{{ job.location }}</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                {% for responsibility in job.responsibilities %}
+                <li>{{ responsibility }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Engineering & Side Projects -->
     <section class="cv-section">
         <h2>{{ site.data.cv.section_headers.side_projects }}</h2>
         {% for project in site.data.cv.side_projects %}
         <div class="cv-item">
             <div class="cv-item-header">
                 <div class="cv-item-left">
-                    <strong>{{ project.name }}</strong>
-                    <div><em>{{ project.technologies }}</em></div>
+                    <strong>{{ project.name }}</strong> <span class="cv-tech">({{ project.technologies }})</span>
                 </div>
                 <div class="cv-item-right">
                     <div>{{ project.dates }}</div>
@@ -103,7 +109,36 @@ title: CV | Enrique Crespo-Fernández
             </ul>
         </div>
         {% endfor %}
-    </section> -->
+    </section>
+
+    <!-- Teaching -->
+    <section class="cv-section">
+        <h2>{{ site.data.cv.section_headers.teaching }}</h2>
+        {% for role in site.data.cv.teaching %}
+        <div class="cv-item">
+            <div class="cv-item-header">
+                <div class="cv-item-left">
+                    <strong>{{ role.institution }}</strong>
+                    <div><em>{{ role.position }}</em></div>
+                </div>
+                <div class="cv-item-right">
+                    <div>{{ role.dates }}</div>
+                    <div>{{ role.location }}</div>
+                </div>
+            </div>
+            <ul class="cv-list">
+                {% for responsibility in role.responsibilities %}
+                {% assign parts = responsibility | split: ': ' %}
+                {% if parts.size > 1 %}
+                <li><strong>{{ parts[0] }}:</strong> {{ parts | slice: 1, parts.size | join: ': ' }}</li>
+                {% else %}
+                <li>{{ responsibility }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
 
     <!-- Skills -->
     <section class="cv-section">

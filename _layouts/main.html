@@ -16,11 +16,11 @@
         <!-- Metadata -->
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <meta name="description" content="website"/>
-        <meta name="author" content="Enrique Crespo Fernandez"/>
+        <meta name="description" content="{{ site.title }} — PhD candidate in Artificial Intelligence at the University of Bristol."/>
+        <meta name="author" content="{{ site.title }}"/>
         <title>{{ site.title }} | {{ site.info }}</title>
-        <link rel="icon" type="image/x-icon" href="{{ site.icon-pic }}"/>
-        
+        <link rel="icon" type="image/x-icon" href="/{{ site.icon-pic }}"/>
+
         <!-- Font Awesome icons -->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
 
@@ -32,28 +32,22 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&family=Fira+Code&family=Poiret+One&display=swap" rel="stylesheet">
 
-        <!-- OwlCarousel2 CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
         <!-- Core theme CSS -->
-        <link href="styles/styles.css" rel="stylesheet"/>
-
+        <link href="/styles/styles.css" rel="stylesheet"/>
     </head>
 
     <body>
-
         <!-- Progress bar on top -->
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
 
         <!-- Back to top button -->
-        <a id="back-to-top-button"></a>
+        <button id="back-to-top-button" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
         <!-- Toggle dark/light theme button -->
-        <button class="toggle-theme-button" onclick="toggleTheme()">◐</button>
-        
+        <button class="toggle-theme-button" onclick="toggleTheme()" aria-label="Toggle dark/light theme">◐</button>
+
         <!-- Content -->
         <div class="container" style="padding-top: 5rem; max-width: 1000px;">
             {{ content }}
@@ -68,14 +62,10 @@
         <!-- Isotope JS -->
         <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.2/dist/isotope.pkgd.min.js"></script>
 
-        <!-- OwlCarousel2 JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
         <!-- Axios JS -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-		<!-- Core theme JS -->
-        <script src="js/scripts.js"></script>
-
+        <!-- Core theme JS -->
+        <script src="/js/scripts.js"></script>
     </body>
 </html>

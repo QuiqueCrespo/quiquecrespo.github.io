@@ -14,9 +14,10 @@
 
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <meta name="description" content="CV - {{ site.data.cv.personal.name }}"/>
+        <meta name="description" content="CV — {{ site.data.cv.personal.name }}"/>
         <meta name="author" content="{{ site.data.cv.personal.name }}"/>
         <title>{{ page.title }}</title>
+        <link rel="icon" type="image/x-icon" href="/{{ site.icon-pic }}"/>
 
         <!-- Font Awesome icons -->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
@@ -31,83 +32,20 @@
 
         <!-- Core theme CSS -->
         <link href="/styles/styles.css" rel="stylesheet"/>
-
-        <style>
-            .cv-content {
-                padding: 0.5rem 0;
-                line-height: 1.5;
-                font-size: 0.9rem;
-            }
-            .cv-section {
-                margin-bottom: 0.8rem;
-            }
-            .cv-section h2 {
-                font-family: 'Poiret One', cursive;
-                font-size: 1.1rem;
-                text-transform: uppercase;
-                letter-spacing: 0.12em;
-                border-bottom: var(--deco-border);
-                padding-bottom: 0.15rem;
-                margin-bottom: 0.4rem;
-            }
-            .cv-section p {
-                margin-bottom: 0.3rem;
-            }
-            .cv-item {
-                margin-bottom: 0.5rem;
-            }
-            .cv-item-header {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 0.15rem;
-            }
-            .cv-item-left strong {
-                font-size: 0.95rem;
-            }
-            .cv-item-right {
-                text-align: right;
-                font-style: italic;
-                color: var(--text-muted);
-                font-size: 0.85rem;
-            }
-            .cv-list {
-                margin-left: 1.2rem;
-                margin-top: 0.15rem;
-                margin-bottom: 0;
-            }
-            .cv-list li {
-                margin-bottom: 0.1rem;
-                line-height: 1.3;
-            }
-
-            /* Print styles */
-            @media print {
-                .profile-container {
-                    display: none !important;
-                }
-                .col-lg-10 {
-                    width: 100% !important;
-                    max-width: 100% !important;
-                }
-                .cv-content {
-                    padding: 0 !important;
-                }
-            }
-        </style>
     </head>
 
     <body>
         <!-- Toggle dark/light theme button -->
-        <button class="toggle-theme-button" onclick="toggleTheme()">◐</button>
+        <button class="toggle-theme-button" onclick="toggleTheme()" aria-label="Toggle dark/light theme">◐</button>
 
-        <div class="container" style="padding-top: 2rem; max-width: 1000px;">
+        <div class="container" style="padding-top: 2.5rem; padding-bottom: 3rem; max-width: 1000px;">
             <div class="row">
                 <!-- Left Column - Profile -->
                 <div class="col-lg-2 col-md-12 profile-container">
                     <div class="ring-container">
                         <div class="ring">
                             <div class="hollow-ring">
-                                <img class="profile-image" src="{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
+                                <img class="profile-image" src="/{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
                             </div>
                         </div>
                     </div>
@@ -122,7 +60,7 @@
                         <a href="/" class="profile-menu-item">
                             <span class="menu-label">Home</span>
                         </a>
-                        <a href="#" class="profile-menu-item" id="contact-info-trigger-cv">
+                        <a href="#" class="profile-menu-item" id="contact-info-trigger">
                             <span class="menu-label">Contact Info</span>
                         </a>
                         <a href="/assets/enrique-crespo-fernandez-cv.pdf" class="profile-menu-item" id="pdf-download-link-cv">
@@ -131,7 +69,6 @@
                     </div>
                 </div>
 
-
                 <!-- Right Column - CV Content -->
                 <div class="col-lg-10 col-md-12">
                     {{ content }}
@@ -139,8 +76,8 @@
             </div>
         </div>
 
-        <!-- Contact Card Overlay for CV page -->
-        <div class="contact-card-overlay" id="overlay-bg-cv">
+        <!-- Contact Card Overlay -->
+        <div class="contact-card-overlay" id="overlay-bg">
             <div class="information_card">
                 <div class="contact-info-card">
                     <p class="card-name">{{ site.data.about.name }}</p>
@@ -167,24 +104,7 @@
         <script src="/js/scripts.js"></script>
 
         <script>
-            // Contact info card functionality for CV page
-            var overlayBgCv = document.getElementById('overlay-bg-cv');
-            var contactTriggerCv = document.getElementById('contact-info-trigger-cv');
-
-            if (contactTriggerCv && overlayBgCv) {
-                contactTriggerCv.onclick = function(e) {
-                    e.preventDefault();
-                    overlayBgCv.style.display = 'flex';
-                };
-
-                overlayBgCv.addEventListener('click', function(event) {
-                    if (event.target === overlayBgCv) {
-                        overlayBgCv.style.display = 'none';
-                    }
-                });
-            }
-
-            // Check if PDF exists and disable link if not
+            // Check if PDF exists and gracefully disable link if not available locally
             var pdfDownloadLink = document.getElementById('pdf-download-link-cv');
             if (pdfDownloadLink) {
                 fetch('/assets/enrique-crespo-fernandez-cv.pdf', { method: 'HEAD' })
@@ -198,9 +118,7 @@
                             };
                         }
                     })
-                    .catch(() => {
-                        // Silently handle error - PDF might not exist locally
-                    });
+                    .catch(() => {});
             }
         </script>
     </body>

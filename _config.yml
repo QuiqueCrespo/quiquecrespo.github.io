@@ -1,9 +1,9 @@
-# headers and icon 
-title: Enrique Crespo Fernandez
-info: phd cs @ UoB
+# Headers and icon
+title: Enrique Crespo Fernández
+info: PhD in AI @ University of Bristol
 icon-pic: assets/img/mandu_icon.png
 
-# exclude these items when generated website in _site/index.html
+# Exclude these items when generating website in _site/
 exclude:
   - Gemfile
   - Gemfile.lock

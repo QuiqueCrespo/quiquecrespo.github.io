@@ -18,8 +18,8 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
     letterpaper,
     left=0.5in,
     right=0.5in,
-    top=0.25in,
-    bottom=0.25in
+    top=0.3in,
+    bottom=0.3in
 }
 
 % Colors
@@ -35,104 +35,111 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 
 % Section formatting
 \titleformat{\section}
-    {\normalfont\fontsize{11}{13}\bfseries}
+    {\normalfont\fontsize{10.5}{12.5}\bfseries}
     {}
     {0em}
     {\MakeUppercase{#1}}
     [\titlerule]
 
-\titlespacing*{\section}{0pt}{6pt}{3pt}
+\titlespacing*{\section}{0pt}{5.5pt}{3pt}
 
 % Remove page numbers
 \pagestyle{empty}
 
-% Custom commands
-\newcommand{\cvitem}[4]{
-    \textbf{#1} \textit{#3} - \textit{#4} \hfill \textit{#2} 
+{% raw %}% Custom commands
+\newcommand{\cvitem}[4]{%
+    \noindent\textbf{#1} \hfill \textit{#2} \\%
+    \textit{#3} \hfill \textit{#4}\par%
 }
 
-\newcommand{\cvitemsp}[3]{
-    \textbf{#1} \textit{#3} \hfill \textit{#2}
+\newcommand{\cvitemsp}[3]{%
+    \noindent\textbf{#1} \textnormal{(\textit{#3})} \hfill \textit{#2}\par%
 }
 
-\newcommand{\cvitempb}[4]{
-    \noindent \textbf{#1} \hfill \textit{#2} \\ % Title + Links ---Fill--- Venue
-    {\small #3} #4 \par                               % Authors on the next line
+\newcommand{\cvitempb}[5]{%
+    \noindent\textbf{#1} \hfill \textit{#2} \\%
+    {\small #3} \\%
+    {\small\textit{#4}} #5\par%
 }
-% Reduce spacing
+{% endraw %}
+
+% Spacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-\setlist[itemize]{leftmargin=16pt, nosep}
+\setlist[itemize]{leftmargin=14pt, nosep, topsep=1pt}
 
 \begin{document}
 
 % Header
 \begin{center}
-    {\fontsize{18}{20}\selectfont\textbf{\MakeUppercase{ {{ site.data.cv.personal.name }} }}} \\[2pt]
-    {{ site.data.cv.personal.phone }} $|$ {{ site.data.cv.personal.email }} $|$ {{ site.data.cv.personal.location }} \\[1pt]
-    \faLinkedin\ \href{ {{ site.data.cv.personal.linkedin }} }{ {{ site.data.cv.personal.linkedin_handle }} } $|$
-    \faGithub\ \href{ {{ site.data.cv.personal.github }} }{ {{ site.data.cv.personal.github_handle }} }
+    {\fontsize{17}{19}\selectfont\textbf{\MakeUppercase{ {{- site.data.cv.personal.name -}} }}} \\[2pt]
+    {\small {{ site.data.cv.personal.phone }} $|$ \href{mailto:{{ site.data.cv.personal.email }}}{ {{- site.data.cv.personal.email -}} } $|$ {{ site.data.cv.personal.location }}} \\[1pt]
+    {\small \faGlobe\ \href{ {{- site.data.cv.personal.website -}} }{ {{- site.data.cv.personal.website_handle -}} } $|$
+    \faLinkedin\ \href{ {{- site.data.cv.personal.linkedin -}} }{ {{- site.data.cv.personal.linkedin_handle -}} } $|$
+    \faGithub\ \href{ {{- site.data.cv.personal.github -}} }{ {{- site.data.cv.personal.github_handle -}} }}
 \end{center}
-
+\vspace{2pt}
 
 % Summary
-{\small {{ site.data.cv.summary }}}
-
-
-% Experience
-\section{Experience}
-{% for job in site.data.cv.experience %}
-\cvitem{ {{ job.institution }} }{ {{ job.dates }} }{ {{ job.position }} }{ {{ job.location }} }
-\begin{itemize}
-{% for resp in job.responsibilities %}    \item {\small {{ resp }}}
-{% endfor %}\end{itemize}
-{% unless forloop.last %}
-\vspace{1pt}
-{% endunless %}{% endfor %}
+{\small {{ site.data.cv.summary | split: '%' | join: '\%' | split: '&' | join: '\&' }}}
 
 % Education
-\section{Education}
-{% for edu in site.data.cv.education %}
-\cvitem{ {{ edu.institution }} }{ {{ edu.dates }} }{ {{ edu.degree }} }{ {{ edu.location }} }
+\section{ {{- site.data.cv.section_headers.education | split: '&' | join: '\&' -}} }
+{% for edu in site.data.cv.education -%}
+\cvitem{ {{- edu.institution | split: '&' | join: '\&' -}} }{ {{- edu.dates -}} }{ {{- edu.degree | split: '&' | join: '\&' -}} }{ {{- edu.location -}} }
 \begin{itemize}
-{% for detail in edu.details %}    \item {\small {{ detail }}}
+{% for detail in edu.details %}    \item {\small {{ detail | split: '%' | join: '\%' | split: '&' | join: '\&' }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}
+{% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
 % Publications
-\section{Publications}
-{% for pub in site.data.cv.publications %}
-\cvitempb{ {{ pub.title }} }
-    { {{ pub.venue }}, {{ pub.year }} }
-    { {{ pub.authors }} }  {% if pub.links %}{% for link in pub.links %}{\href{ {{ link.url }} }{[\small {{ link.name }}]}} {% endfor %}{% endif %}
-
-{% unless forloop.last %}
+\section{ {{- site.data.cv.section_headers.publications | split: '&' | join: '\&' -}} }
+{% for pub in site.data.cv.publications -%}
+{% assign formatted_authors = pub.authors | replace: 'Enrique Crespo-Fernandez', '\textbf{Enrique Crespo-Fernandez}' | replace: 'Enrique Crespo Fernandez', '\textbf{Enrique Crespo Fernandez}' -%}
+\cvitempb{ {{- pub.title | split: '%' | join: '\%' | split: '&' | join: '\&' -}} }{ {{- pub.year -}} }{ {{- formatted_authors | split: '&' | join: '\&' -}} }{ {{- pub.venue | split: '&' | join: '\&' -}}, {{ pub.year -}} }{% if pub.links %}{ {%- for link in pub.links -%}\href{ {{- link.url -}} }{[\small {{ link.name }}]}{% unless forloop.last %}\ {% endunless %}{%- endfor -%} }{% else %}{}{% endif %}
+{% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
-
-% Side Projects
-\section{Side Projects}
-{% for project in site.data.cv.side_projects %}
-\cvitemsp{ {{ project.name }} }{ {{ project.dates }} }{ {{ project.technologies }} }
+% Industry Experience
+\section{ {{- site.data.cv.section_headers.experience | split: '&' | join: '\&' -}} }
+{% for job in site.data.cv.experience -%}
+\cvitem{ {{- job.institution | split: '&' | join: '\&' -}} }{ {{- job.dates -}} }{ {{- job.position | split: '&' | join: '\&' -}} }{ {{- job.location -}} }
 \begin{itemize}
-{% for detail in project.description %}    \item {\small {{ detail }}}
+{% for resp in job.responsibilities %}    \item {\small {{ resp | split: '%' | join: '\%' | split: '&' | join: '\&' }}}
 {% endfor %}\end{itemize}
-{% unless forloop.last %}
+{% unless forloop.last %}\vspace{3pt}
 {% endunless %}{% endfor %}
 
+% Engineering & Side Projects
+\section{ {{- site.data.cv.section_headers.side_projects | split: '&' | join: '\&' -}} }
+{% for project in site.data.cv.side_projects -%}
+\cvitemsp{ {{- project.name | split: '&' | join: '\&' -}} }{ {{- project.dates -}} }{ {{- project.technologies | split: '&' | join: '\&' -}} }
+\begin{itemize}
+{% for detail in project.description %}    \item {\small {{ detail | split: '%' | join: '\%' | split: '&' | join: '\&' }}}
+{% endfor %}\end{itemize}
+{% unless forloop.last %}\vspace{3pt}
+{% endunless %}{% endfor %}
+
+% Teaching
+\section{ {{- site.data.cv.section_headers.teaching | split: '&' | join: '\&' -}} }
+{% for role in site.data.cv.teaching -%}
+\cvitem{ {{- role.institution | split: '&' | join: '\&' -}} }{ {{- role.dates -}} }{ {{- role.position | split: '&' | join: '\&' -}} }{ {{- role.location -}} }
+\begin{itemize}
+{% for resp in role.responsibilities %}{% assign parts = resp | split: ': ' %}    \item {\small {% if parts.size > 1 %}\textbf{ {{- parts[0] | split: '&' | join: '\&' -}}:} {{ parts | slice: 1, parts.size | join: ': ' | split: '%' | join: '\%' | split: '&' | join: '\&' }}{% else %}{{ resp | split: '%' | join: '\%' | split: '&' | join: '\&' }}{% endif %}}
+{% endfor %}\end{itemize}
+{% unless forloop.last %}\vspace{3pt}
+{% endunless %}{% endfor %}
 
 % Skills
-\section{Skills}
+\section{ {{- site.data.cv.section_headers.skills | split: '&' | join: '\&' -}} }
 \begin{itemize}
-{% for skill in site.data.cv.skills %}    \item {\small \textbf{ {{ skill.category }}: } {{ skill.items }}}
-{% endfor %}
-\end{itemize}
+{% for skill in site.data.cv.skills %}    \item {\small \textbf{ {{- skill.category | split: '&' | join: '\&' -}}:} {{ skill.items | split: '%' | join: '\%' | split: '&' | join: '\&' }}}
+{% endfor %}\end{itemize}
 
 % Additional Information
-\section{Additional Information}
-\textbf{Languages:} {{ site.data.cv.additional.languages }} \\
-\textbf{Interests:} {{ site.data.cv.additional.interests }}
+\section{ {{- site.data.cv.section_headers.additional | split: '&' | join: '\&' -}} }
+{\small \textbf{ {{- site.data.cv.labels.languages -}} } {{ site.data.cv.additional.languages }} $|$ \textbf{ {{- site.data.cv.labels.interests -}} } {{ site.data.cv.additional.interests }}}
 
 \end{document}
