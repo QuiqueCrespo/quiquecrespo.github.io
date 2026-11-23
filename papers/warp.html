@@ -1,0 +1,240 @@
+---
+layout: paper
+title: Weight-Space Linear Recurrent Neural Networks
+short_title: WARP (ICLR 2026)
+permalink: /papers/warp.html
+---
+
+<header class="paper-hero">
+    <div class="paper-meta-row">
+        <span class="venue-badge">ICLR 2026</span>
+        <span class="category-tag">Sequence Modelling</span>
+    </div>
+    <h1 class="paper-page-title">Weight-Space Linear Recurrent Neural Networks</h1>
+    <p class="paper-page-authors">
+        Roussel Desmond Nzoyem, Nawid Keshtmand, <u>Enrique Crespo-Fernandez</u>, Idriss Tsayem, Raul Santos-Rodriguez, David A. W. Barton, Tom Deakin
+    </p>
+    <div class="project-actions">
+        <a class="action-pill" href="https://iclr.cc/virtual/2026/poster/10006465" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> ICLR Poster</a>
+        <a class="action-pill" href="https://arxiv.org/abs/2506.01153" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> arXiv</a>
+        <a class="action-pill" href="/assets/papers/WEIGHT-SPACE_LINEAR_RECURRENT_NEURAL_NETWORKS.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a class="action-pill" href="https://github.com/ddrous/warp" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+    </div>
+</header>
+
+<!-- Interactive Visual: Weight-Space Linear Recurrence -->
+<section class="paper-visual-plate">
+    <div class="visual-plate-header">
+        <span class="visual-plate-title">◆ Interactive Schematic — Linear Recurrence in Weight Space</span>
+        <div class="visual-controls">
+            <label for="warp-step" class="visual-step-label">Context step <span id="warp-step-val">t = 4</span></label>
+            <input type="range" id="warp-step" min="1" max="8" value="4" class="visual-slider" />
+            <button type="button" id="warp-play" class="action-pill">Play</button>
+        </div>
+    </div>
+
+    <div class="visual-canvas-wrap">
+        <svg id="warp-svg" viewBox="0 0 820 290" class="paper-svg" role="img" aria-label="Diagram comparing standard hidden-vector recurrence with WARP weight-space linear recurrence">
+            <!-- Left: Input sequence & delta -->
+            <g class="svg-group">
+                <rect x="20" y="34" width="168" height="222" class="svg-box-subtle" />
+                <text x="104" y="58" text-anchor="middle" class="svg-heading">INPUT DIFFERENCES</text>
+                <text x="104" y="76" text-anchor="middle" class="svg-mono-muted">Δxₜ = xₜ − xₜ₋₁</text>
+                <!-- Mini sequence waveform -->
+                <polyline id="warp-input-wave" fill="none" class="svg-stroke-muted" stroke-width="1.5"
+                    points="40,175 58,155 76,162 94,132 112,140 130,108 148,118 166,95" />
+                <g id="warp-input-dots"></g>
+                <text x="104" y="236" text-anchor="middle" class="svg-caption">Drives linear state update</text>
+            </g>
+
+            <!-- Arrow 1 -->
+            <line x1="188" y1="145" x2="236" y2="145" class="svg-stroke-strong" stroke-width="1.5" />
+            <polygon points="236,145 228,140 228,150" class="svg-fill-strong" />
+
+            <!-- Center: Weight-Space Hidden State -->
+            <g class="svg-group">
+                <rect x="242" y="22" width="294" height="246" class="svg-box-strong" />
+                <text x="389" y="46" text-anchor="middle" class="svg-heading">AUXILIARY NETWORK θₜ</text>
+                <text x="389" y="64" text-anchor="middle" class="svg-mono-muted">θₜ = A ⊙ θₜ₋₁ + B(Δxₜ)  (gradient-free)</text>
+
+                <!-- Neural network edges (dynamically weighted by JS) -->
+                <g id="warp-edges"></g>
+                <!-- Neural network nodes -->
+                <g id="warp-nodes"></g>
+
+                <text x="389" y="252" text-anchor="middle" class="svg-caption">Hidden state = weights &amp; biases of f(· ; θₜ)</text>
+            </g>
+
+            <!-- Arrow 2 -->
+            <line x1="536" y1="145" x2="584" y2="145" class="svg-stroke-strong" stroke-width="1.5" />
+            <polygon points="584,145 576,140 576,150" class="svg-fill-strong" />
+
+            <!-- Right: Adapted Test-Time Prediction -->
+            <g class="svg-group">
+                <rect x="590" y="34" width="210" height="222" class="svg-box-subtle" />
+                <text x="695" y="58" text-anchor="middle" class="svg-heading">TEST-TIME ADAPTATION</text>
+                <text x="695" y="76" text-anchor="middle" class="svg-mono-muted">ŷ = f(x ; θₜ)</text>
+
+                <!-- Target dashed curve -->
+                <path id="warp-target-curve" d="M 612,188 Q 655,105 695,148 T 778,108" fill="none" class="svg-stroke-dashed" stroke-width="1.5" stroke-dasharray="4 4" />
+                <!-- Adapting prediction curve -->
+                <path id="warp-pred-curve" d="M 612,170 Q 655,165 695,160 T 778,150" fill="none" class="svg-stroke-strong" stroke-width="2.2" />
+
+                <text x="695" y="218" text-anchor="middle" id="warp-fit-label" class="svg-mono">Adapting in-context…</text>
+                <text x="695" y="238" text-anchor="middle" class="svg-caption">No backprop at test time</text>
+            </g>
+        </svg>
+    </div>
+    <p class="visual-plate-caption">
+        Slide <strong>t</strong> to watch input differences <code>Δxₜ</code> linearly update the auxiliary network's weights <code>θₜ</code>, adapting its output function in-context without test-time gradient descent.
+    </p>
+</section>
+
+<!-- Concise Insight Sections -->
+<section class="paper-section">
+    <h2>Core Idea</h2>
+    <p>
+        Conventional recurrent neural networks compress sequence history into a fixed-dimensional vector, limiting expressiveness and test-time adaptability. <strong>WARP</strong> (<em>Weight-space Adaptive Recurrent Prediction</em>) instead parametrises the recurrent hidden state directly as the <strong>weights and biases of an auxiliary neural network</strong>, updated linearly from input differences.
+    </p>
+</section>
+
+<section class="paper-section">
+    <h2>Key Takeaways</h2>
+    <div class="takeaway-grid">
+        <div class="takeaway-card">
+            <div class="takeaway-num">01</div>
+            <h3>Gradient-Free Adaptation</h3>
+            <p>Updating auxiliary network parameters through a linear recurrence enables fast, gradient-free test-time adaptation and in-context learning directly in weight space.</p>
+        </div>
+        <div class="takeaway-card">
+            <div class="takeaway-num">02</div>
+            <h3>Physics-Informed Priors</h3>
+            <p>Because the hidden state is an explicit function approximator, domain-specific physical priors plug in naturally—yielding a physics-informed variant that outperforms the next best baseline by <strong>&gt;10×</strong>.</p>
+        </div>
+        <div class="takeaway-card">
+            <div class="takeaway-num">03</div>
+            <h3>Broad Sequence Generalisation</h3>
+            <p>Ranks in the top three across <strong>5 of 6</strong> challenging real-world classification datasets, and excels on sequential image completion, multivariate time series forecasting, and dynamical system reconstruction.</p>
+        </div>
+    </div>
+</section>
+
+<section class="paper-section">
+    <h2>Citation</h2>
+    <div class="bibtex-box">
+        <button type="button" class="copy-inline-btn bibtex-copy-btn" data-copy-target="#paper-bib">Copy</button>
+        <pre id="paper-bib"><code>@inproceedings{nzoyem2026weightspace,
+  title={Weight-Space Linear Recurrent Neural Networks},
+  author={Nzoyem, Roussel Desmond and Keshtmand, Nawid and Crespo-Fernandez, Enrique and Tsayem, Idriss and Santos-Rodriguez, Raul and Barton, David A. W. and Deakin, Tom},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2026}
+}</code></pre>
+    </div>
+</section>
+
+<script>
+(function() {
+    var slider = document.getElementById('warp-step');
+    var stepVal = document.getElementById('warp-step-val');
+    var playBtn = document.getElementById('warp-play');
+    var edgesG = document.getElementById('warp-edges');
+    var nodesG = document.getElementById('warp-nodes');
+    var dotsG = document.getElementById('warp-input-dots');
+    var predPath = document.getElementById('warp-pred-curve');
+    var fitLabel = document.getElementById('warp-fit-label');
+    if (!slider || !edgesG) return;
+
+    var layers = [
+        [{ x: 288, y: 112 }, { x: 288, y: 158 }, { x: 288, y: 204 }],
+        [{ x: 389, y: 98 }, { x: 389, y: 140 }, { x: 389, y: 182 }, { x: 389, y: 222 }],
+        [{ x: 490, y: 132 }, { x: 490, y: 184 }]
+    ];
+
+    var pts = [[40,175],[58,155],[76,162],[94,132],[112,140],[130,108],[148,118],[166,95]];
+    var ns = 'http://www.w3.org/2000/svg';
+
+    function render(t) {
+        stepVal.textContent = 't = ' + t;
+        edgesG.innerHTML = '';
+        nodesG.innerHTML = '';
+        dotsG.innerHTML = '';
+
+        // Input dots
+        pts.forEach(function(p, i) {
+            var c = document.createElementNS(ns, 'circle');
+            c.setAttribute('cx', p[0]);
+            c.setAttribute('cy', p[1]);
+            c.setAttribute('r', i + 1 === t ? 4.8 : (i + 1 < t ? 3 : 2.2));
+            c.setAttribute('class', i + 1 <= t ? 'svg-fill-strong' : 'svg-fill-muted');
+            dotsG.appendChild(c);
+        });
+
+        // Auxiliary network edges with weight-modulated thickness
+        var edgeIdx = 0;
+        for (var l = 0; l < layers.length - 1; l++) {
+            layers[l].forEach(function(a) {
+                layers[l + 1].forEach(function(b) {
+                    var w = 0.4 + Math.abs(Math.sin(edgeIdx * 1.17 + t * 0.65)) * 2.4;
+                    var op = 0.18 + Math.abs(Math.cos(edgeIdx * 0.9 + t * 0.5)) * 0.72;
+                    var line = document.createElementNS(ns, 'line');
+                    line.setAttribute('x1', a.x);
+                    line.setAttribute('y1', a.y);
+                    line.setAttribute('x2', b.x);
+                    line.setAttribute('y2', b.y);
+                    line.setAttribute('class', 'svg-stroke-strong');
+                    line.setAttribute('stroke-width', w.toFixed(2));
+                    line.setAttribute('stroke-opacity', op.toFixed(2));
+                    edgesG.appendChild(line);
+                    edgeIdx++;
+                });
+            });
+        }
+
+        // Auxiliary network nodes
+        layers.forEach(function(layer) {
+            layer.forEach(function(n) {
+                var c = document.createElementNS(ns, 'circle');
+                c.setAttribute('cx', n.x);
+                c.setAttribute('cy', n.y);
+                c.setAttribute('r', 6);
+                c.setAttribute('class', 'svg-node');
+                nodesG.appendChild(c);
+            });
+        });
+
+        // Interpolate predicted curve toward target curve as t grows 1 -> 8
+        var alpha = (t - 1) / 7;
+        function lerp(a, b) { return (a + (b - a) * alpha).toFixed(1); }
+        var d = 'M 612,' + lerp(164, 188) +
+                ' Q 655,' + lerp(162, 105) + ' 695,' + lerp(158, 148) +
+                ' T 778,' + lerp(146, 108);
+        predPath.setAttribute('d', d);
+
+        if (t <= 2) fitLabel.textContent = 'Initial prior θ₁';
+        else if (t <= 6) fitLabel.textContent = 'Updating weights θ' + t + '…';
+        else fitLabel.textContent = 'Converged in-context ✓';
+    }
+
+    var timer = null;
+    playBtn.addEventListener('click', function() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+            playBtn.textContent = 'Play';
+            return;
+        }
+        playBtn.textContent = 'Pause';
+        timer = setInterval(function() {
+            var next = (parseInt(slider.value, 10) % 8) + 1;
+            slider.value = next;
+            render(next);
+        }, 700);
+    });
+
+    slider.addEventListener('input', function() {
+        render(parseInt(slider.value, 10));
+    });
+
+    render(4);
+})();
+</script>

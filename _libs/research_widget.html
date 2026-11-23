@@ -6,10 +6,13 @@
             {% if project.status %}<span class="project-status">{{ project.status }}</span>{% endif %}
         </div>
         <h3 class="project-title">
+            {% if project.page %}<a href="{{ project.page }}" class="project-title-link">{% endif %}
             {% if project.system-name %}<span class="system-name">{{ project.system-name }}:</span> {% endif %}{{ project.title }}
+            {% if project.page %}</a>{% endif %}
         </h3>
         <div class="project-authors">{{ project.authors }}</div>
         <div class="project-actions">
+            {% if project.page %}<a class="action-pill action-pill-primary" href="{{ project.page }}"><i class="fas fa-layer-group"></i> Overview</a>{% endif %}
             <a class="action-pill" href="{{ project.conference-web }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Venue</a>
             {% if project.arxiv %}<a class="action-pill" href="{{ project.arxiv }}" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> arXiv</a>{% endif %}
             {% if project.pdf %}<a class="action-pill" href="{{ project.pdf }}" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>{% endif %}

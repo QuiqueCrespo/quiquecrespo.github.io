@@ -1,0 +1,216 @@
+---
+layout: paper
+title: Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention
+short_title: Continual Causal ILP (UCRL @ ICLR 2026)
+permalink: /papers/continual-causal-ilp.html
+---
+
+<header class="paper-hero">
+    <div class="paper-meta-row">
+        <span class="venue-badge">UCRL Workshop @ ICLR 2026</span>
+        <span class="category-tag">Neuro-Symbolic AI</span>
+    </div>
+    <h1 class="paper-page-title">Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention</h1>
+    <p class="paper-page-authors">
+        <u>Enrique Crespo-Fernandez</u>, Oliver Ray, Telmo de Menezes e Silva Filho, Peter Flach
+    </p>
+    <div class="project-actions">
+        <a class="action-pill" href="https://arxiv.org/abs/2602.17217" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> arXiv</a>
+        <a class="action-pill" href="https://arxiv.org/pdf/2602.17217" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>
+    </div>
+</header>
+
+<!-- Interactive Visual: Online Causal Model Repair & Dynamic Predicate Invention -->
+<section class="paper-visual-plate">
+    <div class="visual-plate-header">
+        <span class="visual-plate-title">◆ Interactive Schematic — Online Decision Loop &amp; Predicate Invention</span>
+        <div class="visual-controls">
+            <button type="button" class="action-pill causal-step-btn active" data-stage="1">1. Observe</button>
+            <button type="button" class="action-pill causal-step-btn" data-stage="2">2. Repair</button>
+            <button type="button" class="action-pill causal-step-btn" data-stage="3">3. Invent</button>
+            <button type="button" class="action-pill causal-step-btn" data-stage="4">4. Generalise</button>
+        </div>
+    </div>
+
+    <div class="visual-canvas-wrap">
+        <svg id="causal-svg" viewBox="0 0 820 295" class="paper-svg" role="img" aria-label="Diagram of online causal model learning, repair, and dynamic predicate invention">
+            <!-- Left: Online Agent Decision Loop -->
+            <g>
+                <rect x="20" y="24" width="330" height="248" class="svg-box-subtle" />
+                <text x="185" y="48" text-anchor="middle" class="svg-heading">ONLINE DECISION LOOP</text>
+
+                <!-- Loop cycle edges -->
+                <path d="M 185,95 L 270,152 L 185,212 L 100,152 Z" fill="none" class="svg-stroke-dashed" stroke-width="1.2" stroke-dasharray="4 4" />
+
+                <!-- 4 Loop Nodes -->
+                <g id="loop-n1" class="svg-stage">
+                    <rect x="132" y="72" width="106" height="34" class="svg-box-node" />
+                    <text x="185" y="93" text-anchor="middle" class="svg-mono">Observe</text>
+                </g>
+                <g id="loop-n2" class="svg-stage">
+                    <rect x="228" y="135" width="104" height="34" class="svg-box-node" />
+                    <text x="280" y="156" text-anchor="middle" class="svg-mono">Repair Model</text>
+                </g>
+                <g id="loop-n3" class="svg-stage">
+                    <rect x="117" y="198" width="136" height="34" class="svg-box-node" />
+                    <text x="185" y="219" text-anchor="middle" class="svg-mono">Invent Predicate</text>
+                </g>
+                <g id="loop-n4" class="svg-stage">
+                    <rect x="38" y="135" width="104" height="34" class="svg-box-node" />
+                    <text x="90" y="156" text-anchor="middle" class="svg-mono">Plan &amp; Act</text>
+                </g>
+
+                <text x="185" y="256" text-anchor="middle" class="svg-caption">Continuous model refinement inside action loop</text>
+            </g>
+
+            <!-- Connector arrow -->
+            <line x1="350" y1="148" x2="394" y2="148" class="svg-stroke-strong" stroke-width="1.5" />
+            <polygon points="394,148 386,143 386,153" class="svg-fill-strong" />
+
+            <!-- Right: Dynamic Predicate Invention Hierarchy -->
+            <g>
+                <rect x="400" y="24" width="400" height="248" class="svg-box-strong" />
+                <text x="600" y="48" text-anchor="middle" class="svg-heading">LIFTED CONCEPT HIERARCHY (MIL)</text>
+
+                <!-- Hierarchy edges -->
+                <line x1="490" y1="205" x2="545" y2="148" class="svg-stroke-muted" stroke-width="1.4" id="hier-e1" />
+                <line x1="600" y1="205" x2="545" y2="148" class="svg-stroke-muted" stroke-width="1.4" id="hier-e2" />
+                <line x1="600" y1="205" x2="665" y2="148" class="svg-stroke-muted" stroke-width="1.4" id="hier-e3" />
+                <line x1="710" y1="205" x2="665" y2="148" class="svg-stroke-muted" stroke-width="1.4" id="hier-e4" />
+                <line x1="545" y1="120" x2="600" y2="88" class="svg-stroke-muted" stroke-width="1.4" id="hier-e5" />
+                <line x1="665" y1="120" x2="600" y2="88" class="svg-stroke-muted" stroke-width="1.4" id="hier-e6" />
+
+                <!-- Top lifted causal rule -->
+                <g id="hier-top">
+                    <rect x="466" y="64" width="268" height="28" class="svg-box-node" />
+                    <text x="600" y="82" text-anchor="middle" class="svg-mono">effect(X, Y) ← p₁(X, Z), p₂(Z, Y)</text>
+                </g>
+
+                <!-- Invented predicates -->
+                <g id="hier-mid1">
+                    <rect x="476" y="120" width="128" height="28" class="svg-box-node" />
+                    <text x="540" y="138" text-anchor="middle" class="svg-mono">p₁(X, Z) [inv]</text>
+                </g>
+                <g id="hier-mid2">
+                    <rect x="614" y="120" width="128" height="28" class="svg-box-node" />
+                    <text x="678" y="138" text-anchor="middle" class="svg-mono">p₂(Z, Y) [inv]</text>
+                </g>
+
+                <!-- Ground observations -->
+                <g id="hier-base">
+                    <rect x="442" y="204" width="96" height="26" class="svg-box-node" />
+                    <text x="490" y="221" text-anchor="middle" class="svg-mono-muted">obs₁(a, b)</text>
+                    <rect x="552" y="204" width="96" height="26" class="svg-box-node" />
+                    <text x="600" y="221" text-anchor="middle" class="svg-mono-muted">rel(b, c)</text>
+                    <rect x="662" y="204" width="96" height="26" class="svg-box-node" />
+                    <text x="710" y="221" text-anchor="middle" class="svg-mono-muted">act(c, d)</text>
+                </g>
+
+                <text x="600" y="256" text-anchor="middle" id="causal-stage-desc" class="svg-caption">Step 1: Agent collects grounded relational observations from environment.</text>
+            </g>
+        </svg>
+    </div>
+    <p class="visual-plate-caption">
+        Click steps <strong>1–4</strong> to trace how Meta-Interpretive Learning repairs the symbolic causal model online and invents reusable lifted predicates <code>p₁, p₂</code>.
+    </p>
+</section>
+
+<!-- Concise Insight Sections -->
+<section class="paper-section">
+    <h2>Core Idea</h2>
+    <p>
+        Standard neural world models are sample-inefficient and opaque, while propositional symbolic methods suffer combinatorial explosion as environments grow. We build <strong>symbolic causal world models entirely online</strong> by integrating continual model learning and repair directly inside the agent's decision loop, using <strong>Meta-Interpretive Learning (MIL)</strong> with dynamic predicate invention.
+    </p>
+</section>
+
+<section class="paper-section">
+    <h2>Key Takeaways</h2>
+    <div class="takeaway-grid">
+        <div class="takeaway-card">
+            <div class="takeaway-num">01</div>
+            <h3>Dynamic Predicate Invention</h3>
+            <p>Automatically invents semantically meaningful, reusable abstractions from raw observations, assembling a transparent hierarchy of disentangled concepts.</p>
+        </div>
+        <div class="takeaway-card">
+            <div class="takeaway-num">02</div>
+            <h3>Lifted Relational Scaling</h3>
+            <p>Operates over lifted first-order relations rather than flat propositional states, scaling cleanly to complex relational dynamics without combinatorial blow-up.</p>
+        </div>
+        <div class="takeaway-card">
+            <div class="takeaway-num">03</div>
+            <h3>Orders-of-Magnitude Efficiency</h3>
+            <p>Achieves sample efficiency orders of magnitude higher than the established neural PPO baseline while preserving full interpretability and online repairability.</p>
+        </div>
+    </div>
+</section>
+
+<section class="paper-section">
+    <h2>Citation</h2>
+    <div class="bibtex-box">
+        <button type="button" class="copy-inline-btn bibtex-copy-btn" data-copy-target="#paper-bib">Copy</button>
+        <pre id="paper-bib"><code>@inproceedings{crespo2026continual,
+  title={Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention},
+  author={Crespo-Fernandez, Enrique and Ray, Oliver and de Menezes e Silva Filho, Telmo and Flach, Peter},
+  booktitle={Workshop on Unifying Concept Representation Learning (UCRL) at ICLR},
+  year={2026}
+}</code></pre>
+    </div>
+</section>
+
+<script>
+(function() {
+    var btns = document.querySelectorAll('.causal-step-btn');
+    var desc = document.getElementById('causal-stage-desc');
+    if (!btns.length || !desc) return;
+
+    var stageInfo = {
+        1: {
+            loop: 'loop-n1',
+            hier: ['hier-base'],
+            text: 'Step 1: Agent collects grounded relational observations from environment.'
+        },
+        2: {
+            loop: 'loop-n2',
+            hier: ['hier-base', 'hier-mid1'],
+            text: 'Step 2: Prediction mismatch triggers online symbolic repair of the causal rules.'
+        },
+        3: {
+            loop: 'loop-n3',
+            hier: ['hier-mid1', 'hier-mid2'],
+            text: 'Step 3: Meta-Interpretive Learning invents reusable predicates p₁, p₂.'
+        },
+        4: {
+            loop: 'loop-n4',
+            hier: ['hier-top', 'hier-mid1', 'hier-mid2'],
+            text: 'Step 4: Lifted causal rules generalise across novel objects & guide planning.'
+        }
+    };
+
+    function setStage(stage) {
+        btns.forEach(function(b) {
+            b.classList.toggle('active', b.getAttribute('data-stage') === String(stage));
+        });
+        ['loop-n1', 'loop-n2', 'loop-n3', 'loop-n4', 'hier-base', 'hier-mid1', 'hier-mid2', 'hier-top'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.remove('svg-active');
+        });
+        var info = stageInfo[stage];
+        if (!info) return;
+        var loopEl = document.getElementById(info.loop);
+        if (loopEl) loopEl.classList.add('svg-active');
+        info.hier.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.add('svg-active');
+        });
+        desc.textContent = info.text;
+    }
+
+    btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            setStage(btn.getAttribute('data-stage'));
+        });
+    });
+
+    setStage(1);
+})();
+</script>

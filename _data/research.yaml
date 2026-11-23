@@ -10,6 +10,7 @@ categories:
 
 projects:
   - title: Weight-Space Linear Recurrent Neural Networks
+    page: /papers/warp.html
     conference: ICLR 2026
     conference-web: https://iclr.cc/virtual/2026/poster/10006465
     status:
@@ -36,6 +37,7 @@ projects:
     category: Sequence Modelling
 
   - title: Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention
+    page: /papers/continual-causal-ilp.html
     conference: UCRL Workshop @ ICLR 2026
     conference-web: https://arxiv.org/abs/2602.17217
     status:

@@ -240,7 +240,7 @@ a:hover {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center center;
     display: block;
     transition: transform 0.45s ease;
 }
@@ -1286,4 +1286,308 @@ footer .text-right {
     align-items: center;
     justify-content: flex-end;
     gap: 0.75rem;
+}
+
+
+/* =================================
+   DEDICATED PAPER PAGES & VISUALS
+   ================================= */
+
+.project-title-link {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.project-title-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+}
+
+.action-pill-primary {
+    background: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+}
+
+.action-pill-primary:hover {
+    background: transparent;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.paper-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    padding-top: 2.25rem;
+    padding-bottom: 3rem;
+}
+
+.paper-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 2.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.88rem;
+}
+
+.paper-back-link,
+.paper-nav-item {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.paper-back-link:hover,
+.paper-nav-item:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.paper-topbar-right {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.paper-hero {
+    margin-bottom: 2rem;
+}
+
+.paper-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+}
+
+.paper-page-title {
+    font-family: 'Poiret One', cursive;
+    font-size: clamp(1.85rem, 3.6vw, 2.55rem);
+    letter-spacing: 0.08em;
+    line-height: 1.22;
+    margin-bottom: 0.85rem;
+}
+
+.paper-page-authors {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    margin-bottom: 1.15rem;
+}
+
+.paper-page-authors u {
+    color: var(--text-main);
+    font-weight: 600;
+    text-underline-offset: 3px;
+}
+
+.paper-visual-plate {
+    background: var(--surface-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-top: 2px solid var(--accent-color);
+    padding: 1.15rem 1.35rem 1.25rem;
+    margin-bottom: 2.25rem;
+    box-shadow: var(--card-shadow);
+}
+
+.visual-plate-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.visual-plate-title {
+    font-family: 'Poiret One', cursive;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.visual-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.visual-step-label {
+    margin: 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+
+.visual-slider {
+    width: 110px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.causal-step-btn.active {
+    background: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+}
+
+.visual-canvas-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.paper-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.svg-box-subtle {
+    fill: var(--surface-subtle);
+    stroke: var(--border-subtle);
+    stroke-width: 1;
+}
+
+.svg-box-strong {
+    fill: var(--surface-subtle);
+    stroke: var(--border-strong);
+    stroke-width: 1.2;
+}
+
+.svg-box-node {
+    fill: var(--surface-solid);
+    stroke: var(--border-strong);
+    stroke-width: 1;
+    transition: all 0.2s ease;
+}
+
+.svg-active .svg-box-node {
+    fill: var(--btn-primary-bg);
+    stroke: var(--btn-primary-bg);
+}
+
+.svg-active text {
+    fill: var(--btn-primary-fg) !important;
+}
+
+.svg-heading {
+    font-family: 'Poiret One', cursive;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    fill: var(--accent-color);
+}
+
+.svg-mono {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    fill: var(--text-main);
+}
+
+.svg-mono-muted {
+    font-family: 'Fira Code', monospace;
+    font-size: 10.5px;
+    fill: var(--text-muted);
+}
+
+.svg-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    fill: var(--text-muted);
+}
+
+.svg-stroke-strong { stroke: var(--accent-color); }
+.svg-stroke-muted { stroke: var(--border-strong); }
+.svg-stroke-dashed { stroke: var(--text-muted); }
+.svg-fill-strong { fill: var(--accent-color); }
+.svg-fill-muted { fill: var(--border-strong); }
+
+.svg-node {
+    fill: var(--surface-solid);
+    stroke: var(--accent-color);
+    stroke-width: 1.6;
+}
+
+.visual-plate-caption {
+    margin: 0.85rem 0 0;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+}
+
+.paper-section {
+    margin-bottom: 2.25rem;
+}
+
+.paper-section h2 {
+    font-size: 1.4rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+    border-bottom: var(--deco-border);
+}
+
+.takeaway-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .takeaway-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.takeaway-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-subtle);
+    border-top: 2px solid var(--accent-color);
+    padding: 1.15rem 1.2rem;
+}
+
+.takeaway-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.takeaway-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 0.45rem;
+}
+
+.takeaway-card p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    line-height: 1.58;
+}
+
+.paper-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: var(--deco-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.86rem;
+    color: var(--text-muted);
 }
