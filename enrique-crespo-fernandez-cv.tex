@@ -16,10 +16,10 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 % Page geometry
 \geometry{
     letterpaper,
-    left=0.5in,
-    right=0.5in,
-    top=0.3in,
-    bottom=0.3in
+    left=0.48in,
+    right=0.48in,
+    top=0.28in,
+    bottom=0.28in
 }
 
 % Colors
@@ -41,7 +41,7 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
     {\MakeUppercase{#1}}
     [\titlerule]
 
-\titlespacing*{\section}{0pt}{5.5pt}{3pt}
+\titlespacing*{\section}{0pt}{4.5pt}{2.5pt}
 
 % Remove page numbers
 \pagestyle{empty}
@@ -72,14 +72,14 @@ permalink: /assets/pdf/enrique-crespo-fernandez-cv.tex
 \begin{document}
 
 % Header
-\begin{center}
-    {\fontsize{17}{19}\selectfont\textbf{\MakeUppercase{ {{- site.data.cv.personal.name -}} }}} \\[2pt]
+{\centering
+    {\fontsize{16}{18}\selectfont\textbf{\MakeUppercase{ {{- site.data.cv.personal.name -}} }}} \\[2pt]
     {\small {{ site.data.cv.personal.phone }} $|$ \href{mailto:{{ site.data.cv.personal.email }}}{ {{- site.data.cv.personal.email -}} } $|$ {{ site.data.cv.personal.location }}} \\[1pt]
     {\small \faGlobe\ \href{ {{- site.data.cv.personal.website -}} }{ {{- site.data.cv.personal.website_handle -}} } $|$
     \faLinkedin\ \href{ {{- site.data.cv.personal.linkedin -}} }{ {{- site.data.cv.personal.linkedin_handle -}} } $|$
-    \faGithub\ \href{ {{- site.data.cv.personal.github -}} }{ {{- site.data.cv.personal.github_handle -}} }}
-\end{center}
-\vspace{2pt}
+    \faGithub\ \href{ {{- site.data.cv.personal.github -}} }{ {{- site.data.cv.personal.github_handle -}} }}\par
+}
+\vspace{4pt}
 
 % Summary
 {\small {{ site.data.cv.summary | split: '%' | join: '\%' | split: '&' | join: '\&' }}}

@@ -30,7 +30,7 @@ personal:
   location: Bristol, United Kingdom
 
 # Professional Summary
-summary: "AI PhD candidate at the University of Bristol (UKRI Interactive AI CDT) with a First-Class BSc in Mathematics and Physics, researching neuro-symbolic reasoning, program synthesis, and adaptive sequence modelling. Published at ICLR 2026 on weight-space linear RNNs and continual causal world models. Seeking AI Research or Quantitative Research roles focused on reasoning, sequential prediction, and learning from noisy, structured data."
+summary: "AI PhD candidate at the University of Bristol (UKRI Interactive AI CDT) with a First-Class BSc in Mathematics and Physics, researching neuro-symbolic reasoning, program synthesis, and adaptive sequence modelling. Seeking AI Research roles."
 
 # Education
 education:
@@ -41,15 +41,15 @@ education:
     details:
       - "Supervisors: Prof. Peter Flach, Dr. Telmo de Menezes e Silva Filho, and Dr. Oliver Ray."
       - "Working title: Learning to Search in Inductive Logic Programming."
-      - "Research spans neuro-symbolic program synthesis, continual causal world modelling, and adaptive linear recurrent sequence architectures."
+      - "Research spans neuro-symbolic program synthesis and continual causal world modelling."
 
   - institution: University of Bath
     degree: BSc Mathematics and Physics (First-Class Honours)
     location: Bath, UK
     dates: 2019–2023
     details:
-      - "Overall final grade: 72% (First-Class Honours). Notable modules: Quantum Mechanics (88%), Analysis 2 (85%), Algebra 2 (81%), General Relativity (71%)."
-      - "Dissertation (71%): Built a CNN-based classifier to detect extreme sea-wave events from noisy coastal radar scans, in collaboration with the UK Met Office."
+      - "Grade: 72% (First-Class). Modules: Quantum Mechanics (88%), Analysis 2 (85%), Algebra 2 (81%), General Relativity (71%)."
+      - "Dissertation (71%): CNN classifier detecting extreme sea-wave events from noisy coastal radar scans (with the UK Met Office)."
 
 # Publications
 publications:
@@ -97,7 +97,7 @@ side_projects:
     technologies: React, Node.js, MongoDB
     dates: "2023–2024"
     description:
-      - "Co-founded a restaurant-tech startup and architected its full-stack distributed backend for real-time order processing via QR-code endpoints."
+      - "Co-founded a restaurant-tech startup; architected its full-stack distributed backend for real-time QR-code ordering."
       - "Built the customer-facing ordering web application and real-time merchant analytics dashboard."
 
 # Teaching
@@ -107,9 +107,9 @@ teaching:
     location: Bristol, UK
     dates: 2024–2025
     responsibilities:
-      - "Data Science Project Unit: Mentored postgraduate teams on industry-sponsored research projects and acted as primary liaison with corporate partners."
-      - "Machine Learning Unit: Assisted lectures and practical labs for undergraduate Computer Science students, supporting theory and code debugging."
-      - "Artificial Intelligence Unit: Supported teaching of symbolic AI fundamentals and multi-agent systems for final-year Computer Science undergraduates."
+      - "Data Science Project Unit: Mentored MSc teams on industry-sponsored research projects and liaised with corporate partners."
+      - "Machine Learning Unit: Assisted lectures and practical labs for CS undergraduates on ML theory and code debugging."
+      - "Artificial Intelligence Unit: Supported symbolic AI and multi-agent systems teaching for final-year CS undergraduates."
 
 # Skills
 skills:
