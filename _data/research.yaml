@@ -21,6 +21,13 @@ projects:
     slides:
     talk:
     poster:
+    bibtex: |
+      @inproceedings{nzoyem2026weightspace,
+        title={Weight-Space Linear Recurrent Neural Networks},
+        author={Nzoyem, Roussel Desmond and Keshtmand, Nawid and Crespo-Fernandez, Enrique and Tsayem, Idriss and Santos-Rodriguez, Raul and Barton, David A. W. and Deakin, Tom},
+        booktitle={International Conference on Learning Representations (ICLR)},
+        year={2026}
+      }
     abstract-less: >-
       We introduce WARP (Weight-space Adaptive Recurrent Prediction), a simple yet powerful model that unifies weight-space learning with linear recurrence to redefine sequence modelling. Unlike conventional recurrent neural networks (RNNs)
     abstract-more: >-
@@ -40,6 +47,13 @@ projects:
     slides:
     talk:
     poster:
+    bibtex: |
+      @inproceedings{crespo2026continual,
+        title={Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention},
+        author={Crespo-Fernandez, Enrique and Ray, Oliver and de Menezes e Silva Filho, Telmo and Flach, Peter},
+        booktitle={Workshop on Unifying Concept Representation Learning (UCRL) at ICLR},
+        year={2026}
+      }
     abstract-less: >-
       Efficiently navigating complex environments requires agents to internalise the underlying logic of their world, yet standard world modelling methods often struggle with sample inefficiency, lack of transparency, and poor scalability.
     abstract-more: >-

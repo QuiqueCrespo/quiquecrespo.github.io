@@ -1,10 +1,11 @@
-<div class="update-card">
-    <div class="update-date">
+<div class="timeline-item">
+    <div class="timeline-marker" aria-hidden="true">◆</div>
+    <div class="timeline-date">
         {% assign date_parts = update.time | split: ' ' %}
-        <div class="update-month">{{ date_parts[0] | upcase }}</div>
-        <div class="update-year">{{ date_parts[1] }}</div>
+        <span class="update-month">{{ date_parts[0] | upcase }}</span>
+        <span class="update-year">{{ date_parts[1] }}</span>
     </div>
-    <div class="update-content">
+    <div class="timeline-content">
         {{ update.desc }}
     </div>
 </div>

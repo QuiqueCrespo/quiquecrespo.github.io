@@ -1,3 +1,182 @@
+// Interactive neuro-symbolic proof/causal graph background
+(function initSymbolicCanvas() {
+    var canvas = document.getElementById('symbolic-canvas');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ctx = canvas.getContext('2d');
+    var nodes = [];
+    var nodeCount = 28;
+    var mouse = { x: -9999, y: -9999 };
+    var width = 0;
+    var height = 0;
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+
+    function seed() {
+        nodes = [];
+        for (var i = 0; i < nodeCount; i++) {
+            nodes.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.28,
+                vy: (Math.random() - 0.5) * 0.28,
+                r: 2 + Math.random() * 1.6,
+                diamond: i % 4 === 0
+            });
+        }
+    }
+
+    window.addEventListener('resize', function() {
+        resize();
+        seed();
+    });
+
+    window.addEventListener('mousemove', function(e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', function() {
+        mouse.x = -9999;
+        mouse.y = -9999;
+    });
+
+    resize();
+    seed();
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        var styles = getComputedStyle(document.documentElement);
+        var nodeColor = styles.getPropertyValue('--canvas-node').trim() || 'rgba(24,23,21,0.2)';
+        var edgeColor = styles.getPropertyValue('--canvas-edge').trim() || 'rgba(184,67,46,0.15)';
+
+        for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i];
+            n.x += n.vx;
+            n.y += n.vy;
+
+            if (n.x < 0 || n.x > width) n.vx *= -1;
+            if (n.y < 0 || n.y > height) n.vy *= -1;
+
+            // Connect nearby nodes
+            for (var j = i + 1; j < nodes.length; j++) {
+                var m = nodes[j];
+                var dx = n.x - m.x;
+                var dy = n.y - m.y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 155) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = edgeColor;
+                    ctx.globalAlpha = (1 - dist / 155) * 0.75;
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(n.x, n.y);
+                    ctx.lineTo(m.x, m.y);
+                    ctx.stroke();
+                }
+            }
+
+            // Subtle cursor interaction
+            var mdx = n.x - mouse.x;
+            var mdy = n.y - mouse.y;
+            var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (mdist < 180) {
+                ctx.beginPath();
+                ctx.strokeStyle = edgeColor;
+                ctx.globalAlpha = (1 - mdist / 180) * 0.9;
+                ctx.lineWidth = 0.9;
+                ctx.moveTo(n.x, n.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            }
+
+            // Draw node (circle or Art Deco diamond)
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = nodeColor;
+            ctx.beginPath();
+            if (n.diamond) {
+                var s = n.r * 1.45;
+                ctx.moveTo(n.x, n.y - s);
+                ctx.lineTo(n.x + s, n.y);
+                ctx.lineTo(n.x, n.y + s);
+                ctx.lineTo(n.x - s, n.y);
+                ctx.closePath();
+            } else {
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+            }
+            ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+})();
+
+
+// Copy-to-clipboard helper (Email & BibTeX)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.copy-inline-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var text = btn.getAttribute('data-copy');
+            var targetSel = btn.getAttribute('data-copy-target');
+            if (!text && targetSel) {
+                var el = document.querySelector(targetSel);
+                if (el) text = el.textContent.trim();
+            }
+            if (!text || !navigator.clipboard) return;
+            navigator.clipboard.writeText(text).then(function() {
+                var original = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(function() { btn.textContent = original; }, 1400);
+            });
+        });
+    });
+});
+
+
+// Scroll reveal & active sidebar section tracking
+document.addEventListener('DOMContentLoaded', function() {
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        var revealObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        reveals.forEach(function(el) { revealObs.observe(el); });
+    } else {
+        reveals.forEach(function(el) { el.classList.add('is-visible'); });
+    }
+
+    var navLinks = document.querySelectorAll('.sidebar-nav-link');
+    if (navLinks.length && 'IntersectionObserver' in window) {
+        var sections = ['about', 'updates', 'research', 'resources']
+            .map(function(id) { return document.getElementById(id); })
+            .filter(Boolean);
+
+        var navObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var id = entry.target.getAttribute('id');
+                    navLinks.forEach(function(link) {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                    });
+                }
+            });
+        }, { rootMargin: '-20% 0px -65% 0px' });
+
+        sections.forEach(function(sec) { navObs.observe(sec); });
+    }
+});
+
+
 // Back-to-top button
 var btn = $('#back-to-top-button');
 
@@ -17,19 +196,23 @@ if (btn.length) {
 }
 
 
-// Toggle "See More" / "See Less" text on collapsible abstracts
-document.querySelectorAll('[data-toggle="collapse"]').forEach(function(linkElement) {
-    var href = linkElement.getAttribute('href');
-    if (!href || href.charAt(0) !== '#') return;
-    var collapseElement = document.getElementById(href.substring(1));
+// Toggle "Read more" / "Read less" on abstracts and refresh Isotope on BibTeX/abstract collapse
+document.querySelectorAll('[data-toggle="collapse"]').forEach(function(trigger) {
+    var targetSel = trigger.getAttribute('href') || trigger.getAttribute('data-target');
+    if (!targetSel || targetSel.charAt(0) !== '#') return;
+    var collapseElement = document.getElementById(targetSel.substring(1));
     if (!collapseElement) return;
 
     $(collapseElement).on('hidden.bs.collapse', function() {
-        linkElement.textContent = '... See More';
+        if (trigger.classList.contains('abstract-toggle')) {
+            trigger.textContent = '... Read more';
+        }
         if ($projects) $projects.isotope('layout');
     });
     $(collapseElement).on('shown.bs.collapse', function() {
-        linkElement.textContent = '... See Less';
+        if (trigger.classList.contains('abstract-toggle')) {
+            trigger.textContent = 'Show less';
+        }
         if ($projects) $projects.isotope('layout');
     });
 });
@@ -39,10 +222,7 @@ document.querySelectorAll('[data-toggle="collapse"]').forEach(function(linkEleme
 function scrollToTopDiv(divTag) {
     var target = $(divTag)[0];
     if (target) {
-        target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
@@ -66,7 +246,7 @@ function toggleTheme() {
 }
 
 
-// Update progress bar on scroll (when present)
+// Update progress bar on scroll
 function updateProgressBar() {
     var bar = document.getElementById('progressBar');
     if (!bar) return;
@@ -83,6 +263,7 @@ window.addEventListener('scroll', updateProgressBar);
 document.addEventListener('DOMContentLoaded', function() {
     var overlaybg = document.getElementById('overlay-bg');
     var contactTrigger = document.getElementById('contact-info-trigger');
+    var closeBtn = document.getElementById('contact-close-btn');
 
     if (overlaybg && contactTrigger) {
         contactTrigger.addEventListener('click', function(e) {
@@ -96,6 +277,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 overlaybg.style.display = 'none';
             }
         });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                overlaybg.style.display = 'none';
+            });
+        }
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && overlaybg.style.display === 'flex') {

@@ -2,7 +2,7 @@
 section_header: updates
 
 updates:
-  - desc: 'First-author paper <a href="https://arxiv.org/abs/2602.17217" target="_blank" rel="noopener">Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention</a> accepted to the Workshop on Unifying Concept Representation Learning (UCRL) @ ICLR 2026.'
+  - desc: 'Paper <a href="https://arxiv.org/abs/2602.17217" target="_blank" rel="noopener">Continual Learning and Refinement of Causal Models through Dynamic Predicate Invention</a> accepted to the Workshop on Unifying Concept Representation Learning (UCRL) @ ICLR 2026.'
     time: MAR 2026
 
   - desc: 'Paper <a href="https://iclr.cc/virtual/2026/poster/10006465" target="_blank" rel="noopener">Weight-Space Linear Recurrent Neural Networks</a> accepted at ICLR 2026.'

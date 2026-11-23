@@ -28,49 +28,56 @@
         <!-- Google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&family=Fira+Code&family=Poiret+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@400;500&family=Poiret+One&display=swap" rel="stylesheet">
 
         <!-- Core theme CSS -->
-        <link href="/styles/styles.css" rel="stylesheet"/>
+        <link href="/styles/styles.css?v={{ site.time | date: '%s' }}" rel="stylesheet"/>
     </head>
 
     <body>
-        <!-- Toggle dark/light theme button -->
-        <button class="toggle-theme-button" onclick="toggleTheme()" aria-label="Toggle dark/light theme">◐</button>
+        <!-- Subtle interactive neuro-symbolic graph background -->
+        <canvas id="symbolic-canvas" aria-hidden="true"></canvas>
 
-        <div class="container" style="padding-top: 2.5rem; padding-bottom: 3rem; max-width: 1000px;">
+        <!-- Toggle dark/light theme button -->
+        <button class="toggle-theme-button" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">◐</button>
+
+        <div class="container site-shell cv-shell">
             <div class="row">
-                <!-- Left Column - Profile -->
-                <div class="col-lg-2 col-md-12 profile-container">
-                    <div class="ring-container">
-                        <div class="ring">
-                            <div class="hollow-ring">
-                                <img class="profile-image" src="/{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
+                <!-- Left Column - Sticky Profile Sidebar -->
+                <div class="col-lg-3 col-md-12 profile-container">
+                    <div class="profile-sticky">
+                        <div class="ring-container">
+                            <div class="ring">
+                                <div class="hollow-ring">
+                                    <img class="profile-image" src="/{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="social-icons">
-                        {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> {% endif %}
-                        {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> {% endif %}
-                        {% if site.data.about.linkedin %} <a class="social-icon" href="{{ site.data.about.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> {% endif %}
-                    </div>
-                    <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-color: var(--accent-color);">
-                    <div class="profile-menu">
-                        <a href="/" class="profile-menu-item">
-                            <span class="menu-label">Home</span>
-                        </a>
-                        <a href="#" class="profile-menu-item" id="contact-info-trigger">
-                            <span class="menu-label">Contact Info</span>
-                        </a>
-                        <a href="/assets/enrique-crespo-fernandez-cv.pdf" class="profile-menu-item" id="pdf-download-link-cv">
-                            <span class="menu-label">Download PDF</span>
-                        </a>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> Bristol, UK
+                        </div>
+                        <div class="social-icons">
+                            {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> {% endif %}
+                            {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> {% endif %}
+                            {% if site.data.about.linkedin %} <a class="social-icon" href="{{ site.data.about.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> {% endif %}
+                        </div>
+                        <div class="deco-divider"><span>◆</span></div>
+                        <div class="profile-menu">
+                            <a href="/" class="profile-menu-item">
+                                <span class="menu-label">Home</span>
+                            </a>
+                            <a href="#" class="profile-menu-item" id="contact-info-trigger">
+                                <span class="menu-label">Contact Info</span>
+                            </a>
+                            <a href="/assets/enrique-crespo-fernandez-cv.pdf" class="profile-menu-item profile-menu-accent" id="pdf-download-link-cv">
+                                <span class="menu-label"><i class="fas fa-file-pdf mr-1"></i> Download PDF</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Right Column - CV Content -->
-                <div class="col-lg-10 col-md-12">
+                <div class="col-lg-9 col-md-12">
                     {{ content }}
                 </div>
             </div>
@@ -80,15 +87,23 @@
         <div class="contact-card-overlay" id="overlay-bg">
             <div class="information_card">
                 <div class="contact-info-card">
+                    <button class="contact-close-btn" id="contact-close-btn" aria-label="Close contact card">&times;</button>
                     <p class="card-name">{{ site.data.about.name }}</p>
                     <div class="contact-info-detail">
                         <p><strong>Email</strong></p>
-                        <p><a href="mailto:{{ site.data.about.email }}">{{ site.data.about.email }}</a></p>
+                        <p>
+                            <a href="mailto:{{ site.data.about.email }}">{{ site.data.about.email }}</a>
+                            <button class="copy-inline-btn" data-copy="{{ site.data.about.email }}" title="Copy email">Copy</button>
+                        </p>
                     </div>
                     <div class="contact-info-detail">
-                        <p><strong>Address</strong></p>
-                        <p>{{ site.data.about.address-line1 }}</p>
-                        <p>{{ site.data.about.address-line2 }}</p>
+                        <p><strong>Affiliation</strong></p>
+                        <p>{{ site.data.about.lab }}</p>
+                        <p>{{ site.data.about.dept }}</p>
+                    </div>
+                    <div class="contact-info-detail">
+                        <p><strong>Location</strong></p>
+                        <p>{{ site.data.about.address-line1 }}, {{ site.data.about.address-line2 }}</p>
                     </div>
                 </div>
             </div>
@@ -104,7 +119,6 @@
         <script src="/js/scripts.js"></script>
 
         <script>
-            // Check if PDF exists and gracefully disable link if not available locally
             var pdfDownloadLink = document.getElementById('pdf-download-link-cv');
             if (pdfDownloadLink) {
                 fetch('/assets/enrique-crespo-fernandez-cv.pdf', { method: 'HEAD' })

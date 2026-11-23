@@ -80,7 +80,7 @@ experience:
     location: Madrid, Spain
     dates: 2021–2022
     responsibilities:
-      - "Built an end-to-end machine-learning pipeline to extract signal from noisy, unstructured survey text using clustering, tree-based models, and NLP sentiment analysis, cutting turnaround from days to minutes."
+      - "Built an end-to-end machine-learning pipeline to extract signal from unstructured, free-text survey responses using clustering, tree-based models, and NLP sentiment analysis, cutting turnaround from days to minutes."
       - "Developed a psychometric statistical model and automated analysis pipeline from scratch to infer latent traits from employee survey data, enabling HR diagnostics and opening a new revenue stream."
       - "Presented analytical insights to stakeholders and trained non-technical teams to operate the analytical tools independently."
 
@@ -91,13 +91,13 @@ side_projects:
     dates: "2024"
     description:
       - "Engineered an automated high-throughput bioinformatics pipeline to ingest, filter, and align raw peptide deep-sequencing data, replacing manual alignment workflows."
-      - "Optimised data-processing and visualisation stages to accelerate downstream analysis of noisy, high-dimensional sequencing datasets."
+      - "Optimised data-processing and visualisation stages to streamline downstream analysis of high-dimensional sequencing datasets."
 
   - name: Gniiam (Restaurant Tech Platform)
     technologies: React, Node.js, MongoDB
     dates: "2023–2024"
     description:
-      - "Co-founded a restaurant-tech startup; architected its full-stack distributed backend for real-time QR-code ordering."
+      - "Co-founded a restaurant-tech startup; architected its distributed backend for real-time QR-code ordering."
       - "Built the customer-facing ordering web application and real-time merchant analytics dashboard."
 
 # Teaching
@@ -116,11 +116,11 @@ skills:
   - category: Programming Languages
     items: Python, C, Prolog, Answer Set Programming (Clingo), JavaScript
 
-  - category: Machine Learning & Modelling
-    items: PyTorch, Sequence Modelling, Neuro-Symbolic AI, Inductive Logic Programming, Program Synthesis, Statistical & Physics-Informed Modelling
+  - category: Frameworks & Tools
+    items: PyTorch, NumPy, scikit-learn, Git, Linux, LaTeX, React, Node.js, MongoDB
 
-  - category: Engineering & Tools
-    items: Git, Linux, LaTeX, React, Node.js, MongoDB
+  - category: Research Areas
+    items: Neuro-Symbolic AI, Inductive Logic Programming, Program Synthesis, Sequence Modelling, Causal World Models, Physics-Informed ML
 
 # Additional Information
 additional:

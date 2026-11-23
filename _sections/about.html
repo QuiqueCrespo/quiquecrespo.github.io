@@ -1,54 +1,67 @@
 <!-- About section -->
 
-<div class="row">
-    <div class="col-lg-2 col-md-12 profile-container">
-        <div class="ring-container">
-            <div class="ring">
-                <div class="hollow-ring">
-                    <img class="profile-image" src="/{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
+<div class="row" id="about">
+    <div class="col-lg-3 col-md-12 profile-container">
+        <div class="profile-sticky">
+            <div class="ring-container">
+                <div class="ring">
+                    <div class="hollow-ring">
+                        <img class="profile-image" src="/{{ site.data.about.profile-pic }}" alt="{{ site.data.about.name }}">
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="social-icons">
-            {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> {% endif %}
-            {% if site.data.about.researchgate %} <a class="social-icon" href="{{ site.data.about.researchgate }}" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a> {% endif %}
-            {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> {% endif %}
-            {% if site.data.about.linkedin %} <a class="social-icon" href="{{ site.data.about.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> {% endif %}
-            {% if site.data.about.youtube %} <a class="social-icon" href="{{ site.data.about.youtube }}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a> {% endif %}
-        </div>
-        <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-color: var(--accent-color);">
-        <div class="profile-menu">
-            <a href="/cv_page.html" class="profile-menu-item">
-                <span class="menu-label">CV</span>
-            </a>
-            <a href="#" class="profile-menu-item" id="contact-info-trigger">
-                <span class="menu-label">Contact Info</span>
-            </a>
+            <div class="status-pill">
+                <span class="status-dot"></span> Bristol, UK
+            </div>
+            <div class="social-icons">
+                {% if site.data.about.scholar %} <a class="social-icon" href="{{ site.data.about.scholar }}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa fa-graduation-cap"></i></a> {% endif %}
+                {% if site.data.about.researchgate %} <a class="social-icon" href="{{ site.data.about.researchgate }}" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a> {% endif %}
+                {% if site.data.about.github %} <a class="social-icon" href="{{ site.data.about.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a> {% endif %}
+                {% if site.data.about.linkedin %} <a class="social-icon" href="{{ site.data.about.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a> {% endif %}
+                {% if site.data.about.youtube %} <a class="social-icon" href="{{ site.data.about.youtube }}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a> {% endif %}
+            </div>
+            <div class="deco-divider"><span>◆</span></div>
+            <nav class="sidebar-nav" aria-label="Section navigation">
+                <a href="#about" class="sidebar-nav-link active">01 · About</a>
+                <a href="#updates" class="sidebar-nav-link">02 · Updates</a>
+                <a href="#research" class="sidebar-nav-link">03 · Publications</a>
+                <a href="#resources" class="sidebar-nav-link">04 · Open Source</a>
+            </nav>
+            <div class="profile-menu">
+                <a href="/cv_page.html" class="profile-menu-item profile-menu-accent">
+                    <span class="menu-label">Curriculum Vitae</span>
+                </a>
+                <a href="#" class="profile-menu-item" id="contact-info-trigger">
+                    <span class="menu-label">Contact Info</span>
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="col-lg-10 col-md-12">
-        <div class="mb-5">
+    <div class="col-lg-9 col-md-12 main-column">
+        <header class="hero-block mb-5 reveal">
+            <div class="hero-eyebrow">Neuro-Symbolic AI · Sequence Modelling · Physics &amp; Math</div>
             <h1 class="site-name">{{ site.data.about.name }}</h1>
             {% if site.data.about.subtitle %}
-            <p class="lead site-subtitle">
+            <p class="site-subtitle">
                 {{ site.data.about.subtitle }}
             </p>
             {% endif %}
-            {% if site.data.about.pronunciation %}
-            <p class="lead site-subtitle">
-                {{ site.data.about.pronunciation }}
-            </p>
-            {% endif %}
-            <p>{{ site.data.about.first-paragraph }}</p>
-            <p>{{ site.data.about.second-paragraph }}</p>
-            <div class="codebox">
-                {% if site.data.about.research-introduction %}
-                <p>{{ site.data.about.research-introduction }}</p>
-                {% endif %}
-                {% for interest in site.data.about.research-interests %}
-                    {% include_relative _libs/about_widget.html %}
-                {% endfor %}
+            <div class="hero-bio">
+                <p>{{ site.data.about.first-paragraph }}</p>
+                <p>{{ site.data.about.second-paragraph }}</p>
             </div>
-        </div>
+
+            <!-- Research Interests -->
+            <div class="research-interests-box">
+                <div class="interests-label">Research Interests</div>
+                <div class="interests-grid">
+                    {% for interest in site.data.about.research-interests %}
+                    <div class="interest-row">
+                        <span class="interest-field">{{ interest.field }}</span>
+                        <span class="interest-subfields">{{ interest.subfields }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </header>

@@ -1,8 +1,8 @@
 <!-- Resources section -->
 
-        <div id="resources" class="mb-5">
-            <h2>{{ site.data.resources.section_header }}</h2>
-            <p>{{ site.data.resources.introduction }}</p>
+        <section id="resources" class="content-section mb-5 reveal">
+            <h2 class="section-heading"><span class="section-num">III</span> {{ site.data.resources.section_header }}</h2>
+            <p class="section-intro">{{ site.data.resources.introduction }}</p>
             {% if site.data.resources.categories.size > 1 %}
             <div id="filters-resources" class="mb-4">
                 <button class="filter-button active" data-filter="*">all</button>
@@ -16,4 +16,4 @@
                     {% include_relative _libs/resources_widget.html %}
                 {% endfor %}
             </div>
-        </div>
+        </section>

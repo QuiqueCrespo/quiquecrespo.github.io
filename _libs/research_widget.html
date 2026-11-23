@@ -1,29 +1,42 @@
-<div class="project" data-filter="{{ project.category }}">
-    <div class="row mb-4">
-        <div class="col-sm-12">
-            {% if project.system-name %} <b><i>{{ project.system-name }}</i>:</b> {% endif %}
-            <b style="text-transform: uppercase;">{{ project.title }}</b>
-            <br>
-            <span class="project-links">
-                <i><a href="{{ project.conference-web }}" target="_blank" rel="noopener">[{{ project.conference }}]</a></i>
-                {% if project.arxiv %} | <a href="{{ project.arxiv }}" target="_blank" rel="noopener">[arXiv]</a>{% endif %}
-                {% if project.pdf %} | <a href="{{ project.pdf }}" target="_blank" rel="noopener">[PDF]</a>{% endif %}
-                {% if project.code %} | <a href="{{ project.code }}" target="_blank" rel="noopener">[CODE]</a>{% endif %}
-                {% if project.demo %} | <a href="{{ project.demo }}" target="_blank" rel="noopener">[DEMO]</a>{% endif %}
-                {% if project.slides %} | <a href="{{ project.slides }}" target="_blank" rel="noopener">[SLIDES]</a>{% endif %}
-                {% if project.talk %} | <a href="{{ project.talk }}" target="_blank" rel="noopener">[TALK]</a>{% endif %}
-                {% if project.poster %} | <a href="{{ project.poster }}" target="_blank" rel="noopener">[POSTER]</a>{% endif %}
-                {% if project.status %} <b class="project-status">[{{ project.status }}]</b>{% endif %}
-            </span>
-            <br>
-            {{ project.authors }}
-            <br>
-            <u><b><i>Abstract</i></b>:</u>
+<article class="project" data-filter="{{ project.category }}">
+    <div class="project-card">
+        <div class="project-meta-row">
+            <span class="venue-badge">{{ project.conference }}</span>
+            <span class="category-tag">{{ project.category }}</span>
+            {% if project.status %}<span class="project-status">{{ project.status }}</span>{% endif %}
+        </div>
+        <h3 class="project-title">
+            {% if project.system-name %}<span class="system-name">{{ project.system-name }}:</span> {% endif %}{{ project.title }}
+        </h3>
+        <div class="project-authors">{{ project.authors }}</div>
+        <div class="project-actions">
+            <a class="action-pill" href="{{ project.conference-web }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Venue</a>
+            {% if project.arxiv %}<a class="action-pill" href="{{ project.arxiv }}" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> arXiv</a>{% endif %}
+            {% if project.pdf %}<a class="action-pill" href="{{ project.pdf }}" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>{% endif %}
+            {% if project.code %}<a class="action-pill" href="{{ project.code }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>{% endif %}
+            {% if project.demo %}<a class="action-pill" href="{{ project.demo }}" target="_blank" rel="noopener"><i class="fas fa-play"></i> Demo</a>{% endif %}
+            {% if project.slides %}<a class="action-pill" href="{{ project.slides }}" target="_blank" rel="noopener"><i class="fas fa-desktop"></i> Slides</a>{% endif %}
+            {% if project.talk %}<a class="action-pill" href="{{ project.talk }}" target="_blank" rel="noopener"><i class="fas fa-video"></i> Talk</a>{% endif %}
+            {% if project.poster %}<a class="action-pill" href="{{ project.poster }}" target="_blank" rel="noopener"><i class="fas fa-image"></i> Poster</a>{% endif %}
+            {% if project.bibtex %}
+            <button type="button" class="action-pill bibtex-toggle-btn" data-toggle="collapse" data-target="#bib-{{ project.tag }}" aria-expanded="false"><i class="fas fa-quote-right"></i> BibTeX</button>
+            {% endif %}
+        </div>
+        {% if project.bibtex %}
+        <div class="collapse bibtex-drawer" id="bib-{{ project.tag }}">
+            <div class="bibtex-box">
+                <button type="button" class="copy-inline-btn bibtex-copy-btn" data-copy-target="#bib-code-{{ project.tag }}">Copy</button>
+                <pre id="bib-code-{{ project.tag }}"><code>{{ project.bibtex | strip }}</code></pre>
+            </div>
+        </div>
+        {% endif %}
+        <div class="project-abstract">
+            <span class="abstract-label">Abstract</span>
             {{ project.abstract-less }}
             <span class="collapse" id="{{ project.tag }}">
                 {{ project.abstract-more }}
             </span>
-            <span> <a href="#{{ project.tag }}" data-toggle="collapse" id="link-{{ project.tag }}">... See More</a></span>
+            <a href="#{{ project.tag }}" data-toggle="collapse" class="abstract-toggle" id="link-{{ project.tag }}">... Read more</a>
         </div>
     </div>
-</div>
+</article>

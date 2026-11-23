@@ -1,10 +1,10 @@
 <!-- Updates section -->
 
-        <div id="updates" class="mb-5">
-            <h2>{{ site.data.updates.section_header }}</h2>
-            <div class="updates-container">
+        <section id="updates" class="content-section mb-5 reveal">
+            <h2 class="section-heading"><span class="section-num">I</span> {{ site.data.updates.section_header }}</h2>
+            <div class="updates-timeline">
                 {% for update in site.data.updates.updates %}
                     {% include_relative _libs/updates_widget.html %}
                 {% endfor %}
             </div>
-        </div>
+        </section>

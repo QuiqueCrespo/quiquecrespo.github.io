@@ -1,384 +1,541 @@
 /* =================================
-   STRIPPED CLASSICISM AESTHETIC
-   Art Deco meets Modernism
+   SYMBOLIC ART DECO AESTHETIC
+   Architectural Geometry · Gold & Obsidian
    ================================= */
 
-:root {
-    --bg-color: #ffffff;
-    --text-main: #1a1a1a;
-    --text-muted: #555555;
-    --accent-color: #000000;
-    --border-style: 1px solid #1a1a1a;
-    --deco-border: 3px double #1a1a1a;
-}
-
-/* Theme classes on html element (applied by inline script to prevent flash) */
+:root,
 html.light-theme {
     --bg-color: #ffffff;
-    --text-main: #1a1a1a;
-    --text-muted: #555555;
-    --accent-color: #000000;
-    --border-style: 1px solid #1a1a1a;
-    --deco-border: 3px double #1a1a1a;
+    --bg-glow: radial-gradient(ellipse 75% 40% at 55% -10%, rgba(20, 20, 20, 0.04), transparent 70%);
+    --surface-color: rgba(255, 255, 255, 0.92);
+    --surface-solid: #ffffff;
+    --surface-subtle: rgba(20, 20, 20, 0.03);
+    --surface-hover: rgba(20, 20, 20, 0.06);
+    --text-main: #161616;
+    --text-muted: #5a5a5a;
+    --accent-color: #0d0d0d;
+    --gold: #161616;
+    --gold-soft: rgba(20, 20, 20, 0.07);
+    --gold-line: rgba(20, 20, 20, 0.28);
+    --border-subtle: rgba(20, 20, 20, 0.12);
+    --border-strong: rgba(20, 20, 20, 0.35);
+    --deco-border: 3px double rgba(20, 20, 20, 0.7);
+    --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.08);
+    --canvas-node: rgba(20, 20, 20, 0.18);
+    --canvas-edge: rgba(20, 20, 20, 0.1);
+    --btn-primary-bg: #141414;
+    --btn-primary-fg: #ffffff;
 }
 
 html.dark-theme {
-    --bg-color: #1a1a1a;
+    --bg-color: #111214;
+    --bg-glow: radial-gradient(ellipse 75% 40% at 55% -10%, rgba(255, 255, 255, 0.05), transparent 70%);
+    --surface-color: rgba(22, 23, 27, 0.85);
+    --surface-solid: #16171b;
+    --surface-subtle: rgba(255, 255, 255, 0.035);
+    --surface-hover: rgba(255, 255, 255, 0.08);
     --text-main: #e8e8e8;
-    --text-muted: #aaaaaa;
+    --text-muted: #9a9a9e;
     --accent-color: #ffffff;
-    --border-style: 1px solid #e8e8e8;
-    --deco-border: 3px double #e8e8e8;
+    --gold: #e6e6e6;
+    --gold-soft: rgba(255, 255, 255, 0.08);
+    --gold-line: rgba(255, 255, 255, 0.28);
+    --border-subtle: rgba(255, 255, 255, 0.11);
+    --border-strong: rgba(255, 255, 255, 0.36);
+    --deco-border: 3px double rgba(255, 255, 255, 0.55);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.5);
+    --canvas-node: rgba(255, 255, 255, 0.2);
+    --canvas-edge: rgba(255, 255, 255, 0.1);
+    --btn-primary-bg: #f0f0f0;
+    --btn-primary-fg: #111214;
 }
 
-/* Document body styles */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-color);
+    background-image: var(--bg-glow);
+    background-attachment: fixed;
     color: var(--text-main);
-    font-family: 'Sulphur Point', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
-    font-size: 1rem;
-    transition: background-color 0.5s, color 0.5s;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.72;
+    font-size: 0.96rem;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.35s ease, color 0.35s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#symbolic-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.site-shell {
+    position: relative;
+    z-index: 1;
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+    max-width: 1080px;
+}
+
+.cv-shell {
+    padding-top: 2.75rem;
+    padding-bottom: 3.5rem;
 }
 
 
 /* =================================
-   TYPOGRAPHY - Classic vs Modern
+   ART DECO TYPOGRAPHY
    ================================= */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     font-family: 'Poiret One', cursive;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
     color: var(--accent-color);
-    font-weight: normal;
+    letter-spacing: 0.15em;
 }
 
-h2 {
-    font-size: 1.75rem;
+.section-heading {
+    font-size: 1.65rem;
+    padding-bottom: 0.55rem;
+    margin-bottom: 1.6rem;
     border-bottom: var(--deco-border);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
     width: 100%;
 }
 
+.section-num {
+    font-family: 'Poiret One', cursive;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+}
+
+.section-num::after {
+    content: " ·";
+    margin-left: 0.15rem;
+    color: var(--gold-line);
+}
+
+.hero-eyebrow {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.65rem;
+}
+
 .site-name {
-    font-size: 3rem;
-    margin-bottom: 0.75rem;
+    font-size: clamp(2.2rem, 4.4vw, 3.25rem);
+    margin-bottom: 0.45rem;
+    line-height: 1.12;
 }
 
 .site-subtitle {
     font-family: 'Poiret One', cursive;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
     color: var(--text-muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.55rem;
 }
 
-/* Hyperlink styles */
+.hero-bio p {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-size: 0.96rem;
+}
+
+.section-intro {
+    color: var(--text-muted);
+    margin-bottom: 1.35rem;
+    font-size: 0.94rem;
+}
+
 a {
     color: var(--text-main);
     text-decoration: underline;
-    font-style: italic;
+    text-decoration-color: var(--gold-line);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
+    color: var(--gold);
+    text-decoration-color: var(--gold);
 }
 
 .highlight {
-    background-color: #f0f0f0;
-    padding: 0 4px;
-    border-radius: 2px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    padding: 0.04rem 0.38rem;
+    border-bottom: 1px solid var(--gold-line);
     font-weight: 500;
 }
 
-.dark-theme .highlight {
-    background-color: #3a3a3a;
-    color: #ffffff;
-}
-
-.text-primary {
-    color: var(--text-muted) !important;
-    font-size: 1.2rem;
-}
-
-/* User selection */
 ::selection {
-    background-color: #ffb699;
-}
-
-.light-theme ::selection {
-    background-color: #ffb699;
-}
-
-.dark-theme ::selection {
-    background-color: #545454;
-}
-
-/* Code-style text for research interests */
-code {
-    font-family: 'Fira Code', monospace;
-    color: #333;
-    background-color: #f1f1f1;
-    padding: 2px 4px;
-    font-size: 83%;
-    border-radius: 5px;
-    transition: 0.5s;
-}
-
-.light-theme code {
-    color: #fff;
-    background-color: #909090;
-}
-
-.dark-theme code {
-    color: #333;
-    background-color: #f1f1f1;
-}
-
-/* Code container styles */
-.codebox {
-    font-family: 'Fira Code', monospace;
-    color: #333;
-    border-left: 4px solid #4a5568;
-    padding: 0.5rem 0.75rem;
-    opacity: 0.9;
-    font-size: 86%;
-    transition: 0.5s;
-}
-
-.light-theme .codebox {
-    color: #333;
-    background-color: #f5f5f5;
-}
-
-.dark-theme .codebox {
-    color: #fff;
-    background-color: #2d2d2d;
+    background-color: var(--gold-soft);
+    color: var(--gold);
 }
 
 
 /* =================================
-   PROFILE CONTAINER - Sidebar
+   STICKY SIDEBAR - ARCHITECTURAL
    ================================= */
 
 .profile-container {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+@media (min-width: 992px) {
+    .profile-sticky {
+        position: sticky;
+        top: 2.75rem;
+        padding-right: 1.25rem;
+    }
 }
 
 .ring-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .ring {
-    width: 160px;
-    height: 160px;
+    width: 156px;
+    height: 156px;
     border-radius: 50%;
+    padding: 5px;
+    border: 1px solid var(--border-strong);
     box-sizing: border-box;
-    position: relative;
 }
 
 .hollow-ring {
-    width: 152px;
-    height: 152px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    z-index: 1;
-    transition: 0.5s;
-}
-
-.light-theme .hollow-ring {
-    background-color: #ffffff;
-}
-
-.dark-theme .hollow-ring {
-    background-color: #333333;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--surface-solid);
 }
 
 .profile-image {
-    width: 152px;
-    height: 152px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid #000;
-    outline: 1px solid #000;
-    outline-offset: 4px;
-    z-index: 2;
     object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    transition: transform 0.45s ease;
 }
 
-.light-theme .profile-image {
-    border: 1px solid #000;
-    outline: 1px solid #000;
+.ring:hover .profile-image {
+    transform: scale(1.04);
 }
 
-.dark-theme .profile-image {
-    border: 1px solid #fff;
-    outline: 1px solid #fff;
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.25rem 0.65rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 0.85rem;
 }
 
-
-/* =================================
-   SOCIAL ICONS - Minimalist
-   ================================= */
+.status-dot {
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+    background-color: var(--gold);
+}
 
 .social-icons {
-    margin-top: 1rem;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 0.75rem;
 }
 
 .social-icons .social-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-main);
-    transition: transform 0.2s ease;
+    width: 34px;
+    height: 34px;
+    color: var(--text-muted);
     text-decoration: none;
-    font-style: normal;
-}
-
-.social-icons .social-icon i,
-.social-icons .social-icon svg {
-    color: var(--accent-color) !important;
-    font-size: 1.2rem !important;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .social-icons .social-icon:hover {
+    color: var(--gold);
+    border-color: var(--gold-line);
     transform: translateY(-2px);
 }
 
+.deco-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.2rem 0;
+    color: var(--gold);
+    font-size: 0.55rem;
+}
 
-/* =================================
-   PROFILE MENU - Minimalist Links
-   ================================= */
+.deco-divider::before,
+.deco-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    margin: 0 0.5rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 1.35rem;
+    text-align: left;
+}
+
+.sidebar-nav-link {
+    font-family: 'Poiret One', cursive;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.36rem 0.7rem;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav-link:hover {
+    color: var(--accent-color);
+    border-left-color: var(--gold-line);
+    text-decoration: none;
+}
+
+.sidebar-nav-link.active {
+    color: var(--gold);
+    border-left-color: var(--gold);
+    background: var(--gold-soft);
+    text-decoration: none;
+}
+
+@media (max-width: 991px) {
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar-nav-link {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+    }
+
+    .sidebar-nav-link.active {
+        border-bottom-color: var(--gold);
+    }
+}
 
 .profile-menu {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 0.55rem;
 }
 
 .profile-menu-item {
     display: block;
     text-align: center;
-    padding: 0.5rem;
-    border: 1px solid var(--accent-color);
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--gold-line);
+    background: transparent;
     color: var(--text-main);
     text-decoration: none;
-    font-style: normal;
-    transition: all 0.3s;
+    transition: all 0.22s ease;
 }
 
 .profile-menu-item .menu-label {
     font-family: 'Poiret One', cursive;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    font-size: 0.86rem;
+    font-weight: 700;
 }
 
-.profile-menu-item:hover,
-.profile-menu-item.active {
-    background: var(--accent-color);
-    color: var(--bg-color);
+.profile-menu-item:hover {
+    border-color: var(--gold);
+    background: var(--gold-soft);
+    color: var(--gold);
     text-decoration: none;
 }
 
+.profile-menu-accent {
+    border-color: var(--gold);
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+}
+
+.profile-menu-accent:hover {
+    background: transparent;
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
 
 /* =================================
-   CONTACT CARD - Art Deco Overlay
+   RESEARCH INTERESTS PLATE
    ================================= */
 
-.contact-card-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
+.research-interests-box {
+    margin-top: 1.5rem;
+    padding: 1.1rem 1.35rem;
+    background: var(--surface-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-subtle);
+    border-left: 2px solid var(--accent-color);
 }
 
-.dark-theme .contact-card-overlay {
-    background: rgba(26, 26, 26, 0.95);
-}
-
-.information_card {
-    font-family: 'Sulphur Point', sans-serif;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact-info-card {
-    background: var(--bg-color);
-    color: var(--text-main);
-    padding: 2rem;
-    border: var(--deco-border);
-    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-}
-
-.card-name {
+.interests-label {
     font-family: 'Poiret One', cursive;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    text-align: center;
-}
-
-.contact-info-detail {
-    margin-bottom: 1.25rem;
-    text-align: center;
-}
-
-.contact-info-detail:last-child {
-    margin-bottom: 0;
-}
-
-.contact-info-detail p {
-    margin: 0.25rem 0;
-    line-height: 1.6;
-    color: var(--text-main);
-}
-
-.contact-info-detail strong {
-    font-family: 'Poiret One', cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     font-size: 0.85rem;
-    color: var(--accent-color);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.65rem;
 }
 
-.contact-info-detail a {
-    color: var(--text-muted) !important;
-    text-decoration: underline;
+.interests-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.interest-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+}
+
+.interest-field {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    min-width: 215px;
+}
+
+.interest-subfields {
+    color: var(--text-muted);
+    flex: 1;
 }
 
 
 /* =================================
-   PUBLICATIONS/PROJECTS - Pillar Design
+   ART DECO UPDATES TIMELINE
+   ================================= */
+
+.updates-timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 0.35rem;
+}
+
+.updates-timeline::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 14px;
+    bottom: 14px;
+    width: 1px;
+    background: var(--gold-line);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1.15rem;
+    padding: 0.85rem 1rem 0.85rem 0.4rem;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-item:hover {
+    background: var(--surface-subtle);
+}
+
+.timeline-marker {
+    color: var(--gold);
+    font-size: 0.58rem;
+    background: var(--bg-color);
+    padding: 2px 0;
+    z-index: 1;
+}
+
+.timeline-date {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    min-width: 82px;
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+
+.update-month {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.update-year {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.timeline-content {
+    flex: 1;
+    font-size: 0.94rem;
+    color: var(--text-main);
+}
+
+
+/* =================================
+   PUBLICATIONS - ARCHITECTURAL PILLARS
    ================================= */
 
 #projects {
@@ -386,32 +543,156 @@ code {
 }
 
 .project {
-    margin-bottom: 2.5rem;
-    border-left: 2px solid var(--accent-color);
-    padding-left: 1.5rem;
     width: 100%;
+    margin-bottom: 1.35rem;
 }
 
-.project img {
-    border: 1px solid #eee;
+.project-card {
+    background: var(--surface-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-left: 2px solid var(--gold);
+    padding: 1.35rem 1.55rem;
+    box-shadow: var(--card-shadow);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
-.project object,
-.project embed {
-    border: var(--border-style);
-    background: var(--bg-color);
+.project-card:hover {
+    border-color: var(--gold-line);
+    border-left-color: var(--gold);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
 }
 
-.project-links a {
+.project-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.55rem;
+}
+
+.venue-badge {
     font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    font-style: normal;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.16rem 0.55rem;
+    border: 1px solid var(--gold-line);
+    background: var(--gold-soft);
+    color: var(--gold);
 }
 
-.project-status {
-    color: #e74d3c;
+.category-tag {
+    font-family: 'Poiret One', cursive;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.project-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 0.35rem;
+    line-height: 1.38;
+    letter-spacing: -0.01em;
+}
+
+.project-authors {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+}
+
+.project-authors u {
+    color: var(--text-main);
+    font-weight: 500;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 2px;
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+}
+
+.action-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
+    padding: 0.24rem 0.65rem;
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-main);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.action-pill:hover {
+    border-color: var(--gold);
+    background: var(--gold-soft);
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.bibtex-drawer {
+    margin-bottom: 0.9rem;
+}
+
+.bibtex-box {
+    position: relative;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border-subtle);
+    padding: 0.85rem 1rem;
+}
+
+.bibtex-box pre {
+    margin: 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.73rem;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.bibtex-copy-btn {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.55rem;
+}
+
+.project-abstract {
+    font-size: 0.89rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.abstract-label {
+    font-family: 'Poiret One', cursive;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-right: 0.45rem;
+}
+
+.abstract-toggle {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.74rem;
+    margin-left: 0.25rem;
+    white-space: nowrap;
 }
 
 .collapse.in {
@@ -420,38 +701,38 @@ code {
 
 
 /* =================================
-   FILTER BUTTONS - Art Deco Style
+   FILTER BUTTONS & PAGERS
    ================================= */
 
 #filters-project .filter-button,
 #filters-resources .filter-button {
     background: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    padding: 5px 15px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    padding: 0.3rem 0.9rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.4rem;
     font-family: 'Poiret One', cursive;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     cursor: pointer;
-    border-radius: 0;
-    transition: all 0.3s;
+    transition: all 0.2s ease;
 }
 
 #filters-project .filter-button:hover,
-#filters-project .filter-button.active,
-#filters-resources .filter-button:hover,
-#filters-resources .filter-button.active {
-    background: var(--accent-color);
-    color: var(--bg-color);
+#filters-resources .filter-button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
 }
 
-
-/* =================================
-   ISOTOPE PAGERS
-   ================================= */
+#filters-project .filter-button.active,
+#filters-resources .filter-button.active {
+    background: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+}
 
 .isotope-pager-project,
 .isotope-pager-github {
@@ -459,7 +740,7 @@ code {
     list-style-type: none;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .isotope-pager-project .pager,
@@ -467,36 +748,33 @@ code {
     font-family: 'Poiret One', cursive;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    display: block;
-    padding: 8px 16px;
-    background-color: transparent;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    background: transparent;
     border: var(--deco-border);
     margin: 0 8px;
-    transition: all 0.3s;
     color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .isotope-pager-project .pager:hover:not(:disabled),
 .isotope-pager-github .pager:hover:not(:disabled) {
-    background-color: var(--accent-color);
+    background: var(--gold);
     color: var(--bg-color);
-    cursor: pointer;
 }
 
 .isotope-pager-project .current-page,
 .isotope-pager-github .current-page {
-    font-family: 'Poiret One', cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    padding: 8px 16px;
-    color: var(--accent-color);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.74rem;
+    padding: 6px 12px;
+    color: var(--text-muted);
 }
 
 .isotope-pager-project .pager:disabled,
 .isotope-pager-github .pager:disabled {
-    opacity: 0.3;
+    opacity: 0.35;
     cursor: not-allowed;
 }
 
@@ -509,29 +787,31 @@ code {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    margin: 15px 0;
+    margin: 0;
 }
 
 .github-card {
-    flex: 0 1 calc(50% - 16px);
-    margin: 0 16px 10px 0;
-    background-color: #ffffff;
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    width: 440px;
+    flex: 0 1 calc(50% - 12px);
+    margin: 0 12px 12px 0;
+    background-color: var(--surface-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-top: 2px solid var(--gold);
+    box-shadow: var(--card-shadow);
+    width: 380px;
     max-width: 100%;
-    padding: 16px;
+    padding: 1.25rem 1.35rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    transition: 0.5s;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-.dark-theme .github-card {
-    background-color: #292929;
-    color: #ffffff;
-    border-color: #3a3a3a;
+.github-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold-line);
+    box-shadow: var(--card-shadow-hover);
 }
 
 @media (max-width: 768px) {
@@ -545,42 +825,41 @@ code {
 .repo-header {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 0.45rem;
 }
 
 .repo-header .bookmark-icon {
     margin-right: 8px;
-    color: #586069;
+    color: var(--gold);
 }
 
 .repo-name {
-    font-weight: 600;
-    color: #0366d6;
-    font-size: 16px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    color: var(--accent-color);
+    font-size: 0.96rem;
     text-decoration: none;
-    font-style: normal;
-}
-
-.dark-theme .repo-name {
-    color: #58a6ff;
 }
 
 .repo-name:hover {
+    color: var(--gold);
     text-decoration: underline;
 }
 
 .repo-description {
-    font-size: 13px;
-    color: #586069;
-    margin-bottom: 14px;
-    line-height: 1.45;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
 }
 
 .repo-stats {
     display: flex;
     align-items: center;
-    font-size: 14px;
-    gap: 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    gap: 1rem;
 }
 
 .repo-stats > div {
@@ -590,78 +869,104 @@ code {
 
 .repo-stats i,
 .repo-stats svg {
-    margin-right: 6px;
+    margin-right: 5px;
 }
 
-.language-icon {
-    color: #007bff;
-}
-
-.star-icon {
-    color: #ffc107;
-}
-
-.fork-icon {
-    color: #333;
-}
-
-.dark-theme .repo-description,
-.dark-theme .stats-number,
-.dark-theme .language {
-    color: #e0e0e0;
-}
-
-.dark-theme .bookmark-icon,
-.dark-theme .fork-icon {
-    color: #bbbbbb;
-}
+.language-icon,
+.star-icon { color: var(--gold); }
+.fork-icon { color: var(--text-muted); }
 
 
 /* =================================
-   UPDATES SECTION - Art Deco Cards
+   CONTACT CARD OVERLAY
    ================================= */
 
-.updates-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.update-card {
-    border: var(--border-style);
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.update-date {
-    font-family: 'Poiret One', cursive;
-    line-height: 1;
-    padding-right: 1rem;
-    border-right: var(--deco-border);
-    letter-spacing: 0.1em;
-    min-width: 96px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+.contact-card-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 11, 14, 0.76);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
     justify-content: center;
+    align-items: center;
+    padding: 1rem;
 }
 
-.update-month {
+.contact-info-card {
+    position: relative;
+    background: var(--surface-solid);
+    color: var(--text-main);
+    padding: 2.25rem 2.5rem;
+    border: var(--deco-border);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-close-btn {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.9rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.contact-close-btn:hover {
+    color: var(--gold);
+}
+
+.card-name {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
     font-size: 1.4rem;
-    font-weight: 600;
+    margin-bottom: 1.25rem;
     color: var(--accent-color);
 }
 
-.update-year {
-    font-size: 0.95rem;
-    margin-top: 0.25rem;
-    color: var(--text-muted);
+.contact-info-detail {
+    margin-bottom: 1.1rem;
 }
 
-.update-content {
-    flex: 1;
+.contact-info-detail:last-child {
+    margin-bottom: 0;
+}
+
+.contact-info-detail p {
+    margin: 0.18rem 0;
+    font-size: 0.92rem;
+    color: var(--text-main);
+}
+
+.contact-info-detail strong {
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.82rem;
+    color: var(--gold);
+}
+
+.copy-inline-btn {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    padding: 0.14rem 0.5rem;
+    margin-left: 0.45rem;
+    border: 1px solid var(--gold-line);
+    background: transparent;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.copy-inline-btn:hover {
+    background: var(--gold);
+    color: var(--bg-color);
 }
 
 
@@ -670,40 +975,46 @@ code {
    ================================= */
 
 .cv-content {
-    padding: 0.25rem 0;
-    line-height: 1.5;
+    background: var(--surface-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gold-line);
+    border-top: 2px solid var(--gold);
+    padding: 2.25rem 2.5rem;
+    box-shadow: var(--card-shadow);
+    line-height: 1.58;
     font-size: 0.92rem;
 }
 
 .cv-title {
     font-family: 'Poiret One', cursive;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.75rem;
-    font-size: 1.85rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.65rem;
+    font-size: 2rem;
 }
 
 .cv-section {
-    margin-bottom: 1.15rem;
+    margin-bottom: 1.35rem;
 }
 
 .cv-summary {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-muted);
 }
 
 .cv-summary p {
     margin-bottom: 0;
-    line-height: 1.5;
 }
 
 .cv-section h2 {
     font-family: 'Poiret One', cursive;
-    font-size: 1.15rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
+    font-size: 1.2rem;
     border-bottom: var(--deco-border);
-    padding-bottom: 0.2rem;
-    margin-bottom: 0.55rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
 }
 
 .cv-section p {
@@ -711,7 +1022,7 @@ code {
 }
 
 .cv-item {
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.85rem;
 }
 
 .cv-item:last-child {
@@ -728,56 +1039,60 @@ code {
 
 .cv-item-left strong {
     font-size: 0.96rem;
+    color: var(--accent-color);
 }
 
 .cv-tech {
-    font-style: italic;
+    font-family: 'Fira Code', monospace;
     color: var(--text-muted);
-    font-size: 0.88rem;
+    font-size: 0.78rem;
 }
 
 .cv-item-right {
     text-align: right;
-    font-style: italic;
+    font-family: 'Fira Code', monospace;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.76rem;
     white-space: nowrap;
 }
 
 .cv-pub-authors {
     font-size: 0.88rem;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.15rem;
 }
 
 .cv-pub-venue {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
 }
 
 .cv-pub-links {
-    margin-left: 0.5rem;
+    margin-left: 0.45rem;
 }
 
 .cv-pub-links a {
     font-family: 'Fira Code', monospace;
-    font-size: 0.8rem;
-    font-style: normal;
+    font-size: 0.78rem;
     margin-right: 0.45rem;
 }
 
 .cv-list {
     margin-left: 1.2rem;
-    margin-top: 0.2rem;
+    margin-top: 0.25rem;
     margin-bottom: 0;
     padding-left: 0.25rem;
 }
 
 .cv-list li {
-    margin-bottom: 0.15rem;
-    line-height: 1.4;
+    margin-bottom: 0.22rem;
+    line-height: 1.48;
 }
 
 @media (max-width: 576px) {
+    .cv-content {
+        padding: 1.35rem 1.2rem;
+    }
+
     .cv-item-header {
         flex-direction: column;
         gap: 0.1rem;
@@ -789,50 +1104,78 @@ code {
 }
 
 @media print {
+    #symbolic-canvas,
     .profile-container,
     .toggle-theme-button {
         display: none !important;
     }
 
-    .col-lg-10 {
+    .col-lg-9 {
         width: 100% !important;
         max-width: 100% !important;
         flex: 0 0 100% !important;
     }
 
     .cv-content {
+        border: none !important;
+        box-shadow: none !important;
         padding: 0 !important;
     }
 }
 
 
 /* =================================
-   BACK-TO-TOP & THEME TOGGLE BUTTONS
+   REVEAL ANIMATION
+   ================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
+/* =================================
+   FLOATING CONTROLS & PROGRESS BAR
    ================================= */
 
 #back-to-top-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-color);
-    color: var(--accent-color);
-    width: 44px;
-    height: 44px;
-    border: 2px solid var(--accent-color);
+    background-color: var(--surface-color);
+    backdrop-filter: blur(10px);
+    color: var(--gold);
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold-line);
     position: fixed;
     bottom: 24px;
     right: 24px;
-    transition: all 0.3s;
+    transition: all 0.22s ease;
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     padding: 0;
 }
 
 #back-to-top-button:hover {
-    background-color: var(--accent-color);
+    background-color: var(--gold);
     color: var(--bg-color);
 }
 
@@ -842,8 +1185,8 @@ code {
 }
 
 .toggle-theme-button {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     position: fixed;
     top: 24px;
     right: 24px;
@@ -852,83 +1195,80 @@ code {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Poiret One', cursive;
-    font-size: 1.35rem;
-    border: var(--border-style);
-    background: var(--bg-color);
-    color: var(--accent-color);
+    font-size: 1.15rem;
+    border: 1px solid var(--gold-line);
+    background: var(--surface-color);
+    backdrop-filter: blur(10px);
+    color: var(--gold);
+    box-shadow: var(--card-shadow);
     line-height: 1;
     padding: 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.22s ease;
 }
 
 .toggle-theme-button:hover {
-    background: var(--accent-color);
+    background: var(--gold);
     color: var(--bg-color);
 }
-
-
-/* =================================
-   PROGRESS BAR & SCROLLBAR
-   ================================= */
 
 .progress-bar-container {
     width: 100%;
     height: 2px;
-    background: #f1f1f1;
+    background: transparent;
     position: fixed;
     top: 0;
     z-index: 1001;
-    transition: 0.5s;
 }
 
 .progress-bar {
     height: 2px;
-    background: var(--accent-color);
+    background: var(--gold);
     width: 0%;
 }
 
-.dark-theme .progress-bar-container {
-    background: #3a3a3a;
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-}
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gold-line); }
 
 
 /* =================================
-   FOOTER - Art Deco Double Border
+   FOOTER
    ================================= */
 
 footer {
-    margin-top: 4rem;
+    margin-top: 3.5rem;
     border-top: var(--deco-border);
-    padding-top: 2rem;
+    padding-top: 1.75rem;
     padding-bottom: 2rem;
-    font-size: 0.9rem;
+    font-size: 0.86rem;
 }
 
 footer .row {
     align-items: center;
 }
 
+.footer-copy {
+    color: var(--text-muted);
+}
+
+.footer-source {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.76rem;
+}
+
 footer img {
-    height: 70px;
+    height: 52px;
     width: auto;
-    max-width: 150px;
+    max-width: 130px;
     object-fit: contain;
-    margin: 0 8px;
+    margin: 0 6px;
     vertical-align: middle;
-    transition: filter 0.5s;
+    opacity: 0.78;
+    transition: filter 0.35s ease, opacity 0.2s ease;
+}
+
+footer img:hover {
+    opacity: 1;
 }
 
 .dark-theme footer img {
@@ -938,12 +1278,12 @@ footer img {
 footer .text-left {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 footer .text-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 1rem;
+    gap: 0.75rem;
 }
